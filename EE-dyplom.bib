@@ -1,0 +1,446 @@
+@PREAMBLE{ {\providecommand{\noopsort}[1]{}}} % witek sztuczka do sortowania
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typy bibliografii:
+%  - artykuł z czasopisma,
+%  - artykuł z konferencji,
+%  - materiały konferencyjne,
+%  - książka,
+%  - fragment książki,
+%  - książka z serii,
+%  - krótka broszura,
+%  - praca magisterska,
+%  - praca doktorska,
+%  - instrukcja obsługi,
+%  - raport techniczny,
+%  - materiały nieopublikowane,
+%  - inne typy materiałów źródłowych.
+% Więcej informacji na stronie https://www.bibtex.com/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Artykuły naukowe z czasopism i konferencji
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Article - artykuł z czasopisma.
+% Wymagane pola: author, title, journal, year.
+% Opcjonalne pola: volume, number, pages, month, note.
+@Article{maxwell1865,
+    author  = {James Clerk Maxwell},
+    title   = {A Dynamical Theory of the Electromagnetic Field},
+    journal = {Philosophical Transactions of the Royal Society},
+    year    = {1865},
+    number  = {155},
+    pages   = {459-512},
+    month   = {1},
+    note    = {\href{https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1865.0008}{<https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1865.0008>}, dostęp uzyskano 2020-12-03},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% InProceedings - artykuły z konferencji
+% Wymagane pola: author or editor, title, publisher, year.
+% Opcjonalne pola: volume or number, series, address, edition, month, note.
+@inproceedings{cichon1995,
+    author  = {D. J. {Cichon} and W. {Wiesbeck}},
+    title   = {The Heinrich Hertz wireless experiments at Karlsruhe in the view of modern communication},
+    publisher   = {Institution of Engineering and Technology},
+    year        = {1995},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Proceedings - publikacja pokonferencyjna, zbiór artykułów z jednej konferencji
+% Wymagane pola: title, year.
+% Opcjonalne pola: editor, volume or number, series, address, publisher, note, month, organization.
+@proceedings{cpee2018,
+    title   = {19th International Conference Computational Problems of Electrical Engineering},
+    year    = {2018},
+    note    = {doi: \href{https://doi.org/10.1109/CPEE44871.2018}{10.1109/CPEE44871.2018}},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Materiały książkowe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Book - książka mająca wydawcę.
+% Wymagane pola: author or editor, title, publisher, year.
+% Opcjonalne pola: volume or number, series, address, edition, month, note.
+@book{fowler2009,
+    author    = {Kim Fowler},
+    title     = {Mission-Critical and Safety-Critical Systems Handbook: Design and Development for Embedded Applications},
+    publisher = {Newnes},
+    year      = {2009},
+    ISBN      = {978-0750685672},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inbook - część książki, na przykład rozdział i/lub zakres stron.
+% Wymagane pola: author lub editor, title, chapter i/lub pages, publisher, year.
+% Opcjonalne pola: volume or number, series, type, address, edition, month, note.
+@inbook{leksinski1995,
+  chapter   = {1-2},
+  pages     = {9-232},
+  title     = {Matematyka},
+  publisher = {Wydawnictwa Naukowo-Techniczne},
+  year      = {1995},
+  author    = {Wojciech Żakowski and Wacław Leksiński},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Incollection - część książki mająca własny tytuł, również książka z serii.
+% Wymagane pola: author, title, booktitle, publisher, year.
+% Opcjonalne pola: editor, volume or number, series, type, chapter, pages, address, edition, month, note.
+@incollection{lncsevo,
+  author    = {Gyu Myoung Lee and Noel Crespi and Jun Kyun Choi and Matthieu Boussard},
+  title     = {Internet of Things},
+  booktitle = {Evolution of Telecommunication Services},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer-Verlag Berlin Heidelberg},
+  year      = {2013},
+  editor    = {Emmanuel Bertin and Noel Crespi and Thomas Magedanz},
+  volume    = {7768},
+  isbn      = {978-3642415685},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Booklet - praca, która została wydrukowana i oprawiona ale nie mająca wydawcy lub stojącej za nią instytucji, broszurka mająca 4-48 stron
+% Wymagane pola: title.
+% Opcjonalne pola: author, howpublished, address, month, year, note.
+@booklet{giglio,
+  author = {Pierluigi Giglio},
+  title  = {Postmodernism and Plagiarism},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MastersThesis - praca magisterska (uwaga: masters a nie master)
+% Wymagane pola: author, title, school, year.
+% Opcjonalne pola: type, address, month, note.
+@mastersthesis{poirier2020,
+    author  = {Izabela Poirier},
+    title   = {Wykorzystanie technologii Blockchain w komunikacji urządzeń Internetu Rzeczy},
+    school  = {Politechnika Warszawska, Wydział Elektryczny, Instytut Elektrotechniki Teoretycznej i Systemów Informacyjno-Pomiarowych},
+    year    = {2020},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% phdthesis - praca doktorska
+% Wymagane pola: author, title, school, year.
+% Opcjonalne pola: type, address, month, note.
+@phdthesis{truong2018,
+    author  = {Nguyen Binh Truong},
+    title   = {Evaluation of trust in the Internet of Things : models, mechanisms and applications},
+    school  = {Liverpool John Moores University},
+    year    = {2018},
+    note    = {doi: \href{http://doi.org/10.24377/researchonline.ljmu.ac.uk.00009241}{10.24377/researchonline.ljmu.ac.uk.00009241}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumenty techniczne
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% manual - instrukcja obługi, specyfikacja techniczna, nota katalogowa (datasheet)
+% Wymagane pola: title.
+% Opcjonalne pola: author, organization, address, edition, month, year, note.
+@manual{AN4230,
+    title           = {STM32 microcontroller random number generation validation using the NIST statistical test suite},
+    organization    = {STMicroelectronics},
+    year            = {2020},
+    month           = {8},
+    note            = {AN4230},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% techreport - raport techniczny
+% Wymagane pola: author, title, institution, year.
+% Opcjonalne pola: type, number, address, month, note.
+@techreport{nask2020,
+    author      = {{Zespół CERT Polska}},   % Nietypowy autor - dodatkowe nawiasy powodują, że nie zostanie uznany za imię i nazwisko co byłoby komiczne (Polska Z. C.)
+    title       = {Krajobraz bezpieczeństwa polskiego Internetu w 2019 roku},
+    institution = {NASK -- Państwowy Instytut Badawczy},
+    year        = {2020},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumenty nietypowe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% unpublished - dokument mający autora i tytuł ale nie opublikowany typowymi metodami
+% Wymagane pola: author, title, note.
+% Opcjonalne pola: month, year.
+@unpublished{wilamowski2017,
+  author    = {Maciej Wilamowski},
+  title     = {,,Daj, ać ja pobruczę, a ty poczywaj''. Pierwsze zdanie po polsku w historii},
+  note    = {\href{https://twojahistoria.pl/2017/11/21/daj-ac-ja-pobrucze-a-ty-poczywaj-co-powinienes-wiedziec-o-pierwszym-zdaniu-zapisanym-w-jezyku-polskim/}{<https://twojahistoria.pl/2017/11/21/daj-ac-ja-pobrucze-a-ty-poczywaj-co-powinienes-wiedziec-o-pierwszym-zdaniu-zapisanym-w-jezyku-polskim/>}, dostęp uzyskano 2020-12-03},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% misc - jeśli wszystkie inne kategorie nie pasują; przynajmniej jedno z pól opcjonalnych musi być użyte
+% Wymagane pola: brak
+% Opcjonalne pola: author, title, howpublished, month, year, note.
+@misc{szablon,
+    author  = {Łukasz Makowski},
+    title   = {Szablon prac dyplomowych dla Wydziału Elektrycznego Politechniki Warszawskiej},
+    howpublished    = {\href{https://github.com/SP5LMA/EE-Dyplom}{<https://github.com/SP5LMA/EE-Dyplom>}},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@Article{mccullochpitts1943,
+    author  = {Warren S. McCulloch, Walter Pitts},
+    title   = {A logical calculus of the ideas immanent in nervous activity},
+    journal = {The bulletin of mathematical biophysics},
+    year    = {1943},
+    volume  = {5},
+    doi     = {10.1007/BF02478259}
+}
+
+@inbook{dubik1989,
+    pages     = {154-155},
+    title     = {1000 słów o laserach i promieniowaniu laserowym},
+    publisher = {Wydawnictwo Ministerstwa Obrony Narodowej},
+    year      = {1989},
+    author    = {Adam Dubik},
+    ISBN      = {83-11-07495-X}
+}
+
+@book{tadeusiewiczflasinski1991,
+    title     = {Rozpoznawanie obrazów},
+    author    = {Ryszard Tadeusiewicz, Mariusz Flasiński},
+    year      = {1991},
+    publisher = {Państwowe Wydawnictwo Naukowe},
+    ISBN      = {83-01-10558-5}
+}
+
+@Article{eigen2014,
+    author  = {David Eigen, Christian Puhrsch, Rob Fergus},
+    title   = {Depth Map Prediction from a Single Image using a Multi-Scale Deep Network},
+    journal = {arXiv},
+    year    = {2014},
+    doi     = {10.48550/arXiv.1406.2283}
+}
+
+@Article{vaswani2017,
+    author  = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+    title   = {Attention Is All You Need},
+    journal = {arXiv},
+    year    = {2023},
+    doi     = {10.48550/arXiv.1706.03762}
+}
+
+@Article{oshea2015,
+    author  = {Keiron O'Shea and Ryan Nash},
+    title   = {An Introduction to Convolutional Neural Networks},
+    journal = {arXiv},
+    year    = {2015},
+    doi     = {10.48550/arXiv.1511.08458}
+}
+
+@Article{minaee2021,
+    author  = {Shervin Minaee and Yuri Boykov and Fatih Porikli and Antonio Plaza and Nasser Kehtarnavaz and Demetri Terzopoulos},
+    title   = {An Introduction to Convolutional Neural Networks},
+    journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+    volume  = {44},
+    pages   = {3523-3542},
+    year    = {2021},
+    doi     = {10.1109/TPAMI.2021.3059968}
+}
+
+@Article{geiger2012,
+    author  = {Andreas Geiger and Philip Lenz and Raquel Urtasun},
+    title   = {Are we ready for autonomous driving? The KITTI vision benchmark suite},
+    journal = {2012 IEEE Conference on Computer Vision and Pattern Recognition},
+    year    = {2012},
+    doi     = {10.1109/CVPR.2012.6248074}
+}
+
+@Article{couprie2013,
+    author  = {Camille Couprie and Clément Farabet and Laurent Najman and Yann LeCun},
+    title   = {Indoor Semantic Segmentation using depth information},
+    journal = {arXiv},
+    year    = {2013},
+    doi     = {10.48550/arXiv.1301.3572}
+}
+
+@Article{fukushima1980,
+    author  = {Kunihiko Fukushima},
+    title   = {Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position.},
+    journal = {Biol. Cybernetics},
+    year    = {1980},
+    doi     = {10.1007/BF00344251}
+}
+
+@Article{dumoulin2018,
+    author  = {Vincent Dumoulin and Francesco Visin},
+    title   = {A guide to convolution arithmetic for deep learning},
+    journal = {arXiv},
+    year    = {2018},
+    doi     = {10.48550/arXiv.1603.07285}
+}
+
+@Article{dong2022,
+    author  = {Dong, Xingshuai and Garratt, Matthew A. and Anavatti, Sreenatha G. and Abbass, Hussein A.},
+    title   = {MobileXNet: An Efficient Convolutional Neural Network for Monocular Depth Estimation},
+    journal = {IEEE Transactions on Intelligent Transportation Systems},
+    year    = {2022},
+    doi     = {10.1109/TITS.2022.3179365}
+}
+
+@Article{dosovitskiy2020,
+    author  = {Alexey Dosovitskiy and Lucas Beyer and Alexander Kolesnikov and Dirk Weissenborn and Xiaohua Zhai and Thomas Unterthiner and Mostafa Dehghani and Matthias Minderer and Georg Heigold and Sylvain Gelly and Jakob Uszkoreit and Neil Houlsby},
+    title   = {An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale},
+    journal = {arXiv},
+    year    = {2020},
+    doi     = {10.48550/arXiv.2010.11929}
+}
+
+@Article{yin2020,
+    author  = {Wei Yin and Jianming Zhang and Oliver Wang and Simon Niklaus and Long Mai and Simon Chen and Chunhua Shen},
+    title   = {An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale},
+    journal = {arXiv},
+    year    = {2020},
+    doi     = {10.48550/arXiv.2012.09365}
+}
+
+@Article{xian2020,
+    author  = {Xian, Ke and Zhang, Jianming and Wang, Oliver and Mai, Long and Lin, Zhe and Cao, Zhiguo},
+    title   = {Structure-Guided Ranking Loss for Single Image Depth Prediction},
+    journal = {The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year    = {2020},
+}
+
+@Article{he2015,
+    author  = {Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun},
+    title   = {Deep Residual Learning for Image Recognition},
+    journal = {arXiv},
+    year    = {2015},
+    doi     = {10.48550/arXiv.1512.03385}
+}
+
+@Article{oord2018,
+    author  = {Aaron van den Oord and Oriol Vinyals and Koray Kavukcuoglu},
+    title   = {Neural Discrete Representation Learning},
+    journal = {arXiv},
+    year    = {2018},
+    doi     = {10.48550/arXiv.1711.00937}
+}
+
+@Article{ronneberger2015,
+    author  = {Olaf Ronneberger and Philipp Fischer and Thomas Brox},
+    title   = {U-Net: Convolutional Networks for Biomedical Image Segmentation},
+    journal = {arXiv},
+    year    = {2015},
+    doi     = {10.48550/arXiv.1505.04597}
+}
+
+@Article{wan2023,
+    author  = {Qiang Wan and Zilong Huang and Bingyi Kang and Jiashi Feng and Li Zhang},
+    title   = {Harnessing Diffusion Models for Visual Perception with Meta Prompts},
+    journal = {arXiv},
+    year    = {2023},
+    doi     = {10.48550/arXiv.2312.14733}
+}
+
+@Article{zhao2023,
+    author  = {Wenliang Zhao and Yongming Rao and Zuyan Liu and Benlin Liu and Jie Zhou and Jiwen Lu},
+    title   = {Unleashing Text-to-Image Diffusion Models for Visual Perception},
+    journal = {arXiv},
+    year    = {2023},
+    doi     = {10.48550/arXiv.2303.02153}
+}
+
+@Article{lavreniuk2023,
+    author  = {Mykola Lavreniuk and Shariq Farooq Bhat and Matthias Müller and Peter Wonka},
+    title   = {EVP: Enhanced Visual Perception using Inverse Multi-Attentive Feature Refinement and Regularized Image-Text Alignment},
+    journal = {arXiv},
+    year    = {2023},
+    doi     = {10.48550/arXiv.2312.08548}
+}
+
+@Article{bhat2023,
+    author  = {Shariq Farooq Bhat and Reiner Birkl and Diana Wofk and Peter Wonka and Matthias Müller},
+    title   = {ZoeDepth: Zero-shot Transfer by Combining Relative and Metric Depth},
+    journal = {arXiv},
+    year    = {2023},
+    doi     = {10.48550/arXiv.2302.12288}
+}
+
+@Article{ranftl2020,
+    author  = {René Ranftl and Katrin Lasinger and David Hafner and Konrad Schindler and Vladlen Koltun},
+    title   = {Towards Robust Monocular Depth Estimation: Mixing Datasets for Zero-shot Cross-dataset Transfer},
+    journal = {arXiv},
+    year    = {2020},
+    doi     = {10.48550/arXiv.1907.01341}
+}
+
+@Article{yang2024,
+    author  = {Lihe Yang and Bingyi Kang and Zilong Huang and Xiaogang Xu and Jiashi Feng and Hengshuang Zhao},
+    title   = {Depth Anything: Unleashing the Power of Large-Scale Unlabeled Data},
+    journal = {arXiv},
+    year    = {2024},
+    doi     = {10.48550/arXiv.2401.10891}
+}
+
+@Article{oquab2024,
+    author  = {Maxime Oquab and Timothée Darcet and Théo Moutakanni and Huy Vo and Marc Szafraniec and Vasil Khalidov and Pierre Fernandez and Daniel Haziza and Francisco Massa and Alaaeldin El-Nouby and Mahmoud Assran and Nicolas Ballas and Wojciech Galuba and Russell Howes and Po-Yao Huang and Shang-Wen Li and Ishan Misra and Michael Rabbat and Vasu Sharma and Gabriel Synnaeve and Hu Xu and Hervé Jegou and Julien Mairal and Patrick Labatut and Armand Joulin and Piotr Bojanowski},
+    title   = {DINOv2: Learning Robust Visual Features without Supervision},
+    journal = {arXiv},
+    year    = {2024},
+    doi     = {10.48550/arXiv.2304.07193}
+}
+
+@Article{piccinelli2024,
+    author  = {Piccinelli, Luigi and Yang, Yung-Hsu and Sakaridis, Christos and Segu, Mattia and Li, Siyuan and Van Gool, Luc and Yu, Fisher},
+    title   = {UniDepth: Universal Monocular Metric Depth Estimation},
+    journal = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year    = {2024},
+    doi     = {10.48550/arXiv.2403.18913}
+}
+
+@manual{Velodyne,
+    author = {{\noopsort{zz}}{Velodyne Lidar}},
+    title = {Velodyne Lidar: informacje o firmie},
+    note  = {\url{https://velodynelidar.com/about/}},
+    addendum = "data dostępu: 21.04.2024"
+}
+
+@Article{vasiljevic2019,
+    author  = {Igor Vasiljevic and Nick Kolkin and Shanyi Zhang and Ruotian Luo and Haochen Wang and Falcon Z. Dai and Andrea F. Daniele and Mohammadreza Mostajabi and Steven Basart and Matthew R. Walter and Gregory Shakhnarovich},
+    title   = {DIODE: A Dense Indoor and Outdoor DEpth Dataset},
+    journal = {arXiv},
+    year    = {2019},
+    doi     = {10.48550/arXiv.1908.00463}
+}
+
+@Article{song2015,
+    author  = {Song, Shuran and Lichtenberg, Samuel P. and Xiao, Jianxiong},
+    title   = {SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite},
+    journal = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year    = {2015}
+}
+
+@Article{chang2017,
+    author  = {Angel Chang and Angela Dai and Thomas Funkhouser and Maciej Halber and Matthias Nießner and Manolis Savva and Shuran Song and Andy Zeng and Yinda Zhang},
+    title   = {Matterport3D: Learning from RGB-D Data in Indoor Environments},
+    journal = {arXiv},
+    year    = {2017},
+    doi     = {10.48550/arXiv.1709.06158}
+}
+
+@Article{guizilini2020,
+    author  = {Vitor Guizilini and Rares Ambrus and Sudeep Pillai and Allan Raventos and Adrien Gaidon},
+    title   = {3D Packing for Self-Supervised Monocular Depth Estimation},
+    journal = {arXiv},
+    year    = {2020},
+    doi     = {10.48550/arXiv.1905.02693}
+}
+
+@manual{Python,
+    author = {{\noopsort{zz}}{Python Software Foundation}},
+    title = {Python: informacje o języku},
+    note  = {\url{https://www.python.org/about/}},
+    addendum = "data dostępu: 24.04.2024"
+}
+
+@Article{paszke2019,
+    author  = {Adam Paszke and Sam Gross and Francisco Massa and Adam Lerer and James Bradbury and Gregory Chanan and Trevor Killeen and Zeming Lin and Natalia Gimelshein and Luca Antiga and Alban Desmaison and Andreas Köpf and Edward Yang and Zach DeVito and Martin Raison and Alykhan Tejani and Sasank Chilamkurthy and Benoit Steiner and Lu Fang and Junjie Bai and Soumith Chintala},
+    title   = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+    journal = {arXiv},
+    year    = {2019},
+    doi     = {10.48550/arXiv.1912.01703}
+}
