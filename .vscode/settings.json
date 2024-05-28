@@ -1,5 +1,8 @@
 {
     "latex-workshop.latex.recipe.default": "latexmk (xelatex)",
+    "latex-workshop.latex.outDir": "./out",
+    "files.autoSave": "off",
+    "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.tools": [
         {
             "name": "xelatexmk",
@@ -18,5 +21,7 @@
                 "xelatexmk"
             ]
         }
-    ]
+    ],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 70,
 }
