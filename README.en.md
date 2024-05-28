@@ -1,6 +1,6 @@
 *[JĘZYK POLSKI](README.md)*
 
-![PDF](./out/EE-dyplom.pdf)
+[PDF](./out/EE-dyplom.pdf)
 
 ## Comparative analysis of neural vision algorithms for depth perception
 
