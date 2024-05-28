@@ -1,0 +1,67 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\selectlanguage *{polish}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Fotografia i odpowiadająca jej mapa głębi. Źródło: własne\relax }}{2}{figure.caption.2}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2}{\ignorespaces Poglądowy model uczenia nadzorowanego. Wejścia stanowią obraz RGB oraz pomiary głębi a wynikiem jest predykcja mapy głębi.\relax }}{6}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3}{\ignorespaces Schemat przykładowego uczenia nienadzorowanego. Wejścia stanowią trzy kadry z nagrania RGB a wynikiem jest predykcja mapy głębi.\relax }}{6}{figure.caption.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4}{\ignorespaces Schemat podsumowujący paradygmaty uczenia algorytmów.\relax }}{7}{figure.caption.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5}{\ignorespaces Przykład działania warstwy konwolucyjnej z jądrem o rozmiarze 3x3. Źródło: \cite {dumoulin2018}\relax }}{8}{figure.caption.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6}{\ignorespaces Przykład architektury sieci konwolucyjnej użytej w celu rozpoznania głębi obrazu. Źródło: \cite {dong2022}\relax }}{8}{figure.caption.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7}{\ignorespaces Schemat modelu transformatora wizyjnego. Źródło: \cite {dosovitskiy2020}\relax }}{9}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8}{\ignorespaces Przykładowy wynik działania algorytmu AdelaiDepth. Źródło: \cite {yin2020}\relax }}{11}{figure.caption.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {9}{\ignorespaces Porównanie osiąganych wyników przeprowadzone na ośmiu zestawach danych nieuczestniczących w procesie uczenia. Źródło: \cite {yin2020}\relax }}{12}{figure.caption.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {10}{\ignorespaces Przykładowe wyniki działania modułu estymacji głębi MetaPrompt-SD. Źródło: \cite {wan2023}\relax }}{12}{figure.caption.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {11}{\ignorespaces Schemat architektury algorytmu MetaPrompt-SD. Źródło: \cite {wan2023}\relax }}{13}{figure.caption.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {12}{\ignorespaces Porównanie osiąganych wyników przeprowadzone na dwóch zestawach danych. Źródło: \cite {wan2023}\relax }}{13}{figure.caption.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {13}{\ignorespaces Schemat architektury algorytmu EVP. Źródło: \cite {lavreniuk2023}\relax }}{14}{figure.caption.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {14}{\ignorespaces Porównanie osiąganych wyników przeprowadzone na zbiorze KITTI. Źródło: \cite {lavreniuk2023}\relax }}{14}{figure.caption.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {15}{\ignorespaces Schemat architektury algorytmu ZoeDepth. Źródło: \cite {bhat2023}\relax }}{15}{figure.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {16}{\ignorespaces Porównanie osiąganych wyników przeprowadzone na zbiorze NYU-Depth v2. Źródło: \cite {bhat2023}\relax }}{15}{figure.caption.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {17}{\ignorespaces Przykładowe wyniki działania modelu Depth Anything. Źródło: \cite {yang2024}\relax }}{16}{figure.caption.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {18}{\ignorespaces Schemat architektury algorytmu Depth Anything. Źródło: \cite {yang2024}\relax }}{16}{figure.caption.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {19}{\ignorespaces Zbiór zestawów danych uczących Depth Anything. Źródło: \cite {yang2024}\relax }}{17}{figure.caption.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {20}{\ignorespaces Porównanie rezultatów Depth Anything dokonane na podstawie zbioru NYUv2 (po lewej) i KITTI (po prawej). Źródło: \cite {yang2024}\relax }}{17}{figure.caption.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {21}{\ignorespaces Schemat architektury algorytmu UniDepth. Źródło: \cite {piccinelli2024}\relax }}{18}{figure.caption.22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {22}{\ignorespaces Porównanie rezultatów UniDepth dokonane na zbiorach danych niewidzianych podczas uczenia. Źródło: \cite {piccinelli2024}\relax }}{18}{figure.caption.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {23}{\ignorespaces Rejestrująca platforma jezdna użyta w przygotowaniu zbioru KITTI. Źródło: \cite {geiger2012}\relax }}{20}{figure.caption.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {24}{\ignorespaces Porównanie statystyk zbioru DIODE z innymi popularnymi zbiorami danych. Źródło: \cite {vasiljevic2019}\relax }}{21}{figure.caption.27}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

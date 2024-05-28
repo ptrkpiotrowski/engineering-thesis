@@ -1,0 +1,16 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'out/EE-dyplom.blg'
+[79] biber:322> INFO - === Tue May 28, 2024, 07:12:48
+[108] Biber.pm:415> INFO - Reading 'out/EE-dyplom.bcf'
+[164] Biber.pm:943> INFO - Found 33 citekeys in bib section 0
+[181] Biber.pm:4256> INFO - Processing section 0
+[182] Utils.pm:75> INFO - Globbing data source 'EE-dyplom.bib'
+[182] Utils.pm:91> INFO - Globbed data source 'EE-dyplom.bib' to EE-dyplom.bib
+[193] Biber.pm:4455> INFO - Looking for bibtex format file 'EE-dyplom.bib' for section 0
+[195] bibtex.pm:1653> INFO - LaTeX decoding ...
+[229] bibtex.pm:1471> INFO - Found BibTeX data source 'EE-dyplom.bib'
+[614] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
+[614] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[614] Biber.pm:4084> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'pl-PL'
+[662] bbl.pm:652> INFO - Writing 'out/EE-dyplom.bbl' with encoding 'UTF-8'
+[690] bbl.pm:755> INFO - Output to out/EE-dyplom.bbl
