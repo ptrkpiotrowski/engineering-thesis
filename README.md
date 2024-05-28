@@ -5,7 +5,7 @@
 ## Analiza porównawcza neuronowych wizyjnych algorytmów percepcji głębi
 Tutaj zostanie umieszczone streszczenie
 
-## Instrukcja (debian based os)
+## Instrukcja kompilacji (debian based os)
 ```
 sudo apt install latexmk texlive-xetex texlive-lang-polish biber
 latexmk -xelatex -outdir=out EE-dyplom.tex
