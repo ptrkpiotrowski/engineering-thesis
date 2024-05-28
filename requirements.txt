@@ -1,4 +1,0 @@
-latexmk
-texlive-xetex
-texlive-lang-polish
-biber
