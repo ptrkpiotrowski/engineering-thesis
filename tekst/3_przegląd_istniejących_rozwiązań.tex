@@ -69,9 +69,26 @@ Opracowane rozwiązanie ZoeDepth \cite{bhat2023} skupia się na zachowaniu wydaj
 Architektura algorytmu ZoeDepth bazuje na rozwiązaniu o nazwie MiDaS \cite{ranftl2020}. Obraz wejściowy jest w pierwszej kolejności przetworzony przez ten właśnie algorytm. Wynik - głębia relatywna - jest dostarczany do modułu metrycznego, którego wynik stanowi z kolei wartość głębi metrycznej dla każdego pojedynczego piksela. Oba te wyniki kierowane są do sieci konwolucyjnej i w ten sposób uzyskiwany jest wynik ostateczny - głębia metryczna. Istnieje pięć gotowych przetrenowanych modeli, nazwanych według szablonu ZoeD-[zestaw pierwszy]-[zestaw drugi], gdzie zestawem pierwszym jest zestaw treningowy obrazów z głębią relatywną a zestaw drugi zawiera obrazy z głębią metryczną. Litera "X" z miejscu zestawu pierwszego oznacza, że do w celu uczenia modelu wykorzystany został jedynie zestaw drugi.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{16.jpg}
+    \includegraphics[width=0.65\textwidth]{16.jpg}
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze NYU-Depth v2. Źródło: \cite{bhat2023}}
     \label{fig:zoe-results}
+\end{figure}
+
+\subsection{UniDepth}
+Model o nazwie UniDepth \cite{piccinelli2024} został zaproponowany przez jego autorów naprzeciw ich tezie o niskim stopniu generalizacji konkurencyjnych modeli. W swojej publikacji twierdzą, że ówcześnie najlepsze pod względem osiąganych wyników modele do predykcji głębi weryfikowane są na zbiorach podobnych do uczących oraz często na tyle niewielkich, że wyniki osiągane na pojedynczych obrazach odbiegających od domeny zbiorów uczących są mniej zadowalające.
+Architektura sieci tego modelu składa się z trzech głównych modułów - kodera, kamery i głębi. Koder przetwarza obraz wejściowy do postaci cech, które następnie przesyłane są do kolejnych dwóch modułów. Może być zarówno oparty o sieć konwolucyjną jak i o transformator wizyjny ViT co ma pozwolić na elastyczne dopasowanie do potrzeb użytkownika. Moduł kamery odpowiada za generowanie reprezentacji, która jest następnie wykorzystywana do warunkowania cech głębi. Moduł głębi przyjmuje cechy z kodera i warunkuje je na podstawie informacji z modułu kamery wykorzystując przy tym warstwę uwagi krzyżowej. Połączenie wyniku modułu kamery i modułu głębi to wynik działania całego algorytmu.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{21.jpg}
+    \caption{Schemat architektury algorytmu UniDepth. Źródło: \cite{piccinelli2024}}
+    \label{fig:unidepth-schema}
+\end{figure}
+Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu rożnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią konwolucyjną, odpowiednio UniDepth-V i UniDepth-C.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{22.jpg}
+    \caption{Porównanie rezultatów UniDepth dokonane na zbiorach danych niewidzianych podczas uczenia. Źródło: \cite{piccinelli2024}}
+    \label{fig:unidepth-results}
 \end{figure}
 
 \subsection{Depth Anything}
@@ -91,7 +108,7 @@ W architekturze tego rozwiązania zastosowano koder wyodrębniający cechy obraz
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{19.jpg}
+    \includegraphics[width=0.6\textwidth]{19.jpg}
     \caption{Zbiór zestawów danych uczących Depth Anything. Źródło: \cite{yang2024}}
     \label{fig:depth-anything-data}
 \end{figure}
@@ -103,21 +120,26 @@ Osiągane wyniki w porównaniach przeprowadzonych na zbiorach danych testowych w
     \label{fig:depth-anything-results}
 \end{figure}
 
-\subsection{UniDepth}
-Model o nazwie UniDepth \cite{piccinelli2024} został zaproponowany przez jego autorów naprzeciw ich tezie o niskim stopniu generalizacji konkurencyjnych modeli. W swojej publikacji twierdzą, że ówcześnie najlepsze pod względem osiąganych wyników modele do predykcji głębi weryfikowane są na zbiorach podobnych do uczących oraz często na tyle niewielkich, że wyniki osiągane na pojedynczych obrazach odbiegających od domeny zbiorów uczących są mniej zadowalające.
-Architektura sieci tego modelu składa się z trzech głównych modułów - kodera, kamery i głębi. Koder przetwarza obraz wejściowy do postaci cech, które następnie przesyłane są do kolejnych dwóch modułów. Może być zarówno oparty o sieć konwolucyjną jak i o transformator wizyjny ViT co ma pozwolić na elastyczne dopasowanie do potrzeb użytkownika. Moduł kamery odpowiada za generowanie reprezentacji, która jest następnie wykorzystywana do warunkowania cech głębi. Moduł głębi przyjmuje cechy z kodera i warunkuje je na podstawie informacji z modułu kamery wykorzystując przy tym warstwę uwagi krzyżowej. Połączenie wyniku modułu kamery i modułu głębi to wynik działania całego algorytmu.
+\subsection{Metric3D}
+Metoda Metric3D \cite{hu2024} adresuje dwa kluczowe problemy: estymację metrycznej głębokości i normalnych powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
+Głębokość metryczna pozwala na precyzyjne odwzorowanie rzeczywistego świata, podczas gdy normalne powierzchni zapewniają szczegółową geometrię lokalną.
+
+Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zbiorów, które łącznie zawierają ponad 16 milionów obrazów. Zbiory te pochodzą z różnych typów scen, zarówno wewnętrznych jak i zewnętrznych, oraz obejmują różne modele kamer. Do testowania natomiast użyto zestawów danych 7 zestawów częściowo pokrywających się z zestawami uczącymi.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{21.jpg}
-    \caption{Schemat architektury algorytmu UniDepth. Źródło: \cite{piccinelli2024}}
-    \label{fig:unidepth-schema}
+    \includegraphics[width=1\textwidth]{25.jpg}
+    \caption{Uproszczony schemat architektury rozwiązania Metric3D. Źródło: \cite{hu2024}}
+    \label{fig:metric3d-schema}
 \end{figure}
-Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu rożnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią konwolucyjną, odpowiednio UniDepth-V i UniDepth-C.
+
+Autorzy tej metody zastosowali w niej zarówno architekturę opartą o konwolucyjną sieć neuronową (UNet) jak i transformator (ViT i DPT jako dekoder), w zależności od konfiguracji metoda może korzystać z jednej z nich. Wyniki Metric3D na dzień opracowania bieżącego rozdziału ustanawiają nowy stan sztuki osiąganymi wynikami, które prezentuje poniższa tabela.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{22.jpg}
-    \caption{Porównanie rezultatów UniDepth dokonane na zbiorach danych niewidzianych podczas uczenia. Źródło: \cite{piccinelli2024}}
-    \label{fig:unidepth-results}
+    \includegraphics[width=1\textwidth]{26.jpg}
+    \caption{Porównanie rezultatów Metric3D do innych wiodących metod. Źródło: \cite{hu2024}}
+    \label{fig:metric3d-results}
 \end{figure}
 
 \subsection{Podsumowanie}
@@ -280,6 +302,39 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
                 \item Virtual KITTI 2,
                 \item DIODE Outdoor.
             \end{itemize}
+        \end{itemize}\\
+        \hline
+        Metric3D &
+        W zależności od konfiguracji konwolucyjna sieć neuronowa lub transformator. &
+        nadzorowane &
+        \begin{itemize}
+            \item DDAD,
+            \item Lyft,
+            \item Driving Stereo (DS),
+            \item DIML,
+            \item Arogoverse2,
+            \item Cityscapes,
+            \item DSEC,
+            \item Mapillary PSD,
+            \item Pandaset,
+            \item UASOL,
+            \item Virtual KITTI,
+            \item Waymo,
+            \item Matterport3d,
+            \item Taskonomy,
+            \item Replica,
+            \item ScanNet,
+            \item HM3d,
+            \item Hypersim.
+        \end{itemize} & 
+        \begin{itemize}
+            \item NYU,
+            \item KITTI,
+            \item ScanNet,
+            \item NuScenes (NS),
+            \item ETH3D,
+            \item DIODE,
+            \item iBims-1.
         \end{itemize}\\
         \hline
         \end{tabular}%
