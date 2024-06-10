@@ -157,6 +157,17 @@ W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych -
     \label{fig:distdepth-results}
 \end{figure}
 
+\subsection{AFNet}
+
+\subsection{GCNDepth}
+
+\subsection{M4Depth+U}
+
+\subsection{IndoorDepth}
+
+\subsection{SQLdepth}
+
+
 
 \subsection{Podsumowanie}
 Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektury, charakterystykę zestawów uczących i charakterystykę wyników. Poniższa tabela zawiera krótkie podsumowanie.
@@ -273,7 +284,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
     \centering
     \vspace{0.1cm}
     \resizebox{\textwidth}{!}{%
-        \begin{tabular}{ |l|p{2cm}|p{2cm}|p{5cm}|p{5cm}|r| }
+        \begin{tabular}{ |l|p{2cm}|p{3cm}|p{5cm}|p{5cm}|r| }
         \hline
         Depth Anything &
         transormator &
@@ -351,6 +362,19 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item ETH3D,
             \item DIODE,
             \item iBims-1.
+        \end{itemize}\\
+        \hline
+        DistDepth &
+        Konwolucyjna sieć neuronowa i transformator. &
+        nienadzorowane &
+        \begin{itemize}
+            \item SimSIN,
+            \item UniSIN.
+        \end{itemize} & 
+        \begin{itemize}
+            \item VA,
+            \item NYUv2,
+            \item Hypersim.
         \end{itemize}\\
         \hline
         \end{tabular}%
