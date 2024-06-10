@@ -134,13 +134,29 @@ Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zb
 \end{figure}
 
 Autorzy tej metody zastosowali w niej zarówno architekturę opartą o konwolucyjną sieć neuronową (UNet) jak i transformator (ViT i DPT jako dekoder), w zależności od konfiguracji metoda może korzystać z jednej z nich. Wyniki Metric3D na dzień opracowania bieżącego rozdziału ustanawiają nowy stan sztuki osiąganymi wynikami, które prezentuje poniższa tabela.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{26.jpg}
     \caption{Porównanie rezultatów Metric3D do innych wiodących metod. Źródło: \cite{hu2024}}
     \label{fig:metric3d-results}
 \end{figure}
+
+\subsection{DistDepth}
+Autorzy pracy prezentującej metodę DistDepth \cite{wu2022practical} zwracają uwagę na to, że dostępne obecnie metody skupiające się na obrazach przedstawiających ruch uliczny nie znajdują dobrego zastosowania w predykcji głebi na obrazach przedstawiających skomplikowane sceny wewnętrzne, szczególnie takie które na planie posiadają wiele gęsto ulokowanych przedmiotów. Proponują oni rozwiązanie składające się z dwóch części - estymatora struktur ze względnymi wartościami głębokości opartego o transformator wizyjny, którego wynik wraz z obrazem wejściowym wysyłany jest na wejście estymatora głębi opartego o konwolucyjną sieć neuronową trenowanego w sposób nienadzorowany. W ten sposób uzyskany model w czasie rzeczywistym wnioskuje głębię pojedynczego obrazu z wysoką generalizacją pośród scen wewnętrznych.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{27.jpg}
+    \caption{Schemat przedstawiający działanie algorytmu DistDepth. Źródło: \cite{wu2022practical}}
+    \label{fig:distdepth-teaser}
+\end{figure}
+W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych - SimSIN zawierający 500 tysięcy symulowanych komputerowo obrazów scen wewnętrznych w postaci par stereo (ponieważ uczenie odbywa się w sposób nienadzorowany, sceny nie zawierają żadnej informacji o głębi) oraz UniSIN zawierający 200 tysięcy obrazów scen predstawiających wnętrza uniwersytetu zarejestrowanych za pomocą urządzenia ZED 2I \cite{ZED2I}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{28.jpg}
+    \caption{Porównanie wyników z innymi rozwiązaniami wykonane na zestawie NYU v2. Źródło: \cite{wu2022practical}}
+    \label{fig:distdepth-results}
+\end{figure}
+
 
 \subsection{Podsumowanie}
 Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektury, charakterystykę zestawów uczących i charakterystykę wyników. Poniższa tabela zawiera krótkie podsumowanie.
