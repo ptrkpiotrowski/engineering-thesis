@@ -192,10 +192,36 @@ Model został wytrenowany na zbiorze Mid-Air \cite{fonder2019midair}, czyli synt
 \end{figure}
 
 \subsection{IndoorDepth}
-\cite{fan2023deeper}
+IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojektowany do estymacji głębokości w scenach wewnętrznych. Podobnie jak GCNDepth, IndoorDepth wykorzystuje uczenie samonadzorowane, co eliminuje potrzebę etykietowanych danych głębokościowych, wykorzystując sekwencje obrazów jako sygnał nadzoru. Architektura modelu to konwolucyjna sieć neuronowa z enkoderem i dekoderem, używanymi do estymacji pozycji kamery i głębokości oraz ulepszonej funkcji SSIM (od ang. structural similarity), która lepiej radzi sobie z regionami o niskiej teksturze.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{33.jpg}
+    \caption{Schemat architektury modelu IndoorDepth. Źródło: \cite{fan2023deeper}}
+    \label{fig:indoordepth-architecture}
+\end{figure}
+Do trenowania modelu użyto zestawu danych NYUv2, składającego się z 47 tysięcy obrazów, wybranych na podstawie próbkowania co 5 klatek z surowego zestawu danych. Do testowania modelu wykorzystano oficjalny zestaw 654 obrazów z danymi o głębi z NYUv2 oraz dodatkowy zestaw ScanNet, użyty do oceny zdolności generalizacji modelu na nowych scenach wewnętrznych.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{34.jpg}
+    \caption{Porównanie wyników działania metody IndoorDepth na zbiorze NYUv2. Źródło: \cite{fan2023deeper}}
+    \label{fig:indoordepth-results}
+\end{figure}
 
 \subsection{SQLdepth}
-\cite{wang2023sqldepth}
+Model SQLdepth \cite{wang2023sqldepth} jest głęboką siecią neuronową zaprojektowaną do estymacji głębokości obrazu w sposób samonadzorowany. Model SQLdepth operuje na scenach zewnętrznych, wykorzystując zestaw danych KITTI zawierający sekwencje stereo obrazów. Architektura modelu opiera się na konwolucyjnej sieci neuronowej z enkoderem-dekoderem, wspieranej warstwą Self Query Layer (SQL), która poprawia dokładność przewidywania głębokości.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{35.jpg}
+    \caption{Schemat architektury modelu SQLdepth. Źródło: \cite{wang2023sqldepth}}
+    \label{fig:sqldepth-architecture}
+\end{figure}
+Podczas treningu model wykorzystuje pary stereo jako główne źródło nadzoru. Do uczenia modelu użyto około 26 tysięcy obrazów z zestawu KITTI, natomiast do testowania wykorzystano 697 obrazów z tego samego zestawu. Model był również ewaluowany na zestawach danych Cityscapes, obejmujących liczne ruchome obiekty oraz Make3D, który został użyty do oceny zdolności generalizacji modelu na wcześniej niewidzianych obrazach.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{36.jpg}
+    \caption{Porównanie wyników działania metody IndoorDepth na zbiorze KITTI. Źródło: \cite{wang2023sqldepth}}
+    \label{fig:sqldepth-results}
+\end{figure}
 
 
 \subsection{Podsumowanie}
@@ -427,6 +453,29 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item Mid-Air,
             \item KITTI,
             \item TartanAir.
+        \end{itemize}\\
+        \hline
+        IndoorDepth &
+        Konwolucyjna sieć neuronowa &
+        nienadzorowane &
+        \begin{itemize}
+            \item NYUv2
+        \end{itemize} & 
+        \begin{itemize}
+            \item NYUv2,
+            \item ScanNet.
+        \end{itemize}\\
+        \hline
+        SQLdepth &
+        Konwolucyjna sieć neuronowa &
+        nienadzorowane &
+        \begin{itemize}
+            \item KITTI
+        \end{itemize} & 
+        \begin{itemize}
+            \item KITTI,
+            \item Cityscapes,
+            \item Make3D.
         \end{itemize}\\
         \hline
         \end{tabular}%
