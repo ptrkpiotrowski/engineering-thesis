@@ -174,8 +174,22 @@ Zbiór trenujący modelu GCNDepth stanowi 200 nagrań wideo ruchu ulicznego w ś
 \end{figure}
 
 
-\subsection{M4Depth+U}
-\cite{fonder2023technique}
+\subsection{M4Depth}
+Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają jak istotne jest oszacowanie niepewności obok estymacji głębokości w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{31.jpg}
+    \caption{Przykłady działania modelu M4Depth wraz z estymacją niepewności. Źródło: \cite{fonder2023technique}}
+    \label{fig:m4d-example}
+\end{figure}
+W zależności od zastosowanej funkcji straty - jednej z dwóch - wykorzystanej w procesie uczenia model przyjmuje nazwę M4Depth+U\textsubscript{$\rho$} lub M4Depth+U\textsubscript{z}.
+Model został wytrenowany na zbiorze Mid-Air \cite{fonder2019midair}, czyli syntetycznych obrazach stanowiących wizualizacje lotu dronem zawierających między innymi informację o głębi sceny. Testy dokonano natomiast przy użyciu zbiorów Mid-Air, KITTI oraz TartanAir \cite{wang2020tartanair}. Poniższa tabela zawiera porównanie z innymi modelami, należy zwrócić uwagę na czas wymagany na estymację przez poszczególne algorytmy.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{32.jpg}
+    \caption{Porównanie wyników działania metody M4Depth na zbiorze KITTI. Źródło: \cite{fonder2023technique}}
+    \label{fig:m4d-comparison}
+\end{figure}
 
 \subsection{IndoorDepth}
 \cite{fan2023deeper}
@@ -401,6 +415,18 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \begin{itemize}
             \item KITTI,
             \item Make3D.
+        \end{itemize}\\
+        \hline
+        M4Depth &
+        Konwolucyjna sieć neuronowa &
+        nadzorowane &
+        \begin{itemize}
+            \item Mid-Air
+        \end{itemize} & 
+        \begin{itemize}
+            \item Mid-Air,
+            \item KITTI,
+            \item TartanAir.
         \end{itemize}\\
         \hline
         \end{tabular}%
