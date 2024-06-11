@@ -158,13 +158,23 @@ W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych -
 \end{figure}
 
 \subsection{GCNDepth}
+Wykorzystujący architekturę grafowej konwolucyjnej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% ilość trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując architektura składa się z dwóch głównych komponentów: równoległych sieci - sieci DepthNet, odpowiedzialnej za przewidywanie map głębokości oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższa ilustracja zawiera schemat opisanej architektury.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{29.jpg}
+    \caption{Schemat przedstawiający architekturę modelu GCNDepth. Źródło: \cite{GNNBook2022}}
+    \label{fig:gcn-schema}
+\end{figure}
+
 
 \subsection{M4Depth+U}
+\cite{fonder2023technique}
 
 \subsection{IndoorDepth}
+\cite{fan2023deeper}
 
 \subsection{SQLdepth}
-
+\cite{wang2023sqldepth}
 
 
 \subsection{Podsumowanie}
@@ -373,6 +383,17 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item VA,
             \item NYUv2,
             \item Hypersim.
+        \end{itemize}\\
+        \hline
+        GCNDepth &
+        Grafowa i nawracająca sieć neuronowa &
+        nienadzorowane &
+        \begin{itemize}
+            \item KITTI
+        \end{itemize} & 
+        \begin{itemize}
+            \item KITTI,
+            \item Make3D.
         \end{itemize}\\
         \hline
         \end{tabular}%
