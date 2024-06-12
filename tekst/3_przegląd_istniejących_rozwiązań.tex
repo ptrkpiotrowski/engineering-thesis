@@ -489,25 +489,51 @@ Wiodącym zestawem danych używanym do trenowania i oceny algorytmów percepcji 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{23.jpg}
-    \caption{Rejestrująca platforma jezdna użyta w przygotowaniu zbioru KITTI. Źródło: \cite{geiger2012}}
-    \label{fig:kitti-annieway}
+    \includegraphics[width=1\textwidth]{37.jpg}
+    \caption{Rejestrująca platforma jezdna użyta w przygotowaniu zbioru KITTI oraz przykładowy obraz. Źródło: \cite{geiger2012}}
+    \label{fig:kitti-annieway-example}
 \end{figure}
 \subsection{NYUv2 (NYU-Depth V2)}
 Drugim najczęściej wykorzystywanym zestawem obrazów jest NYUv2 przedstawiony w 2012 r. w \cite{couprie2013}. Zestaw ten składa się z 407024 obrazów RGB z odpowiadającymi im mapami głębi przygotowanymi przy użyciu urządzenia Microsoft Kinect. Autorzy skategoryzowali obrazy w zbiorze na następujące kategorie: piwnice, łazienki, sypialnie, księgarnia, kawiarnia, salony, jadalnie, sklepy meblowe, biura, kuchnie, biblioteki, bawialnie i inne. Obrazy przygotowane przez autorów NYUv2 przedstawiają wyłącznie sceny wewnątrz budynków. Niniejszy zestaw jest również wykorzystywany w dziedzinie segmentacji obrazu ze względu na przygotowane oznaczenie obrazów.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{38.jpg}
+    \caption{Przykładowy obraz z zestawu NYUv2 ze zmierzoną głębią i segmentacją. Źródło: \cite{couprie2013}}
+    \label{fig:nyuv2-example}
+\end{figure}
 \subsection{DIODE (Dense Indoor and Outdoor Depth)}
 Zbiór DIODE \cite{vasiljevic2019} jest wyjątkowy na tle konkurencji przez wzgląd na różnorodność scen. Jest bowiem pierwszym publicznie dostępnym zestawem obrazów prezentujących sceny zewnętrzne i wewnętrzne. Większa różnorodność scen pozwala na uzyskanie lepszych wyników na płaszczyźnie generalizacji modeli percepcji głębi. Na ten zbiór składa się 8574 obrazów scen wewnętrznych oraz 16884 obrazów scen zewnętrznych zarejestrowanych za pomocą tego samego urządzenia - skanera FARO Focus S350. Przygotowane przez twórców zbioru porównanie z podobnymi zestawami wskazuje na wysoką dokładność i zasięg zastosowanej aparatury.
 \begin{figure}[H]
     \centering
+    \includegraphics[width=0.8\textwidth]{39.jpg}
     \includegraphics[width=0.8\textwidth]{24.jpg}
-    \caption{Porównanie statystyk zbioru DIODE z innymi popularnymi zbiorami danych. Źródło: \cite{vasiljevic2019}}
+    \caption{Przykładowe obrazy z głębią i normalnymi powierzchni oraz porównanie statystyk zbioru DIODE z innymi popularnymi zbiorami danych. Źródło: \cite{vasiljevic2019}}
     \label{fig:diode-comparison}
 \end{figure}
 \subsection{SUN RGB-D}
 Głównym założeniem zestawu SUN RGB-D \cite{song2015} jest dostarczenie danych dla modeli interpretujących trójwymiarowe sceny. Składa się on z 10335 obrazów pomieszczeń wewnętrznych z mapami głębi pochodzącymi z sensorów Intel Realsense, Asus Xtion i obu wersji Microsoft Kinect. Na rzeczone obrazy zostały naniesione trójwymiarowe oznaczenia widniejących przedmiotów. Z powodu odmiennego przeznaczenia, zbiór ten jest często wykorzystywany w celu oceny działania modeli percepcji głębi.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{40.jpg}
+    \caption{Przykładowe obrazy ze zbioru z głębią zarejestrowaną i poprawioną za pomocą krótkich nagrań wideo. Źródło: \cite{song2015}}
+    \label{fig:sunrgbd-comparison}
+\end{figure}
 \subsection{Matterport3D}
-W 2017 r. firma Matterport zaprezentowała zestaw danych Matterport3D \cite{chang2017} przygotowany przy pomocy autorskiego urządzenia rejestrującego. Zestaw składa się z 10800 zdjęć panoramicznych złożonych z 194400 obrazów z odpowiadającą im mapą głębi. Zdjęcia w zbiorze przedstawiają 90 scen przedstawiających wnętrza budynków. 
+W 2017 r. firma Matterport zaprezentowała zestaw danych Matterport3D \cite{chang2017} przygotowany przy pomocy autorskiego urządzenia rejestrującego. Zestaw składa się z 10800 zdjęć panoramicznych złożonych z 194400 obrazów z odpowiadającą im mapą głębi. Zdjęcia w zbiorze przedstawiają 90 scen przedstawiających wnętrza budynków.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{41.jpg}
+    \caption{Przykładowe obrazy i modele ze zbioru z głębią zarejestrowaną i segmentacją. Źródło: \cite{chang2017}}
+    \label{fig:matterport3d-example}
+\end{figure} 
 \subsection{DDAD (Dense Depth for Autonomous Driving)}
 Zestaw DDAD \cite{guizilini2020} został stworzony przez Toyota Research Institute. Zawiera 17050 obrazów treningowych i 4150 obrazów do oceny modelu, w tym zróżnicowane próbki scen miejskich i autostradowych z całego świata nagrane przez flotę samochodów autonomicznych wyposażonych w kamery i lasery LIDAR Luminar-H2. Wykorzystywany jest głównie do ewaluacji i rozwijania metod estymacji głębi w prowadzeniu pojazdów. Zestaw DDAD został wykorzystany do przetrenowania modelu PackNet tego samego autorstwa, nie osiąga on jednak wyników porównywalnych do wybranych w niniejszej pracy modeli.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{42.jpg}
+    \caption{Przykładowy obraz i mapa głębi z zestawu DDAD. Źródło: \cite{guizilini2020}}
+    \label{fig:ddad-example}
+\end{figure} 
 
 \subsection{Podsumowanie}
 Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na charakterystykę scen, liczebność i urządzenie rejestrujące.
