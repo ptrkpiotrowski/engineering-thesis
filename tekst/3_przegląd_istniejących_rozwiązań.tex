@@ -4,14 +4,14 @@ W tym rozdziale przybliżone zostanie spektrum dostępnych algorytmów percepcji
 
 \section{Algorytmy percepcji głębi}
 \subsection{AdelaiDepth}
-Zaprojektowany w 2020 r. w \cite{yin2020} model przygotowany został w celu rekonstrukcji scen trójwymiarowych. Autorzy podzielili wówczas rozwiązanie na dwa etapy - predykcję głębi obrazu oraz predykcję jej przesunięcia i ogniskowej.
+Zaprojektowany w 2020 r. model AdelaiDepth \cite{yin2020} przygotowany został głównie w celu rekonstrukcji scen trójwymiarowych. Autorzy podzielili wówczas rozwiązanie na dwa etapy - predykcję głębi obrazu oraz predykcję jej przesunięcia i ogniskowej.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{8.jpg}
     \caption{Przykładowy wynik działania algorytmu AdelaiDepth. Źródło: \cite{yin2020}}
     \label{fig:adelaidepth}
 \end{figure}
-Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to konwolucyjna sieć neuronowa ResNet \cite{he2015} z dekoderem. W celu nauczenia sieci wykorzystane zostało sumarycznie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LIDAR ale też niskiej jakości nagrania. Poniższa tabela obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
+Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to nawracająca sieć neuronowa ResNet \cite{he2015} stanowiąca rodzaj konwolucyjnej sieci neuronowej z dekoderem. W celu nauczenia sieci wykorzystane zostało sumarycznie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych za pomocą urządzeń fizycznych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LIDAR ale też niskiej jakości nagrania. Poniższa tabela obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{9.jpg}
@@ -20,7 +20,7 @@ Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przed
 \end{figure}
 
 \subsection{MetaPrompt-SD}
-Głównym założeniem autorów artykułu \cite{wan2023} było wykorzystanie modeli dyfuzji w zadaniach dotyczących percepcji wizyjnej. Wynikowy algorytm służy do estymacji głębi, segmentacji semantycznej i estymacji pozy.
+Głównym założeniem autorów algorytmu MetaPrompt-SD \cite{wan2023} było wykorzystanie modeli dyfuzyjnych w zadaniach dotyczących komputerowej percepcji wizyjnej. Wynikowy model służy do estymacji głębi, segmentacji semantycznej i estymacji pozycji.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{10.jpg}
@@ -43,7 +43,7 @@ Dla percepcji głębi jako zestawy uczące wykorzystane zostały obrazy scen wew
 \end{figure}
 
 \subsection{EVP}
-Metoda o nazwie EVP \cite{lavreniuk2023} (Enhanced Visual Perception) jest rozbudowaniem metody VPD \cite{zhao2023} (Visual Perception with a pre-trained Diffusion model), zadaniem której było podobnie do MetaPrompt-SD wykorzystanie modeli dyfuzji w percepcji wizyjnej. W stosunku do pierwowzoru w modelu EVP dodano moduł o nazwie \textit{IMAFR} (Inverse MultiAttentive Feature Refinement) wspomagający zdolności wyodrębniania cech. Między innymi dzięki tej zmianie autorom udało się uzyskać lepszy wynik w porównaniu do metody VPD na zestawie NYU Depth v2\footnote{Model EVP uzyskał w tym porównaniu o 11,8\% mniejszą wartość błędu średniokwadratowego.}.
+Metoda o nazwie EVP \cite{lavreniuk2023} (od ang. Enhanced Visual Perception) jest rozbudowaniem metody VPD \cite{zhao2023} (od ang. Visual Perception with a pre-trained Diffusion model), zadaniem której było podobnie do MetaPrompt-SD wykorzystanie modeli dyfuzyjnych w percepcji wizyjnej. W stosunku do pierwowzoru w modelu EVP dodano moduł o nazwie \textit{IMAFR} (od ang. Inverse MultiAttentive Feature Refinement) wspomagający zdolności wyodrębniania cech. Między innymi dzięki tej zmianie autorom udało się uzyskać lepszy wynik w porównaniu do metody VPD na zestawie NYU Depth v2\footnote{Model EVP uzyskał w tym porównaniu o 11,8\% mniejszą wartość błędu średniokwadratowego.}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{13.jpg}
@@ -92,7 +92,7 @@ Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających s
 \end{figure}
 
 \subsection{Depth Anything}
-Niezwykle interesującą strategię rozwiązania przyjęli autorzy Depth Anything \cite{yang2024}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (1,5 miliona obrazów) ale również z danych nieoznaczonych (aż 62 miliony obrazów). W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji.
+Niezwykle interesującą strategię rozwiązania przyjęli autorzy Depth Anything \cite{yang2024}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (1,5 miliona obrazów) ale również z danych nieoznaczonych (aż 62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{17.jpg}
@@ -175,12 +175,12 @@ Zbiór trenujący modelu GCNDepth stanowi 200 nagrań wideo ruchu ulicznego w ś
 
 
 \subsection{M4Depth}
-Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają jak istotne jest oszacowanie niepewności obok estymacji głębokości w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem.
+Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają jak istotne jest oszacowanie niepewności obok estymacji głębokości w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem. Architektura rozwiązania to piramidowa konwolucyjna sieć neuronowa na wzór PWC-Net \cite{sun2018pwcnet}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{31.jpg}
-    \caption{Przykłady działania modelu M4Depth wraz z estymacją niepewności. Źródło: \cite{fonder2023technique}}
-    \label{fig:m4d-example}
+    \includegraphics[width=0.6\textwidth]{31.jpg}
+    \caption{Schemat działania modelu M4Depth. Źródło: \cite{fonder2023technique}}
+    \label{fig:m4d-schema}
 \end{figure}
 W zależności od zastosowanej funkcji straty - jednej z dwóch - wykorzystanej w procesie uczenia model przyjmuje nazwę M4Depth+U\textsubscript{$\rho$} lub M4Depth+U\textsubscript{z}.
 Model został wytrenowany na zbiorze Mid-Air \cite{fonder2019midair}, czyli syntetycznych obrazach stanowiących wizualizacje lotu dronem zawierających między innymi informację o głębi sceny. Testy dokonano natomiast przy użyciu zbiorów Mid-Air, KITTI oraz TartanAir \cite{wang2020tartanair}. Poniższa tabela zawiera porównanie z innymi modelami, należy zwrócić uwagę na czas wymagany na estymację przez poszczególne algorytmy.
@@ -202,8 +202,8 @@ IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojekt
 Do trenowania modelu użyto zestawu danych NYUv2, składającego się z 47 tysięcy obrazów, wybranych na podstawie próbkowania co 5 klatek z surowego zestawu danych. Do testowania modelu wykorzystano oficjalny zestaw 654 obrazów z danymi o głębi z NYUv2 oraz dodatkowy zestaw ScanNet, użyty do oceny zdolności generalizacji modelu na nowych scenach wewnętrznych.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{34.jpg}
-    \caption{Porównanie wyników działania metody IndoorDepth na zbiorze NYUv2. Źródło: \cite{fan2023deeper}}
+    \includegraphics[width=1\textwidth]{34.jpg}
+    \caption{Porównanie wyników działania metod nauczonych na zbiorze NYUv2. Testy wykonane zostały na zestawie ScanNet. Źródło: \cite{fan2023deeper}}
     \label{fig:indoordepth-results}
 \end{figure}
 
@@ -236,7 +236,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         Nazwa & Architektura & Sposób uczenia & Zestawy uczące & Zestawy do oceny \\
         \hline \hline
         AdelaiDepth &
-        konwolucyjna sieć neuronowa &
+        nawracająca sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
             \item Taskonomy,
@@ -420,7 +420,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         DistDepth &
-        Konwolucyjna sieć neuronowa i transformator. &
+        konwolucyjna sieć neuronowa i transformator &
         nienadzorowane &
         \begin{itemize}
             \item SimSIN,
@@ -433,7 +433,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         GCNDepth &
-        Grafowa i nawracająca sieć neuronowa &
+        grafowa i nawracająca sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
             \item KITTI
@@ -444,7 +444,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         M4Depth &
-        Konwolucyjna sieć neuronowa &
+        konwolucyjna sieć neuronowa &
         nadzorowane &
         \begin{itemize}
             \item Mid-Air
@@ -456,7 +456,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         IndoorDepth &
-        Konwolucyjna sieć neuronowa &
+        konwolucyjna sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
             \item NYUv2
@@ -467,7 +467,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         SQLdepth &
-        Konwolucyjna sieć neuronowa &
+        konwolucyjna sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
             \item KITTI
