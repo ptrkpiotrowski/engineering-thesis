@@ -493,6 +493,7 @@ Wiodącym zestawem danych używanym do trenowania i oceny algorytmów percepcji 
     \caption{Rejestrująca platforma jezdna użyta w przygotowaniu zbioru KITTI oraz przykładowy obraz. Źródło: \cite{geiger2012}}
     \label{fig:kitti-annieway-example}
 \end{figure}
+
 \subsection{NYUv2 (NYU-Depth V2)}
 Drugim najczęściej wykorzystywanym zestawem obrazów jest NYUv2 przedstawiony w 2012 r. w \cite{couprie2013}. Zestaw ten składa się z 407024 obrazów RGB z odpowiadającymi im mapami głębi przygotowanymi przy użyciu urządzenia Microsoft Kinect. Autorzy skategoryzowali obrazy w zbiorze na następujące kategorie: piwnice, łazienki, sypialnie, księgarnia, kawiarnia, salony, jadalnie, sklepy meblowe, biura, kuchnie, biblioteki, bawialnie i inne. Obrazy przygotowane przez autorów NYUv2 przedstawiają wyłącznie sceny wewnątrz budynków. Niniejszy zestaw jest również wykorzystywany w dziedzinie segmentacji obrazu ze względu na przygotowane oznaczenie obrazów.
 \begin{figure}[H]
@@ -501,6 +502,7 @@ Drugim najczęściej wykorzystywanym zestawem obrazów jest NYUv2 przedstawiony 
     \caption{Przykładowy obraz z zestawu NYUv2 ze zmierzoną głębią i segmentacją. Źródło: \cite{couprie2013}}
     \label{fig:nyuv2-example}
 \end{figure}
+
 \subsection{DIODE (Dense Indoor and Outdoor Depth)}
 Zbiór DIODE \cite{vasiljevic2019} jest wyjątkowy na tle konkurencji przez wzgląd na różnorodność scen. Jest bowiem pierwszym publicznie dostępnym zestawem obrazów prezentujących sceny zewnętrzne i wewnętrzne. Większa różnorodność scen pozwala na uzyskanie lepszych wyników na płaszczyźnie generalizacji modeli percepcji głębi. Na ten zbiór składa się 8574 obrazów scen wewnętrznych oraz 16884 obrazów scen zewnętrznych zarejestrowanych za pomocą tego samego urządzenia - skanera FARO Focus S350. Przygotowane przez twórców zbioru porównanie z podobnymi zestawami wskazuje na wysoką dokładność i zasięg zastosowanej aparatury.
 \begin{figure}[H]
@@ -510,6 +512,7 @@ Zbiór DIODE \cite{vasiljevic2019} jest wyjątkowy na tle konkurencji przez wzgl
     \caption{Przykładowe obrazy z głębią i normalnymi powierzchni oraz porównanie statystyk zbioru DIODE z innymi popularnymi zbiorami danych. Źródło: \cite{vasiljevic2019}}
     \label{fig:diode-comparison}
 \end{figure}
+
 \subsection{SUN RGB-D}
 Głównym założeniem zestawu SUN RGB-D \cite{song2015} jest dostarczenie danych dla modeli interpretujących trójwymiarowe sceny. Składa się on z 10335 obrazów pomieszczeń wewnętrznych z mapami głębi pochodzącymi z sensorów Intel Realsense, Asus Xtion i obu wersji Microsoft Kinect. Na rzeczone obrazy zostały naniesione trójwymiarowe oznaczenia widniejących przedmiotów. Z powodu odmiennego przeznaczenia, zbiór ten jest często wykorzystywany w celu oceny działania modeli percepcji głębi.
 \begin{figure}[H]
@@ -518,6 +521,7 @@ Głównym założeniem zestawu SUN RGB-D \cite{song2015} jest dostarczenie danyc
     \caption{Przykładowe obrazy ze zbioru z głębią zarejestrowaną i poprawioną za pomocą krótkich nagrań wideo. Źródło: \cite{song2015}}
     \label{fig:sunrgbd-comparison}
 \end{figure}
+
 \subsection{Matterport3D}
 W 2017 r. firma Matterport zaprezentowała zestaw danych Matterport3D \cite{chang2017} przygotowany przy pomocy autorskiego urządzenia rejestrującego. Zestaw składa się z 10800 zdjęć panoramicznych złożonych z 194400 obrazów z odpowiadającą im mapą głębi. Zdjęcia w zbiorze przedstawiają 90 scen przedstawiających wnętrza budynków.
 \begin{figure}[H]
@@ -526,17 +530,36 @@ W 2017 r. firma Matterport zaprezentowała zestaw danych Matterport3D \cite{chan
     \caption{Przykładowe obrazy i modele ze zbioru z głębią zarejestrowaną i segmentacją. Źródło: \cite{chang2017}}
     \label{fig:matterport3d-example}
 \end{figure} 
+
 \subsection{DDAD (Dense Depth for Autonomous Driving)}
 Zestaw DDAD \cite{guizilini2020} został stworzony przez Toyota Research Institute. Zawiera 17050 obrazów treningowych i 4150 obrazów do oceny modelu, w tym zróżnicowane próbki scen miejskich i autostradowych z całego świata nagrane przez flotę samochodów autonomicznych wyposażonych w kamery i lasery LIDAR Luminar-H2. Wykorzystywany jest głównie do ewaluacji i rozwijania metod estymacji głębi w prowadzeniu pojazdów. Zestaw DDAD został wykorzystany do przetrenowania modelu PackNet tego samego autorstwa, nie osiąga on jednak wyników porównywalnych do wybranych w niniejszej pracy modeli.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{42.jpg}
+    \includegraphics[width=0.4\textwidth]{42.jpg}
     \caption{Przykładowy obraz i mapa głębi z zestawu DDAD. Źródło: \cite{guizilini2020}}
     \label{fig:ddad-example}
 \end{figure} 
 
+\subsection{SYNS-Patches}
+Zestaw SYNS-Patches \cite{spencer2022deconstructing} jest rozszerzeniem zestawu zaprezentowanego w 2016r. w \cite{adams2016syns}. W stosunku do oryginału, który zawierał 92 sceny w 9 różnych kategoriach został urozmaicone o odmiennie scharakteryzowane sceny, w tym między innymi lasy, tereny przemysłowe oraz wnętrza budynków. Zbiór SYNS-Patches dostarcza bardzo wysokiej jakości skany LIDAR również scen zewnętrznych, które według twórców w podobnych rozwiązaniach są znacznie rzadziej etykietowane\footnote{Zestaw SYNS-Patches posiada aż 78,30\% pokrycie obrazu mapą głębi podczas gdy zestaw KITTI posiada jedynie 15,28\% pokrycie.}. Na finalny zbiór składa się 1175 obrazów panoramicznych i zarejestrowanych w technologii HDR za pomocą urządzenia Spheron SpheroCam HDR oraz skanera LIDAR Leica ScanStation P20. Wysoka jakość obrazów oraz map głębi, zróżnicowana charakterystyka scen oraz fakt, że zestaw ten nie został wykorzystany w uczeniu ani ocenie żadnego z uwzględnionych w niniejszej analizie modelu kwalifikuje go jako dobry wzorzec w dalszych porównaniach.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{44.jpg}
+    \caption{Przykłady obrazów z zestawu SYNS-Patches z odpowiadającymi im mapami głębi. Źródło: \cite{spencer2022deconstructing}}
+    \label{fig:syns-example}
+\end{figure} 
+
+\subsection{Cityscapes}
+Cityscapes \cite{cordts2016cityscapes} to zestaw danych skompletowany w 2016 r. którego głównym założeniem jest wykorzystanie w środowiskach aplikacyjnych, gdzie kluczową kwestię stanowi zrozumienie scen miejskich. Jest to powodem skupienia autorów na aspekcie segmentacji obrazów. Mimo to, zestaw Cityscapes jest często wykorzystywany w kontekście algorytmów percepcji głębi ze względu na zawartość mapy głębi do każdej sceny w nim zawartej. Mapy te zostały pozyskane dzięki  Zbiór ten składa się z 5 tysięcy obrazów etykietowanych z bardzo wysoką dokładnością do jednego piksela oraz 20 tysięcy obrazów etykietowanych ze znacznie zmniejszoną dokładnością dla algorytmów które potrafią czerpać korzyść z większej ilości danych w procesie uczenia. Przykłady obrazów z obu podzbiorów przedstawia poniższa ilustracja. Obrazy przedstawiają sceny miejskie rejestrowane w świetle dziennym z 50 różnych miast w Niemczech. Zostały zarejestrowane przy pomocy kamer stereo zamontowanych na pojeździe.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{43.jpg}
+    \caption{Przykłady obrazów z zestawu Cityscapes. Źródło: \cite{cordts2016cityscapes}}
+    \label{fig:cityscapes-example}
+\end{figure} 
+
 \subsection{Podsumowanie}
-Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na charakterystykę scen, liczebność i urządzenie rejestrujące.
+Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
 \begin{table}[H]
     \centering
     \caption{Podsumowanie przedstawionych zbiorów danych używanych przez algorytmy percepcji głębi.}
@@ -544,7 +567,7 @@ Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mier
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{ |p{3cm}|p{3cm}|p{5cm}|p{5cm}|r| }
         \hline
-        Nazwa & Charakterystyka obrazów & Liczebność zbioru & Urządzenie rejestrujące \\
+        Nazwa & Charakterystyka obrazów & Liczebność zbioru & Urządzenie rejestrujące głębię \\
         \hline \hline
         KITTI &
         sceny zewnętrzne & 
@@ -570,12 +593,23 @@ Kinect. \\
         Matterport3D &
         sceny wewnętrzne & 
         194400 &
-        Autorska konstrukcja Matterport.  \\
+        autorska konstrukcja Matterport  \\
         \hline
         DDAD &
         sceny zewnętrzne & 
         21200 &
         Luminar-H2  \\
+        \hline
+        SYNS-Patches &
+        sceny zewnętrzne i wewnętrzne & 
+        1175 &
+        Leica ScanStation P20  \\
+        \hline
+        Cityscapes &
+        sceny zewnętrzne & 
+        25000 &
+        autorska konsktrukcja kamer stereo na pojeździe
+        \\
         \hline
         \end{tabular}%
     }
