@@ -5,7 +5,7 @@ Podstawową metodą uczenia algorytmów percepcji głębi jest uczenie nadzorowa
 
 \subsection{Uczenie nadzorowane}
 Ta najczęściej obecnie stosowana metoda uczenia sieci neuronowych zakłada posiadanie odpowiednio przygotowanych danych wejściowych oraz odpowiadających im danych wyjściowych. Wówczas celem nauki jest zminimalizowanie wartości odpowiednio sporządzonej funkcji straty, której argumentami są wartości zmierzone i estymowane. Wybór wspomnianej funkcji zależy od charakterystyki rozwiązywanego problemu. W przypadku percepcji głębi najczęściej stosowaną funkcją straty jest błąd średniokwadratowy (MSE od ang. mean square error):
-\begin{equation}
+\begin{equation} \label{eq:1}
 MSE = \frac{1}{n} \sum_{t=1}^{n} (d_i^* - d_i)
 \end{equation}
 gdzie \( d_i^* \) to wartość predykcji a \( d_i \) to wartość zmierzona.

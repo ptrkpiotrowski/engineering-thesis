@@ -1,1 +1,32 @@
 \chapter{Metodologia - opis kryteriów oceny algorytmów}\label{chap:metodologia}
+
+W niniejszym rozdziale przedstawiono szczegółowy opis kryteriów oceny neuronowych algorytmów używanych do percepcji głębi. W kontekście niniejszej pracy inżynierskiej istotnym celem jest przeprowadzenie rzetelnej analizy porównawczej, która umożliwi wyłonienie najlepszych rozwiązań w dziedzinie percepcji głębi.
+
+\section{Wybór kryteriów oceny}
+Pierwszym etapem było zidentyfikowanie kluczowych kryteriów, które będą decydować o skuteczności i przydatności ocenianych algorytmów. Wybór kryteriów był uzależniony od specyfiki problemu percepcji głębi oraz aktualnych standardów w dziedzinie przetwarzania obrazu. Ostatecznie wybrano następujące kryteria:
+
+\textbf{Dokładność} - miara precyzyjności algorytmu w określaniu głębokości obiektów na podstawie danych wejściowych w postaci pojedynczego obrazu RGB. Dokładność będzie oceniana na dwóch zbiorach testowych - SYNS-Patches oraz na zbiorze autorskim, żaden obraz z wymienionych zbiorów nie został wykorzystany w uczeniu analizowanych algorytmów. Kryterium dokładności wyrażone zostało z wykorzystaniem najczęściej spotykanych miar dokładności prognozowania, czyli średnim bezwzględnym błądem procentowym \ref{eq:2} oraz średnim błądem kwadratowym \ref{eq:3}. W poniższych wzorach $ d_p $ oznacza zmierzoną wartość głębi, $ \hat{d}_p $ wartość estymowaną, z kolei $ T $ to ilość pikseli dla których istnieje głębia zmierzona i estymowana.
+
+\begin{equation} \label{eq:2}
+    AbsRel = \frac{1}{T} \sum_{p} \frac{|d_p - \hat{d}_p|}{d_p}
+\end{equation}
+
+\begin{equation} \label{eq:3}
+    RMSE = \sqrt{\frac{1}{T} \sum_{p} (d_p - \hat{d}_p)^2}
+\end{equation}
+
+\textbf{Szybkość działania} - czas potrzebny przez algorytm na wygenerowanie mapy głębi dla pojedynczego obrazu. Szybkość jest istotnym czynnikiem zwłaszcza w aplikacjach czasu rzeczywistego.
+
+\textbf{Zdolność generalizacji} - zdolność algorytmu do skutecznego przewidywania głębokości scen na nowych, nieznanych wcześniej danych testowych. Jest to istotne kryterium, które mierzy jak dobrze algorytm radzi sobie z różnymi scenariuszami i warunkami, nie tylko tymi na których był uczony.
+
+\textbf{Wymagania sprzętowe} - rzeczywiste zużycie zasobów komputerowych (procesor i pamięć RAM oraz VRAM) podczas predykcji mapy głębi zmierzone narzędziami do monitoringu platformy Google Colab.
+
+\section{Metodologia porównawcza}
+Do analizy algorytmów percepcji głębi zastosowano następujące etapy metodologiczne:
+\begin{enumerate}
+    \item Implementacja i konfiguracja algorytmów - każdy z algorytmów wytypowanych do analizy został zaimplementowany i skonfigurowany zgodnie z informacjami opisanymi w literaturze oraz repozytoriach poszczególnych metod na platformie Google Colab.
+    \item Pomiary i analiza wyników - dla każdego kryterium oceny opisanego w bieżącym rozdziale przeprowadzono szczegółowe pomiary wyników generowanych przez algorytmy. Wyniki te zostały zamieszczone na wykresie wspólnym dla wszystkich algorytmów.
+    \item Interpretacja i wnioski - na podstawie uzyskanych wyników dokonano interpretacji skuteczności poszczególnych algorytmów w kontekście każdego z kryteriów. Wnioski te stanowią podstawę do rekomendacji oraz możliwych udoskonaleń w przyszłych badaniach.
+\end{enumerate}
+
+Założona metodologia oceny algorytmów opiera się na szczegółowym podejściu do definiowania kryteriów oraz ich systematycznej analizie. Przedstawione kryteria stanowią kompleksowy zestaw wskaźników, które umożliwiają obiektywne porównanie i ocenę różnych implementacji technik wizyjnych w kontekście percepcji głebi. Ich zastosowanie pozwala na identyfikację mocnych stron oraz potencjalnych ograniczeń badanych algorytmów, co jest kluczowe dla dalszego rozwoju tej technologii.

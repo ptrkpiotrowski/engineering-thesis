@@ -13,7 +13,7 @@ W kontekście przeprowadzonej analizy, Google Colab okazał się być nieocenion
 \section{Zestawy danych}
 Niewątpliwie kluczową rolę w procesie analizy porównawczej algorytmów percepcji głębi odgrywają odpowiednio dobrane zestawy danych. Wiele metod jest testowanych przez ich twórców na zbiorach tożsamych do tych na których były uczone. Powoduje to brak poprawnej oceny zdolności do generalizacji danego algorytmu na niewidzianych podczas uczenia scenach. W celu uniknięcia tego typu błędów, w niniejszej pracy do analizy algorytmów wykorzystano zestawy danych, które są dostępne publicznie, jednak nie zostały wykorzystane w trenowaniu ani testowaniu żadnej analizowanej metody.
 
-Ponadto każda z metod została zweryfikowana na autorskim zestawie danych. Został on przygotowany na potrzeby niniejszej pracy za pomocą technologii LIDAR stanowiącej wyposażenie urządzenia iPhone 15 Pro \cite{chase2022apple}. Zastosowany w rzeczonym urządzeniu skaner emituje matrycę zawierającą 8x8 punktów która jest podzielona na siatki 3x3 co daje łącznie 576 punktów. Maksymalny zasięg tego skanera to 5 metrów. Fotografie i skany zostały wykonane w otwartych przestrzeniach we Wrocławskim Ogrodzie Zoologicznym. Obrazy RGB wraz z odpowiadającymi im mapami głębi pochodzącymi z autorskiego zestawu są dostępne w załączniku do pracy.
+Ponadto każda z metod została zweryfikowana na autorskim zestawie danych. Został on przygotowany na potrzeby niniejszej pracy za pomocą technologii LIDAR stanowiącej wyposażenie urządzenia iPhone 15 Pro \cite{chase2022apple}. Zastosowany w rzeczonym urządzeniu skaner emituje matrycę zawierającą 8x8 punktów która jest podzielona na siatki 3x3 co daje łącznie 576 punktów. Maksymalny zasięg tego skanera to 5 metrów. Fotografie i skany zostały wykonane w otwartych przestrzeniach - głównie we Wrocławskim Ogrodzie Zoologicznym. Obrazy RGB wraz z odpowiadającymi im mapami głębi pochodzącymi z autorskiego zestawu są dostępne w załączniku do pracy.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{45.jpg}
@@ -22,4 +22,16 @@ Ponadto każda z metod została zweryfikowana na autorskim zestawie danych. Zost
 \end{figure}
 
 \section{Narzędzia do analizy i wizualizacji}
-Tutaj będzie m.in. informacja o użyciu biblioteki Matplotlib i OpenCV.
+Algorytmy percepcji głębi, które bazują na sieciach neuronowych, są złożonymi modelami, wymagającymi odpowiednich technik analitycznych do ich oceny i porównania. W związku z tym, odpowiedni dobór narzędzi ma kluczowe znaczenie dla poprawności i efektywności przeprowadzanych analiz.
+
+W ramach języka programowania Python wykorzystany został bogaty ekosystem bibliotek, takich jak NumPy, pandas i OpenCV, umożliwiają one efektywną manipulację danymi, wykonywanie skomplikowanych obliczeń oraz analiz statystycznych szczególnie w kontekście widzenia komputerowego. Matplotlib to natomiast podstawowa biblioteka do tworzenia graficznych wizualizacji danych. Dzięki niej możliwe było tworzenie wykresów prezentujących wyniki analizy oraz porównania wydajności różnych algorytmów.
+
+W celu trenowania sieci oraz uruchomienia predykcji na zbiorach przygotowanych do analizy zastosowana została platforma PyTorch - najpopularniejsza platforma do tworzenia i trenowania modeli głębokiego uczenia. Oferuje ona wsparcie dla zaawansowanych architektur sieci neuronowych oraz narzędzi do ich optymalizacji i oceny.
+
+Wszystkie wymienione narzędzia uruchomione zostały na platformie Google Colab w środowisku Jupyter Notebook. Dobór odpowiednich narzędzi do analizy i wizualizacji danych jest kluczowy dla skutecznego przeprowadzenia porównania neuronowych algorytmów percepcji głębi. Wykorzystane narzędzia zapewniły solidne podstawy dla przeprowadzenia kompleksowej analizy. Dzięki nim możliwe było zarówno efektywne przetwarzanie danych, jak i klarowne prezentowanie wyników, co znacząco wpłynęło na jakość i przejrzystość przeprowadzonych badań.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{46.jpg}
+    \caption{Okno przeglądarki wyświetlające środowisko Google Colab.}
+    \label{fig:google-colab}
+\end{figure}
