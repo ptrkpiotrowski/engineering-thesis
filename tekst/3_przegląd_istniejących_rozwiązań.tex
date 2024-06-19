@@ -92,7 +92,7 @@ Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających s
 \end{figure}
 
 \subsection{Depth Anything}
-Niezwykle interesującą strategię rozwiązania przyjęli autorzy Depth Anything \cite{yang2024}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (1,5 miliona obrazów) ale również z danych nieoznaczonych (aż 62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach.
+Niezwykle interesującą strategię rozwiązania przyjęli autorzy Depth Anything \cite{yang2024}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (1,5 miliona obrazów) ale również z danych nieoznaczonych (aż 62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{17.jpg}
