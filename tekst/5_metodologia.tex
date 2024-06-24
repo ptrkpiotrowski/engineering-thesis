@@ -15,6 +15,42 @@ Pierwszym etapem było zidentyfikowanie kluczowych kryteriów, które będą dec
     RMSE = \sqrt{\frac{1}{T} \sum_{p} (d_p - \hat{d}_p)^2}
 \end{equation}
 
+W celu wyznaczenia wartości miar dokładności wykorzystana została poniższa funkcja, przyjmująca jako argumenty zmierzoną i wyestymowaną przez poszczególne algorytmy mapę głębi. Funkcja ta zwraca na wyjściu słownik z wynikami.
+
+\begin{lstlisting}[style=EEStyle,language=python,numbers=none,frame=none]
+def compute_errors(gt, pred):
+    import numpy as np
+    thresh = np.maximum(
+        (gt / pred), (pred / gt)
+    )
+    a1 = (thresh < 1.25).mean()
+    a2 = (thresh < 1.25 ** 2).mean()
+    a3 = (thresh < 1.25 ** 3).mean()
+
+    abs_rel = np.mean(
+        (np.abs(gt - pred) / gt)[gt > 0]
+    )
+    sq_rel = np.mean(
+        (((gt - pred) ** 2) / gt)[gt > 0]
+    )
+
+    rmse = (gt - pred) ** 2
+    rmse = np.sqrt(rmse[gt > 0].mean())
+
+    rmse_log = (np.log(gt) - np.log(pred)) ** 2
+    rmse_log = np.sqrt(rmse_log[gt > 0].mean())
+
+    err = (np.log(pred) - np.log(gt))[gt > 0]
+    silog = np.sqrt(
+        np.mean(err ** 2) - np.mean(err) ** 2
+    ) * 100
+
+    log_10 = (np.abs(np.log10(gt) - np.log10(pred))[gt > 0]).mean()
+
+    return dict(a1=a1, a2=a2, a3=a3, abs_rel=abs_rel, rmse=rmse,
+    log_10=log_10, rmse_log=rmse_log, silog=silog, sq_rel=sq_rel)
+\end{lstlisting}
+
 \textbf{Szybkość działania} - czas potrzebny przez algorytm na wygenerowanie mapy głębi dla pojedynczego obrazu. Szybkość jest istotnym czynnikiem zwłaszcza w aplikacjach czasu rzeczywistego.
 
 \textbf{Zdolność generalizacji} - zdolność algorytmu do skutecznego przewidywania głębokości scen na nowych, nieznanych wcześniej danych testowych. Jest to istotne kryterium, które mierzy jak dobrze algorytm radzi sobie z różnymi scenariuszami i warunkami, nie tylko tymi na których był uczony.
