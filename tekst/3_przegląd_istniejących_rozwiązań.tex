@@ -91,32 +91,32 @@ Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających s
     \label{fig:unidepth-results}
 \end{figure}
 
-\subsection{Depth Anything}
-Niezwykle interesującą strategię rozwiązania przyjęli autorzy Depth Anything \cite{yang2024}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (1,5 miliona obrazów) ale również z danych nieoznaczonych (aż 62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej.
+\subsection{Depth Anything V2}
+Interesującą strategię rozwiązania przyjęli autorzy modelu Depth Anything V2 \cite{yang2024depth}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (595 tysiące obrazów) ale również z danych nieoznaczonych (62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{17.jpg}
-    \caption{Przykładowe wyniki działania modelu Depth Anything. Źródło: \cite{yang2024}}
+    \caption{Przykładowe wyniki działania modelu Depth Anything. Źródło: \cite{yang2024depth}}
     \label{depth-anything}
 \end{figure}
 W architekturze tego rozwiązania zastosowano koder wyodrębniający cechy obrazu wejściowego przygotowany na podstawie DINOv2 \cite{oquab2024} oraz dekoder DPT do regresji głębi. W pierwszej kolejności model "nauczyciela" uczony jest na zestawie danych oznaczonych. Następnie model ten wykorzystywany jest w celu oznaczenia zbioru danych nieoznaczonych, który razem z zestawem danych oznaczonych weźmie udział w procesie uczenia modelu "ucznia".
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{18.jpg}
-    \caption{Schemat architektury algorytmu Depth Anything. Źródło: \cite{yang2024}}
+    \caption{Schemat architektury algorytmu Depth Anything. Źródło: \cite{yang2024depth}}
     \label{fig:depth-anything-schema}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{19.jpg}
-    \caption{Zbiór zestawów danych uczących Depth Anything. Źródło: \cite{yang2024}}
+    \caption{Zbiór zestawów danych uczących Depth Anything. Źródło: \cite{yang2024depth}}
     \label{fig:depth-anything-data}
 \end{figure}
 Osiągane wyniki w porównaniach przeprowadzonych na zbiorach danych testowych w sposób zdecydowany udowadniają tezę autorów dotyczącą zasadności skalowania zestawów uczących przy pomocy danych nieoznaczonych.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{20.jpg}
-    \caption{Porównanie rezultatów Depth Anything dokonane na podstawie zbioru NYUv2 (po lewej) i KITTI (po prawej). Źródło: \cite{yang2024}}
+    \caption{Porównanie rezultatów Depth Anything dokonane na podstawie zbioru NYUv2 (po lewej) i KITTI (po prawej). Źródło: \cite{yang2024depth}}
     \label{fig:depth-anything-results}
 \end{figure}
 
@@ -341,18 +341,17 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{ |l|p{2cm}|p{3cm}|p{5cm}|p{5cm}|r| }
         \hline
-        Depth Anything &
+        Depth Anything V2 &
         transormator &
         częściowo nadzorowane &
         \begin{itemize}
         \item zbiory oznaczone
             \begin{itemize}
                 \item BlendedMVS,
-                \item DIML,
-                \item HRWSI,
+                \item Hypersim,
                 \item IRS,
-                \item MegaDepth,
-                \item TartanAir.
+                \item TartanAir,
+                \item VKITTI 2.
             \end{itemize}
         \item zbiory nieoznaczone
             \begin{itemize}
@@ -363,7 +362,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
                 \item Objects365,
                 \item Open Images V7,
                 \item Places365,
-                \item OSA-1B.
+                \item SA-1B.
             \end{itemize}
         \end{itemize} & 
         \begin{itemize} 
