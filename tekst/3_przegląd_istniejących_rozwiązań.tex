@@ -92,11 +92,11 @@ Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających s
 \end{figure}
 
 \subsection{Depth Anything V2}
-Interesującą strategię rozwiązania przyjęli autorzy modelu Depth Anything V2 \cite{yang2024depth}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (595 tysiące obrazów) ale również z danych nieoznaczonych (62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej.
+Interesującą strategię rozwiązania przyjęli autorzy modelu Depth Anything V2 \cite{yang2024depth}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (595 tysiące obrazów) ale również z danych nieoznaczonych (62 miliony obrazów). Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. W stosunku do pierweszej wersji modelu \cite{yang2024depthv1} poprawiono wydajność, poprawność estymacji na odbiciach i obiektach przezroczystych oraz zastosowano uczenie na bardziej skomplikowanych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{17.jpg}
-    \caption{Przykładowe wyniki działania modelu Depth Anything. Źródło: \cite{yang2024depth}}
+    \includegraphics[width=0.9\textwidth]{17.jpg}
+    \caption{Depth Anything V2 w porównaniu z wersją pierwszą i modelem Marigold \cite{ke2024repurposing}. Źródło: \cite{yang2024depth}}
     \label{depth-anything}
 \end{figure}
 W architekturze tego rozwiązania zastosowano koder wyodrębniający cechy obrazu wejściowego przygotowany na podstawie DINOv2 \cite{oquab2024} oraz dekoder DPT do regresji głębi. W pierwszej kolejności model "nauczyciela" uczony jest na zestawie danych oznaczonych. Następnie model ten wykorzystywany jest w celu oznaczenia zbioru danych nieoznaczonych, który razem z zestawem danych oznaczonych weźmie udział w procesie uczenia modelu "ucznia".
@@ -120,8 +120,8 @@ Osiągane wyniki w porównaniach przeprowadzonych na zbiorach danych testowych w
     \label{fig:depth-anything-results}
 \end{figure}
 
-\subsection{Metric3D}
-Metoda Metric3D \cite{hu2024} adresuje dwa kluczowe problemy: estymację metrycznej głębokości i normalnych powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
+\subsection{Metric3D V2}
+Metoda Metric3D V2 \cite{hu2024} adresuje dwa kluczowe problemy: estymację metrycznej głębokości i normalnych powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
 Głębokość metryczna pozwala na precyzyjne odwzorowanie rzeczywistego świata, podczas gdy normalne powierzchni zapewniają szczegółową geometrię lokalną.
 
 Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zbiorów, które łącznie zawierają ponad 16 milionów obrazów. Zbiory te pochodzą z różnych typów scen, zarówno wewnętrznych jak i zewnętrznych, oraz obejmują różne modele kamer. Do testowania natomiast użyto zestawów danych 7 zestawów częściowo pokrywających się z zestawami uczącymi.
@@ -235,7 +235,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \hline
         Nazwa & Architektura & Sposób uczenia & Zestawy uczące & Zestawy do oceny \\
         \hline \hline
-        AdelaiDepth &
+        AdelaiDepth \cite{dosovitskiy2020} &
         nawracająca sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
@@ -258,7 +258,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item iBims-1. 
         \end{itemize}\\
         \hline
-        MetaPrompt-SD &
+        MetaPrompt-SD \cite{wan2023} &
         konwolucyjna sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
@@ -267,7 +267,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize} & 
         Zestawy tożsame z uczącymi.\\
         \hline
-        EVP &
+        EVP \cite{lavreniuk2023} &
         konwolucyjna sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
@@ -276,7 +276,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize} & 
         Zestawy tożsame z uczącymi.\\
         \hline
-        ZoeDepth &
+        ZoeDepth \cite{bhat2023} &
         konwolucyjna sieć neuronowa &
         nadzorowane i częściowo nadzorowane &
         \begin{itemize} 
@@ -303,7 +303,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item Virtual KITTI 2.
         \end{itemize}\\
         \hline
-        UniDepth &
+        UniDepth \cite{piccinelli2024} &
         W zależności od konfiguracji konwolucyjna sieć neuronowa lub transformator. &
         nadzorowane &
         \begin{itemize}
@@ -341,7 +341,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{ |l|p{2cm}|p{3cm}|p{5cm}|p{5cm}|r| }
         \hline
-        Depth Anything V2 &
+        Depth Anything V2 \cite{yang2024depth} &
         transormator &
         częściowo nadzorowane &
         \begin{itemize}
@@ -385,7 +385,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \end{itemize}
         \end{itemize}\\
         \hline
-        Metric3D &
+        Metric3D V2 \cite{hu2024} &
         W zależności od konfiguracji konwolucyjna sieć neuronowa lub transformator. &
         nadzorowane &
         \begin{itemize}
@@ -418,7 +418,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item iBims-1.
         \end{itemize}\\
         \hline
-        DistDepth &
+        DistDepth \cite{wu2022practical} &
         konwolucyjna sieć neuronowa i transformator &
         nienadzorowane &
         \begin{itemize}
@@ -431,7 +431,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item Hypersim.
         \end{itemize}\\
         \hline
-        GCNDepth &
+        GCNDepth \cite{masoumian2021gcndepth} &
         grafowa i nawracająca sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
@@ -442,7 +442,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item Make3D.
         \end{itemize}\\
         \hline
-        M4Depth &
+        M4Depth \cite{fonder2023technique} &
         konwolucyjna sieć neuronowa &
         nadzorowane &
         \begin{itemize}
@@ -454,7 +454,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item TartanAir.
         \end{itemize}\\
         \hline
-        IndoorDepth &
+        IndoorDepth \cite{fan2023deeper} &
         konwolucyjna sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
@@ -465,7 +465,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item ScanNet.
         \end{itemize}\\
         \hline
-        SQLdepth &
+        SQLdepth \cite{wang2023sqldepth} &
         konwolucyjna sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
@@ -568,43 +568,43 @@ Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mier
         \hline
         Nazwa & Charakterystyka obrazów & Liczebność zbioru & Urządzenie rejestrujące głębię \\
         \hline \hline
-        KITTI &
+        KITTI \cite{geiger2012} &
         sceny zewnętrzne & 
         93000 &
         Skaner laserowy Velodyne \cite{Velodyne} i system lokalizacji GPS. \\
         \hline
-        NYUv2 &
+        NYUv2 \cite{couprie2013} &
         sceny wewnętrzne & 
         407024 &
         Microsoft Kinect \\
         \hline
-        DIODE &
+        DIODE \cite{vasiljevic2019} &
         sceny zewnętrzne i wewnętrzne & 
         25458 &
         Skaner FARO Focus S350 \\
         \hline
-        SUN RGB-D &
+        SUN RGB-D \cite{song2015} &
         sceny wewnętrzne & 
         10335 &
         Intel RealSense 3D, Asus Xtion LIVE PRO i Microsoft
 Kinect. \\
         \hline
-        Matterport3D &
+        Matterport3D \cite{chang2017} &
         sceny wewnętrzne & 
         194400 &
         autorska konstrukcja Matterport  \\
         \hline
-        DDAD &
+        DDAD \cite{guizilini2020} &
         sceny zewnętrzne & 
         21200 &
         Luminar-H2  \\
         \hline
-        SYNS-Patches &
+        SYNS-Patches \cite{adams2016syns} &
         sceny zewnętrzne i wewnętrzne & 
         1175 &
         Leica ScanStation P20  \\
         \hline
-        Cityscapes &
+        Cityscapes \cite{cordts2016cityscapes} &
         sceny zewnętrzne & 
         25000 &
         autorska konsktrukcja kamer stereo na pojeździe
