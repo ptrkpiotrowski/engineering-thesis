@@ -52,10 +52,20 @@ Wykorzystana w niej funkcja \textit{get\_error\_mask} odpowiada za dobranie mask
 Do analizy algorytmów percepcji głębi zastosowano następujące etapy procesu badawczego:
 \begin{enumerate}
     \item Implementacja i konfiguracja algorytmów - każdy z algorytmów wytypowanych do analizy został zaimplementowany i skonfigurowany zgodnie z informacjami opisanymi w literaturze oraz repozytoriach poszczególnych metod na platformie Google Colab.
-    \item Pomiary i analiza wyników - dla każdego kryterium oceny opisanego w bieżącym rozdziale przeprowadzono szczegółowe pomiary wyników generowanych przez algorytmy. Wyniki te zostały zamieszczone na wykresie wspólnym dla wszystkich algorytmów.
+    \item Pomiary i analiza wyników - dla każdego kryterium oceny opisanego w bieżącym rozdziale przeprowadzono szczegółowe pomiary wyników generowanych przez algorytmy. Każdy z algorytmów został przetestowany na zbiorze uczącym oraz przynajmniej jednym niewidzianym w procesie uczenia. Wyniki tych pomiarów zostały zamieszczone na wykresach wspólnych dla wszystkich algorytmów.
     \item Interpretacja i wnioski - na podstawie uzyskanych wyników dokonano interpretacji skuteczności poszczególnych algorytmów w kontekście każdego z kryteriów. Wnioski te stanowią podstawę do rekomendacji oraz możliwych udoskonaleń w przyszłych badaniach.
 \end{enumerate}
 
 Założona metodologia oceny algorytmów opiera się na szczegółowym podejściu do definiowania kryteriów oraz ich systematycznej analizie. Przedstawione kryteria stanowią kompleksowy zestaw wskaźników, które umożliwiają obiektywne porównanie i ocenę różnych implementacji technik wizyjnych w kontekście percepcji głebi. Ich zastosowanie pozwala na identyfikację mocnych stron oraz potencjalnych ograniczeń badanych algorytmów, co jest kluczowe dla dalszego rozwoju tej technologii.
 
 \section{Algorytmy podlegające analizie}
+Do analizy porównawczej wybranych zostało sześć algorytmów percepcji głebi spośród wszystkich przedstawionych w niniejszej pracy. Selekcja odpowiednich algorytmów polegała na skategoryzowaniu ze względu na rodzaj uczenia danego algorytmu oraz jego architekturę. Z każdej powstałej w ten sposób grupy wybrane zostały algorytmy osiągające najlepsze wyniki w pracach je opisujących oraz publicznie dostępnych zestawieniach. Lista stanowiąca zbiór algorytmów podlegających analizie w dalszej części pracy zamieszczona została poniżej.
+
+\begin{itemize} 
+    \item \textbf{AdelaiDepth} - model uczony metodą nadzorowaną oparty o nawracającą sieć neuronową z deklarowanym wynikiem 0,09 AbsRel uzyskanym na zbiorze NYU,
+    \item \textbf{MetaPrompt-SD} - model uczony metodą nadzorowaną oparty o konwolucyjną sieć neuronową z deklarowanym wynikiem 0,047 AbsRel uzyskanym na zbiorze KITTI, 
+    \item \textbf{Depth Anything V2} - model uczony metodą częściowo nadzorowaną oparty o transformator z deklarowanym wynikiem 0,046 AbsRel uzyskanym na zbiorze KITTI, 
+    \item \textbf{Metric3D} - model uczony metodą nadzorowaną oparty o transformator z deklarowanym wynikiem 0,039 na ziorze KITTI, 
+    \item \textbf{GCNDepth} - model uczony metodą nienadzorowaną oparty o grafową nawracającą sieć neuronową z deklarowanym wynikiem 0,104 AbsRel uzyskanym na zbiorze KITTI,
+    \item \textbf{SQLdepth} - model uczony metodą nienadzorowaną oparty o konwolucyjną sieć neuronową z deklarowanym wynikiem 0,052 AbseRel uzyskanym na zbiorze KITTI.
+\end{itemize}
