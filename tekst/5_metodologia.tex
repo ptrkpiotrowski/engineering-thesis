@@ -23,32 +23,24 @@ W celu wyznaczenia wartości miar dokładności wykorzystana została poniższa 
 
 \begin{lstlisting}[style=EEStyle,language=python,numbers=none,frame=none]
 def compute_errors(gt, pred):
-    import numpy as np
-    mask = gt > 0
+    mask = get_error_mask(gt)
     gt = gt[mask]
     pred = pred[mask]
-    
+
     thresh = np.maximum((gt / pred), (pred / gt))
     a1 = (thresh < 1.25).mean()
     a2 = (thresh < 1.25 ** 2).mean()
     a3 = (thresh < 1.25 ** 3).mean()
 
     abs_rel = np.mean((np.abs(gt - pred) / gt))
-    sq_rel = np.mean((((gt - pred) ** 2) / gt))
 
     rmse = (gt - pred) ** 2
     rmse = np.sqrt(rmse.mean())
 
-    rmse_log = (np.log(gt) - np.log(pred)) ** 2
-    rmse_log = np.sqrt(rmse_log.mean())
-
-    err = (np.log(pred) - np.log(gt))
-    silog = np.sqrt(np.mean(err ** 2) - np.mean(err) ** 2) * 100
-
-    log_10 = (np.abs(np.log10(gt) - np.log10(pred))).mean()
-    return dict(a1=a1, a2=a2, a3=a3, abs_rel=abs_rel, rmse=rmse,
-    log_10=log_10, rmse_log=rmse_log, silog=silog, sq_rel=sq_rel)
+    return dict(a1=a1, a2=a2, a3=a3, abs_rel=abs_rel, rmse=rmse)
 \end{lstlisting}
+
+Wykorzystana w niej funkcja \textit{get\_error\_mask} odpowiada za dobranie maski nakładanej na macierze do oceny dokładności. Maski budowane są w kontekście każdego zestawu danych w zestawieniu z konkretną metodą ze względu na możliwości algorytmu oraz maksymalne i minimalne głębokości zarejestrowane w zestawach danych.
 
 \textbf{Szybkość działania} - czas potrzebny przez algorytm na wygenerowanie mapy głębi dla pojedynczego obrazu. Szybkość jest istotnym czynnikiem zwłaszcza w aplikacjach czasu rzeczywistego.
 
