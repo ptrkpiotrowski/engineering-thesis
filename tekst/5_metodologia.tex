@@ -5,7 +5,7 @@ W niniejszym rozdziale przedstawiono szczegółowy opis kryteriów oceny neurono
 \section{Wybór kryteriów oceny}
 Pierwszym etapem było zidentyfikowanie kluczowych kryteriów, które będą decydować o skuteczności i przydatności ocenianych algorytmów. Wybór kryteriów był uzależniony od specyfiki problemu percepcji głębi oraz aktualnych standardów w dziedzinie przetwarzania obrazu. Ostatecznie wybrano następujące kryteria:
 
-\textbf{Dokładność estymacji} - miara precyzyjności algorytmu w określaniu głębokości obiektów na podstawie danych wejściowych w postaci pojedynczego obrazu RGB. Dokładność będzie oceniana na dwóch zbiorach testowych - SYNS-Patches oraz na zbiorze autorskim, żaden obraz z wymienionych zbiorów nie został wykorzystany w uczeniu analizowanych algorytmów. Kryterium dokładności wyrażone zostało z wykorzystaniem najczęściej spotykanych miar dokładności prognozowania, średnim bezwzględnym błądem procentowym \ref{eq:2}, średnim błądem kwadratowym \ref{eq:3} oraz dokładnością poniżej założonego progu \ref{eq:4}. W poniższych wzorach $ d_p $ oznacza zmierzoną wartość głębi, $ \hat{d}_p $ wartość estymowaną, z kolei $ T $ to ilość pikseli dla których istnieje głębia zmierzona i estymowana.
+\textbf{Dokładność estymacji} - miara precyzyjności algorytmu w określaniu głębokości obiektów na podstawie danych wejściowych w postaci pojedynczego obrazu RGB. Kryterium dokładności wyrażone zostało z wykorzystaniem najczęściej spotykanych miar dokładności prognozowania, średnim bezwzględnym błądem procentowym \ref{eq:2}, średnim błądem kwadratowym \ref{eq:3} oraz dokładnością poniżej założonego progu \ref{eq:4}. W poniższych wzorach $ d_p $ oznacza zmierzoną wartość głębi, $ \hat{d}_p $ wartość estymowaną, z kolei $ T $ to ilość pikseli dla których istnieje głębia zmierzona i estymowana.
 
 \begin{equation} \label{eq:2}
     AbsRel = \frac{1}{T} \sum_{p} \frac{|d_p - \hat{d}_p|}{d_p}
@@ -62,10 +62,10 @@ Założona metodologia oceny algorytmów opiera się na szczegółowym podejści
 Do analizy porównawczej wybranych zostało sześć algorytmów percepcji głebi spośród wszystkich przedstawionych w niniejszej pracy. Selekcja odpowiednich algorytmów polegała na skategoryzowaniu ze względu na rodzaj uczenia danego algorytmu oraz jego architekturę. Z każdej powstałej w ten sposób grupy wybrane zostały algorytmy osiągające najlepsze wyniki w pracach je opisujących oraz publicznie dostępnych zestawieniach. Lista stanowiąca zbiór algorytmów podlegających analizie w dalszej części pracy zamieszczona została poniżej.
 
 \begin{itemize} 
-    \item \textbf{AdelaiDepth} - model uczony metodą nadzorowaną oparty o nawracającą sieć neuronową z deklarowanym wynikiem 0,09 AbsRel uzyskanym na zbiorze NYU,
-    \item \textbf{MetaPrompt-SD} - model uczony metodą nadzorowaną oparty o konwolucyjną sieć neuronową z deklarowanym wynikiem 0,047 AbsRel uzyskanym na zbiorze KITTI, 
-    \item \textbf{Depth Anything V2} - model uczony metodą częściowo nadzorowaną oparty o transformator z deklarowanym wynikiem 0,046 AbsRel uzyskanym na zbiorze KITTI, 
-    \item \textbf{Metric3D} - model uczony metodą nadzorowaną oparty o transformator z deklarowanym wynikiem 0,039 na ziorze KITTI, 
+    \item \textbf{AdelaiDepth} - model uczony metodą nadzorowaną oparty o nawracającą sieć neuronową z deklarowanym wynikiem 9\% AbsRel uzyskanym na zbiorze NYU,
+    \item \textbf{MetaPrompt-SD} - model uczony metodą nadzorowaną oparty o konwolucyjną sieć neuronową z deklarowanym wynikiem 4,7\% AbsRel uzyskanym na zbiorze KITTI, 
+    \item \textbf{Depth Anything V2} - model uczony metodą częściowo nadzorowaną oparty o transformator z deklarowanym wynikiem 4,6\% AbsRel uzyskanym na zbiorze KITTI, 
+    \item \textbf{Metric3D} - model uczony metodą nadzorowaną oparty o transformator z deklarowanym wynikiem 3,9\% na ziorze KITTI, 
     \item \textbf{GCNDepth} - model uczony metodą nienadzorowaną oparty o grafową nawracającą sieć neuronową z deklarowanym wynikiem 0,104 AbsRel uzyskanym na zbiorze KITTI,
-    \item \textbf{SQLdepth} - model uczony metodą nienadzorowaną oparty o konwolucyjną sieć neuronową z deklarowanym wynikiem 0,052 AbseRel uzyskanym na zbiorze KITTI.
+    \item \textbf{SQLdepth} - model uczony metodą nienadzorowaną oparty o konwolucyjną sieć neuronową z deklarowanym wynikiem 5,2\% AbseRel uzyskanym na zbiorze KITTI.
 \end{itemize}
