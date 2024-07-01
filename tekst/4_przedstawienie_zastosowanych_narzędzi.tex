@@ -6,7 +6,7 @@ Obecnie, Python, język programowania wysokiego poziomu ogólnego przeznaczenia,
 \section{Platforma obliczeniowa}
 W celu uruchomienia analizowanych metod neuronowych wizyjnych algorytmów percepcji głębi, wykorzystano platformę obliczeniową Google Colab. Jest to platforma sieciowa, która umożliwia uruchamianie skryptów w języku Python bezpośrednio w przeglądarce, co jest szczególnie korzystne w kontekście prac badawczych i edukacyjnych\footnote{\href{https://colab.google/}{https://colab.google/}}. Platforma ta opiera się na technologii Jupyter Notebook, co umożliwia interaktywne programowanie i wizualizację danych\footnote{\href{https://jupyter.org/}{https://jupyter.org/}}.
 
-Google Colab oferuje dostęp do mocnych zasobów obliczeniowych, w tym do procesorów graficznych (GPU) i jednostek przetwarzania tensorów (TPU), które są kluczowe przy trenowaniu skomplikowanych modeli głębokiego uczenia. Użytkownicy mogą łatwo skalować użycie zasobów w zależności od potrzeb danego algorytmu, co znacząco redukuje czas i koszt przetwarzania. Dostępność tych zasobów przez platformę internetową umożliwia również łatwe udostępnianie wyników i współpracę w ramach zespołów rozproszonych geograficznie.
+Google Colab oferuje dostęp do mocnych zasobów obliczeniowych, w tym do procesorów graficznych (GPU) i jednostek przetwarzania tensorów (TPU), które są kluczowe przy trenowaniu skomplikowanych modeli głębokiego uczenia. Użytkownicy mogą łatwo skalować użycie zasobów w zależności od potrzeb danego algorytmu, co znacząco redukuje czas i koszt przetwarzania. Dostępność tych zasobów przez platformę internetową umożliwia również łatwe udostępnianie wyników i współpracę w ramach zespołów rozproszonych geograficznie. W kontekście realizowanej analizy porównawczej wykorzystano maszyny wyposażone w kartę graficzną NVIDIA T4 oraz w przypadku niekompatybilności NVIDIA L4.
 
 W kontekście przeprowadzonej analizy, Google Colab okazał się być nieocenionym narzędziem, które pozwoliło na efektywne wykonanie i analizę algorytmów percepcji głębi. Możliwość wyświetlania wyników bezpośrednio w przeglądarce internetowej znacząco ułatwiła proces badawczy i pozwoliła na dynamiczne dopasowanie parametrów modelu w odpowiedzi na obserwowane wyniki.
 
@@ -16,7 +16,7 @@ Niewątpliwie kluczową rolę w procesie analizy porównawczej algorytmów perce
 Ponadto każda z metod została zweryfikowana na autorskim zestawie danych. Został on przygotowany na potrzeby niniejszej pracy za pomocą technologii LIDAR stanowiącej wyposażenie urządzenia iPhone 15 Pro \cite{chase2022apple}. Zastosowany w rzeczonym urządzeniu skaner emituje matrycę zawierającą 8x8 punktów która jest podzielona na siatki 3x3 co daje łącznie 576 punktów. Maksymalny zasięg tego skanera to 5 metrów. Fotografie i skany zostały wykonane w otwartych przestrzeniach - głównie we Wrocławskim Ogrodzie Zoologicznym. Obrazy RGB wraz z odpowiadającymi im mapami głębi pochodzącymi z autorskiego zestawu są dostępne w załączniku do pracy.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{45.jpg}
+    \includegraphics[width=0.48\textwidth]{45.jpg}
     \caption{a) emitowana matryca punktów b) umiejscowienie skanera w urządzeniu c) przykładowy model 3D wykonany przy użycciu skanera d) przykład implementacji w oprogramowaniu. Źródło: \cite{luetzenburg2021evaluation}}
     \label{fig:iphone-lidar}
 \end{figure}
