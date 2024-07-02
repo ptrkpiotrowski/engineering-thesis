@@ -143,7 +143,7 @@ Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwi
 
 
 \section{Czas realizacji pojedynczej estymacji}
-Podczas analizy algorytmów w dziedzinie ich dokładności zostały również zebrane informacje na temat czasu wymaganego przez algorytm do wykonania estymacji głębi na pojedynczym obrazie. W czas ten wlicza się wczytanie obrazu, dokonanie predykcji i ewentualne skalowanie mapy głębi (w zależności od algorytmu). Uśrednione wyniki przedstawione zostały w postaci poniższych wykresów.
+Podczas analizy algorytmów w dziedzinie ich dokładności zostały również zebrane informacje na temat czasu wymaganego przez algorytm do wykonania estymacji głębi na pojedynczym obrazie. W czas ten wlicza się wczytanie obrazu, dokonanie predykcji i ewentualne skalowanie mapy głębi (w zależności od algorytmu). Uśrednione wyniki przedstawione zostały w postaci wykresów następujących na następnych stronach rozdziału.
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/0}
@@ -233,3 +233,26 @@ W trakcie analizy algorytmów zostały zarejestrowane szczytowe wartości zużyt
     }
     \label{tabela_wymagania}
 \end{table}
+
+\section{Uwagi do instalacji i użytkowania}
+W niniejszym podrozdziale zostały przedstawione uwagi do instalacji oraz użytkowania analizowanych algorytmów. Opisane zostały aspekty problematyczne lub potencjalnie problematyczne w przyszłości. Kwestię subiektywnej oceny rozpatrywano w czterech kategoriach: instalacja pakietów zależnych, przygotowanie konfiguracji, preparowanie obrazu wejściowego i wynikowa mapa głębi.
+
+\subsection{AdelaiDepth}
+\subsubsection{Instalacja}
+Algorytm AdelaiDepth oferuje instalację poprzez standardowy menadżer pakietów \textit{pip}. Ilość zależności jest niewielka i wynosi 9 pakietów, w tym pytorch oraz torchvision. Instalacja nie sprawia problemów, jednak ze względu na brak sugerowanych wersji pakietów istnieje ryzyko niekompatybilności.
+
+\subsection{SQLdepth}
+\subsubsection{Instalacja}
+W rejestrze zależności zostały przez autorów zawarte lokalne ścieżki do instalatorów pakietów. Należy samodzielnie zmodyfikować rzeczone wpisy aby poprawnie zainstalować pakiety.
+
+\subsection{Metric3D V2}
+\subsubsection{Preparowanie obrazu wejściowego}
+W procesie przygotowywania obrazu wejściowego do algorytmu Metric3D V2 należy zadbać o więcej kwestii niż w przypadku pozostałych algorytmów. Przede wszystkim należy przygotować i przeskalować dane dotyczące obiektywu którym wykonano fotografię. Szczególnie ważne są odległość ogniskowa i centralny punkt fotografii. Sam obraz należy przeskalować ale również nadać odpowiednie obramowanie zgodnie z instrukcjami w repozytorium projektu.
+
+\subsection{MetaPrompt-SD oraz GCNDepth}
+\subsubsection{Instalacja}
+Algorytmy posiadają jedynie wybiórcze informacje na temat wersji zależności. W przyszłości możliwe problemy wynikające z niekompatybilności.
+
+\subsection{GCNDepth}
+\subsubsection{Użytkowanie}
+W wyniku działania algorytmu GCNDepth otrzymywana jest macierz zawierająca głębię bezwzględną jednak reprezentowaną w sposób odbiegający od standardu - w centrymetrach.
