@@ -546,7 +546,7 @@ Zestaw SYNS-Patches \cite{spencer2022deconstructing} jest rozszerzeniem zestawu 
     \includegraphics[width=1\textwidth]{44.jpg}
     \caption{Przykłady obrazów z zestawu SYNS-Patches z odpowiadającymi im mapami głębi. Źródło: \cite{spencer2022deconstructing}}
     \label{fig:syns-example}
-\end{figure} 
+\end{figure}
 
 \subsection{Cityscapes}
 Cityscapes \cite{cordts2016cityscapes} to zestaw danych skompletowany w 2016 r. którego głównym założeniem jest wykorzystanie w środowiskach aplikacyjnych, gdzie kluczową kwestię stanowi zrozumienie scen miejskich. Jest to powodem skupienia autorów na aspekcie segmentacji obrazów. Mimo to, zestaw Cityscapes jest często wykorzystywany w kontekście algorytmów percepcji głębi ze względu na zawartość mapy głębi do każdej sceny w nim zawartej. Mapy te zostały pozyskane dzięki  Zbiór ten składa się z 5 tysięcy obrazów etykietowanych z bardzo wysoką dokładnością do jednego piksela oraz 20 tysięcy obrazów etykietowanych ze znacznie zmniejszoną dokładnością dla algorytmów które potrafią czerpać korzyść z większej ilości danych w procesie uczenia. Przykłady obrazów z obu podzbiorów przedstawia poniższa ilustracja. Obrazy przedstawiają sceny miejskie rejestrowane w świetle dziennym z 50 różnych miast w Niemczech. Zostały zarejestrowane przy pomocy kamer stereo zamontowanych na pojeździe.
@@ -555,10 +555,31 @@ Cityscapes \cite{cordts2016cityscapes} to zestaw danych skompletowany w 2016 r. 
     \includegraphics[width=1\textwidth]{43.jpg}
     \caption{Przykłady obrazów z zestawu Cityscapes. Źródło: \cite{cordts2016cityscapes}}
     \label{fig:cityscapes-example}
-\end{figure} 
+\end{figure}
+
+\subsection{Virtual KITTI 2}
+Virtual KITTI 2 \cite{cabon2020virtualkitti2} jest ulepszonym względem pierwszej wersji zestawem syntetycznych obrazów wygenerowanych komputerowo na wzór przedstawionych w zestawie KITTI \cite{geiger2012} scen ruchu ulicznego. Ulepszenie polegało na powiększeniu zakresu danych w zbiorze - poza mapami głębi dodano między innymi segmentację obiektów - oraz na podwyższeniu rozdzielczości obrazów.
+
+Wirtualny odpowiednik jednego z najpowszechniejszych zbiorów danych powstał ze względu na szeroki wachlarz możliwości manipulacji charakterystyką scen za pomocą oprogramowania. Zestaw ten zawiera bowiem identyczną sekwencję obrazów jednak w różnych warunkach pogodowych oraz różnych konfiguracjach wirtualnej kamery. Ze względu na syntetyczny charakter zbioru zawiera on bardzo dokładne informacje o głębi, ponieważ wygenerowane dane nie są obarczone błędem pomiarowym.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{47.jpg}
+    \caption{Przykładowa scena z zestawu Virtual KITTI 2. Źródło: \cite{cabon2020virtualkitti2}}
+    \label{fig:vkitti-example}
+\end{figure}
+
+\subsection{Taskonomy}
+Zestaw Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} zawiera cztery miliony komputerowo wygenerowanych obrazów oznaczonych za pomocą danych z dwudziestu sześciu różnych dziedzin widzenia komputerowego. Poza mapami głębi zestaw zawiera również dane dotyczące normalnych powierzchni, krawędzi obiektów czy segmentacji semantycznej. Tak bogate oznaczenia powodują że rozwiązanie to jest często wykorzystywane jako główny zestaw uczący wielu modeli z kategorii widzenia komputerowego. Podobnie jak w przypadku Virtual KITTI 2 oznaczenia są maksymalnie dokładne ze względu na brak ograniczeń sprzętowych i pozostałych uwarunkowań wynikających z fizycznej rejestracji danych.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{48.jpg}
+    \caption{Przykładowy obraz z zestawu Taskonomy wraz z oznaczeniami z różnych kategorii. Źródło: \cite{zamir2018taskonomydisentanglingtasktransfer}}
+    \label{fig:taskonomy-example}
+\end{figure}
 
 \subsection{Podsumowanie}
-Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
+Przedstawione w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
 \begin{table}[H]
     \centering
     \caption{Podsumowanie przedstawionych zbiorów danych używanych przez algorytmy percepcji głębi.}
@@ -570,44 +591,56 @@ Wykazane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mier
         \hline \hline
         KITTI \cite{geiger2012} &
         sceny zewnętrzne & 
-        93000 &
+        93 000 &
         Skaner laserowy Velodyne \cite{Velodyne} i system lokalizacji GPS. \\
         \hline
         NYUv2 \cite{couprie2013} &
         sceny wewnętrzne & 
-        407024 &
+        407 024 &
         Microsoft Kinect \\
         \hline
         DIODE \cite{vasiljevic2019} &
         sceny zewnętrzne i wewnętrzne & 
-        25458 &
+        25 458 &
         Skaner FARO Focus S350 \\
         \hline
         SUN RGB-D \cite{song2015} &
         sceny wewnętrzne & 
-        10335 &
+        10 335 &
         Intel RealSense 3D, Asus Xtion LIVE PRO i Microsoft
 Kinect. \\
         \hline
         Matterport3D \cite{chang2017} &
         sceny wewnętrzne & 
-        194400 &
+        194 400 &
         autorska konstrukcja Matterport  \\
         \hline
         DDAD \cite{guizilini2020} &
         sceny zewnętrzne & 
-        21200 &
+        21 200 &
         Luminar-H2  \\
         \hline
         SYNS-Patches \cite{adams2016syns} &
         sceny zewnętrzne i wewnętrzne & 
-        1175 &
+        1 175 &
         Leica ScanStation P20  \\
         \hline
         Cityscapes \cite{cordts2016cityscapes} &
         sceny zewnętrzne & 
-        25000 &
+        25 000 &
         autorska konsktrukcja kamer stereo na pojeździe
+        \\
+        \hline
+        Virtual KITTI 2 \cite{cabon2020virtualkitti2} &
+        sceny zewnętrzne & 
+        63 730 &
+        syntetyczne obrazy wygenerowane komputerowo
+        \\
+        \hline
+        Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} &
+        sceny wewnętrzne & 
+        4 000 000 &
+        syntetyczne obrazy wygenerowane komputerowo
         \\
         \hline
         \end{tabular}%
