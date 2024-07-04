@@ -1,45 +1,77 @@
 \chapter{Podsumowanie i wnioski}\label{chap:podsumowanie_i_wnioski}
+Celem niniejszej pracy było przeprowadzenie analizy porówawczej zróżnicowanej grupy dostępnych neuronowych wizyjnych algorytmów percepcji głębi. W szczególności skupiono się na obiektywnej ocenie ich dokładności, wydajności czasowej, ogólnej efektywności w różnych zastosowaniach oraz wymagań systemowych.
 
-% Kolejność algorytmów według parametrów kategorii:
-% 1. $\delta < 1.25$
-%     Metric3D: 0.8309597550797517
-%     DepthAnythingV2: 0.6112489176682329
-%     MetaPrompt-SD: 0.4366420044808058
-%     SQLdepth: 0.3009511883974444
-%     AdelaiDepth: 0.2817125077564712
-%     GCNDepth: 0.27669194004157094
-% 2. $\delta < 1.25^2$
-%     Metric3D: 0.9211333151376223
-%     DepthAnythingV2: 0.8464005813942082
-%     MetaPrompt-SD: 0.6362086895784651
-%     SQLdepth: 0.4087666932176787
-%     AdelaiDepth: 0.4622877880343073
-%     GCNDepth: 0.37741631125873953
-% 3. $\delta < 1.25^3$
-%     Metric3D: 0.936957105855098
-%     DepthAnythingV2: 0.9347498662803583
-%     MetaPrompt-SD: 0.7626569963094
-%     SQLdepth: 0.5324865965192761
-%     AdelaiDepth: 0.5819401853306143
-%     GCNDepth: 0.4983133762704752
-% 4. AbsRel (%)
-%     Metric3D: 0.15639435369174715
-%     DepthAnythingV2: 0.2896243208228228
-%     MetaPrompt-SD: 0.6467207583730675
-%     SQLdepth: 1.2382412494219948
-%     GCNDepth: 1.365067613208679
-%     AdelaiDepth: 2.4446752660991753
-% 5. RMSE
-%     DepthAnythingV2: 3.6674199207373994
-%     MetaPrompt-SD: 4.163126324947904
-%     SQLdepth: 6.424788059965812
-%     GCNDepth: 7.223084697688756
-%     Metric3D: 46.90493158040433
-%     AdelaiDepth: 48.031358915892035
-% 6. czas wykonania predykcji (s)
-%     GCNDepth: 0.33218835439897126
-%     AdelaiDepth: 0.6433858857029371
-%     MetaPrompt-SD: 0.8439512717634214
-%     SQLdepth: 0.8016962349325194
-%     DepthAnythingV2: 1.3217290846627887
-%     Metric3D: 3.834031989735768
+W ramach analizy porównano sześć algorytmów wybranych pod kątem wyników osiąganych w publicznie dostępnych zestawieniach, architektury oraz metody ich uczenia. W celu wykonania rzetelnej analizy wykorzystany został szereg metryk, takich jak pierwiastek ze średniego błądu kwadratowego czy średni bezwzględny błąd procentowy.
+
+W bieżącym rozdziale zawarte jest podsumowanie dokonanej analizy porównawczej oraz wnioski z niej płynące. Przedstawione zostaną kluczowe spostrzeżenia, wskazujące na mocne i słabe strony poszczególnych algorytmów, oraz rekomendacje dotyczące ich zastosowań w praktyce.
+
+\section{Uśrednione wyniki}
+W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zostało przygotowane zestawienie średnich wartości każdej z metryk algorytmów uzyskanych na wszystkich zestawach danych. Takie zestawienie pozwala na przejrzyste porównanie efektywności algorytmów i wyciągnięcie jednoznacznych wniosków dotyczących ich wydajności w różnych scenariuszach.
+
+\begin{itemize}
+    \item $\delta < 1.25$
+    \begin{enumerate}
+        \item \textbf{Metric3D}: 0.830
+        \item \textbf{DepthAnythingV2}: 0.611
+        \item \textbf{MetaPrompt-SD}: 0.436
+        \item \textbf{SQLdepth}: 0.300
+        \item \textbf{AdelaiDepth}: 0.281
+        \item \textbf{GCNDepth}: 0.276
+    \end{enumerate}
+
+    \item $\delta < 1.25^2$
+    \begin{enumerate}
+        \item \textbf{Metric3D}: 0.921
+        \item \textbf{DepthAnythingV2}: 0.846
+        \item \textbf{MetaPrompt-SD}: 0.636
+        \item \textbf{SQLdepth}: 0.300
+        \item \textbf{AdelaiDepth}: 0.462
+        \item \textbf{GCNDepth}: 0.377
+    \end{enumerate}
+
+    \item $\delta < 1.25^3$
+    \begin{enumerate}
+        \item \textbf{Metric3D}: 0.936
+        \item \textbf{DepthAnythingV2}: 0.934
+        \item \textbf{MetaPrompt-SD}: 0.762
+        \item \textbf{SQLdepth}: 0.532
+        \item \textbf{AdelaiDepth}: 0.581
+        \item \textbf{GCNDepth}: 0.498
+    \end{enumerate}
+
+    \item AbsRel (\%)
+    \begin{enumerate}
+        \item \textbf{Metric3D}: 11.99
+        \item \textbf{DepthAnythingV2}: 28.96
+        \item \textbf{MetaPrompt-SD}: 64.67
+        \item \textbf{SQLdepth}: 123.82
+        \item \textbf{GCNDepth}: 136.50
+        \item \textbf{AdelaiDepth}: 244.46
+    \end{enumerate}
+
+    \item RMSE
+    \begin{enumerate}
+        \item \textbf{DepthAnythingV2}: 3.667
+        \item \textbf{MetaPrompt-SD}: 4.163
+        \item \textbf{Metric3D}: 5.250
+        \item \textbf{SQLdepth}: 6.424
+        \item \textbf{GCNDepth}: 7.223
+        \item \textbf{AdelaiDepth}: 48.031
+    \end{enumerate}
+
+    \item czas wykonania predykcji (s)
+    \begin{enumerate}
+        \item \textbf{GCNDepth}: 0.332
+        \item \textbf{AdelaiDepth}: 0.643
+        \item \textbf{MetaPrompt-SD}: 0.843
+        \item \textbf{SQLdepth}: 0.801
+        \item \textbf{DepthAnythingV2}: 1.321
+        \item \textbf{Metric3D}: 3.834
+    \end{enumerate}
+\end{itemize}
+
+\section{Interpretacja wyników}
+\subsection{Dokładność estymacji}
+W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm Metric3D osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak spowodowane wysokim wynikiem uzyskanym na syntetycznym zbiorze Taskonomy (21.322) spowodowanym dużą ilością scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia podczas gdy zestaw Taskonomy zawiera głębokość do obiektu za przeszkleniem. Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
+
+Następne miejsce pod kątem dokładności zajął algorytm Depth Anything V2. Należy jednak wziąć pod uwagę fakt, że model ten do funkcjonowania nie wymaga żadnych dodatkowych informacji poza obrazem wejściowym w przeciwieństwie do Metric3D.
