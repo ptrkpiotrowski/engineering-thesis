@@ -46,7 +46,7 @@ Poniższy schemat umieszczony na rys. \ref{fig:podsumowanie-uczenia} przedstawia
 \section{Modele sieci neuronowych w algorytmach percepcji głębi}
 Ważnym etapem implementacji algorytmu percepcji głębi jest konstrukcja architektury sieci neuronowej modelu. Ma ona szczególny wpływ na wydajność i skuteczność wynikowego algorytmu. Ten podrozdział zawiera opis dwóch przeważnie wykorzystywanych w dziedzinie percepcji głębi modeli sieci neuronowych.
 \subsection{Konwolucyjne sieci neuronowe}
-Zaproponowane przez Kunihiko Fukushimę w 1980 r. \cite{fukushima1980} konwolucyjne sieci neuronowe są niewątpliwym kamieniem milowym w komputerowym przetwarzaniu obrazów. Charakteryzuje je zdolność upraszczania obrazu do postaci znacznie łatwiejszej do przetworzenia przez komputer, bez poświęcenia jakości wnioskowania. Podstawowym elementem takich sieci jest warstwa splotowa, w której dochodzi do mnożenia matryc stanowiących dane wejściowe i jądro. Wynikiem mnożenia jest mapa wyodrębnionych cech wejściowego obrazu. Poprawnie przedstawia to poniższa grafika \ref{fig:warstwa-konwolucyjna} oraz \ref{fig:warstwa-konwolucyjna-arch}. W przypadku takiego modelu nauczanie sieci polega między innymi na ustanowieniu odpowiednich wag jądra.
+Zaproponowane przez Kunihiko Fukushimę w 1980 r. \cite{fukushima1980} konwolucyjne sieci neuronowe są niewątpliwym kamieniem milowym w komputerowym przetwarzaniu obrazów. Charakteryzuje je zdolność upraszczania obrazu do postaci znacznie łatwiejszej do przetworzenia przez komputer, bez poświęcenia jakości wnioskowania. Podstawowym elementem takich sieci jest warstwa splotowa, w której dochodzi do mnożenia matryc stanowiących dane wejściowe i jądro. Wynikiem mnożenia jest mapa wyodrębnionych cech wejściowego obrazu. Poprawnie przedstawia to poniższy rysunek \ref{fig:warstwa-konwolucyjna} oraz \ref{fig:warstwa-konwolucyjna-arch}. W przypadku takiego modelu nauczanie sieci polega między innymi na ustanowieniu odpowiednich wag jądra.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{5.jpg}
@@ -63,7 +63,7 @@ Zaproponowane przez Kunihiko Fukushimę w 1980 r. \cite{fukushima1980} konwolucy
 \subsection{Transformatory}
 Zaprezentowane w 2017 r. \cite{vaswani2017} transformatory wykorzystywane były pierwotnie w przetwarzaniu języka naturalnego. Dzięki asynchronicznej charakterystyce przetwarzania sekwencji wejściowej okazały się znacznie szybsze niż dotychczas znane rozwiązania\footnote{Do ówczesnej chwili częściej używane były sieci rekurencyjne.}.
 
-W kontekście wizyjnych algorytmów wykorzystywane są transformatory wizyjne zaproponowane w 2020 r. przez zespół Google Research w \cite{dosovitskiy2020}. Jego schemat poglądowy przedstawia poniższa grafika \ref{fig:schemat-vit}.
+W kontekście wizyjnych algorytmów wykorzystywane są transformatory wizyjne zaproponowane w 2020 r. przez zespół Google Research w \cite{dosovitskiy2020}. Jego schemat poglądowy przedstawia poniższy rysunek \ref{fig:schemat-vit}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{7.jpg}
