@@ -46,33 +46,17 @@
 % Streszczenie pracy i abstract.
 % In case of thesis in English swap the order - English version goes first.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\streszczeniepracy{
-Streszczenie pracy powinno w zwięzły sposób opisywać to czego dotyczy praca, co jest jej celem, jakie przyjęto założenia, co w ramach pracy zrobiono, co przebadano, jakie rozwiązania zaproponowano i jakie wyniki osiągnięto. Jeśli coś sprawiło jakiś problem, można to także ująć w streszczeniu i skomentować czy udało się ów problem rozwiązać i jak, czy też nie (nic w tym złego, jeśli czegoś się nie udało do końca zrobić). 
-\\
-Streszczenie nie powinno być przeładowane, powinno mieć około 200 słów i zawierać najważniejsze informacje na temat pracy i najważniejsze osiągnięcia, nie należy więc podawać szczegółowych wyników czy też opisywać struktury pracy - na to miejsce znajduje się w samej pracy.
-\\
-Streszczenie zwykle pisze się na samym końcu pracy - z oczywistych względów.
+\streszczeniepracy{W niniejszej pracy inżynierskiej wykonano analizę porównawczą wiodących algorytmów percepcji głębi opartych o architekturę sieci neuronowych w ujednoliconym środowisku testowym. W ramach badań przetestowano sześć algorytmów: AdelaiDepth, DepthAnythingV2, GCNDepth, MetaPrompt-SD, Metric3D oraz SQLdepth. Badania przeprowadzono na zestawach danych obejmujących różnorodne scenariusze, co pozwoliło na uzyskanie wszechstronnych wyników. W ramach pracy opracowany został również autorski zbiór danych na których zweryfikowano efektywność algorytmów. Wykonana analiza miała na celu ocenę ich wydajności w różnych kontekstach aplikacyjnych, z uwzględnieniem dokładności, wydajności czasowej oraz wymagań systemowych. Na podstawie wyników przygotowano zestawienie, które pozwoliło na ich usystematyzowanie i podsumowanie. Praca kończy się szczegółową interpretacją wyników uzyskanych podczas analizy oraz rekomendacjami przypadków użycia dla każdego algorytmu, uwzględniającymi ich mocne strony oraz specyficzne wymagania aplikacyjne. Wnioski końcowe wykazują brak uniwersalnego algorytmu do wszystkich zastosowań, wskazując na konieczność dostosowania wyboru algorytmu do specyficznych potrzeb projektu. Rezultaty przedstawione w niniejszej pracy mogą stanowić cenną wskazówkę dla inżynierów i naukowców zajmujących się rozwojem i implementacją systemów percepcji głębi, pomagając w optymalnym doborze narzędzi do specyficznych zastosowań.
 \newline
-\newline
-Przykładowe streszczenie:
-\newline
-\newline
-\noindent\textit{W niniejszej pracy inżynierskiej zaprezentowane zostały próby rozwiązania problemu klasyfikacji poziomu zabrudzenia chodników z wykorzystaniem głębokich sieci neuronowych. Wykorzystując dostępny zbiór zdjęć sklasyfikowanych do sześciu klas poziomu zanieczyszczeń, wygenerowano zrównoważone zbiory: sześcioklasowy oraz trzyklasowy. Następnie wybrano trzy sieci różnego rodzaju, aby sprawdzić ich efektywność w rozróżnianiu poszczególnych, często bardzo zbliżonych do siebie zdjęć. Sieć TResNet została wybrana spośród wiodących sieci w rankingach klasyfikacyjnych. Sieć ShuffleNet V2 została wybrana spośród dostępnych implementacji sieci w ramach popularnej biblioteki OpenMMLab. Sieć PMG została wybrana spośród sieci przygotowanych do rozwiązywania specyficznych problemów klasyfikacyjnych dla obrazów o niewielkich różnicach. Wymienione sieci wytrenowano na wygenerowanych zbiorach i osiągnięto dokładność rzędu 80\% i 90\%, odpowiednio dla problemu sześcio- i trzyklasowego. Najlepszą siecią, w każdym przypadku, okazała się sieć PMG, a wyniki pozostałych sieci były zbliżone.}
 } % koniec streszczenia
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\slowakluczowe{istotne, słowa, kluczowe} 
+\slowakluczowe{analiza porównawcza, percepcja głębi, algorytmy neuronowe, sieci neuronowe, systemy wizyjne} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thesisabstract{
-Należy zadbać oto, by jakość tłumaczenia streszczenia była wyższa niż ta oferowana przez automaty takie jak powszechnie używany \href{https://translate.google.pl/}{https://translate.google.pl/} czy mniej znany, ale czasem lepszy: \href{https://www.deepl.com/translator}{https://www.deepl.com/translator} czy może też \href{https://www.translate.com/}{https://www.translate.com/}. Wszystkie te strony są pomocne i często zgrabnie tłumaczą, ale potrafią też zrobić oczywiste błędy, zwłaszcza w przypadku zdań wielokrotnie złożonych. Warto też skorzystać z serwisu \href{https://www.grammarly.com/}{https://www.grammarly.com}.
+\thesisabstract{In this engineering thesis, a comparative analysis of leading depth perception algorithms based on neural network architecture was conducted in a unified testing environment. Six algorithms were tested as part of the research: AdelaiDepth, DepthAnythingV2, GCNDepth, MetaPrompt-SD, Metric3D, and SQLdepth. The research was carried out on datasets encompassing various scenarios, allowing for comprehensive results. Additionally, a proprietary dataset was developed and used to verify the effectiveness of the algorithms. The analysis aimed to evaluate their performance in different application contexts, considering accuracy, time efficiency, and system requirements. Based on the results, a summary was prepared to systematize and consolidate the findings. The thesis concludes with a detailed interpretation of the results obtained during the analysis and recommendations for use cases for each algorithm, taking into account their strengths and specific application requirements. The final conclusions indicate the absence of a universal algorithm for all applications, highlighting the necessity to tailor the algorithm choice to the specific needs of a project. The results presented in this thesis can provide valuable guidance for engineers and scientists involved in the development and implementation of depth perception systems, aiding in the optimal selection of tools for specific applications.
 \newline
-\newline
-W miarę poprawny przykład:
-\newline
-\newline
-\textit{This engineering thesis presents an attempt to solve the problem of sidewalk dirt level classification using deep neural networks. Using an available set of images classified into six classes of dirt levels, balanced sets of six classes and three classes were generated. Three networks of different types were then selected to test their effectiveness in discriminating between individual, often very similar, images. TResNet was selected among the leading networks in the classification rankings. The ShuffleNet V2 network was selected from available network implementations within the popular OpenMMLab library. The PMG network was selected from networks prepared to solve specific classification problems for images with small differences. The aforementioned networks were trained on the generated sets and an accuracy of 80\% and 90\% was achieved for the six-class and three-class problem, respectively. The PMG network proved to be the best network, in each case, and the results of the other networks were similar.}
 } % end of abstract
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thesiskeywords{keywords, that, are, indicative}  
+\thesiskeywords{comparative analysis, depth perception, neural algorithms, neural networks, vision systems} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
