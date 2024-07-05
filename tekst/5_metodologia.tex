@@ -5,7 +5,7 @@ W niniejszym rozdziale przedstawiono szczegółowy opis kryteriów oceny neurono
 \section{Wybór kryteriów oceny}
 Pierwszym etapem było zidentyfikowanie kluczowych kryteriów, które będą decydować o skuteczności i przydatności ocenianych algorytmów. Wybór kryteriów był uzależniony od specyfiki problemu percepcji głębi oraz aktualnych standardów w dziedzinie przetwarzania obrazu. Ostatecznie wybrano następujące kryteria:
 
-\textbf{Dokładność estymacji} - miara precyzyjności algorytmu w określaniu głębi na podstawie danych wejściowych w postaci pojedynczego obrazu RGB. Kryterium dokładności wyrażone zostało z wykorzystaniem najczęściej spotykanych miar dokładności prognozowania, średnim bezwzględnym błądem procentowym \ref{eq:2}, pierwiastkiem ze średniego błądu kwadratowego \ref{eq:3} oraz dokładnością poniżej założonego progu \ref{eq:4}. W poniższych wzorach $ d_p $ oznacza zmierzoną wartość głębi, $ \hat{d}_p $ wartość estymowaną, z kolei $ T $ to ilość pikseli dla których istnieje głębia zmierzona i estymowana.
+\textbf{Dokładność estymacji} - miara precyzyjności algorytmu w określaniu głębi na podstawie danych wejściowych w postaci pojedynczego obrazu RGB. Kryterium dokładności wyrażone zostało z wykorzystaniem najczęściej spotykanych miar dokładności prognozowania, średnim bezwzględnym błądem procentowym \ref{eq:2}, pierwiastkiem ze średniego błądu kwadratowego \ref{eq:3} oraz dokładnością poniżej założonego progu \ref{eq:4}. W poniższych wzorach $ d_p $ oznacza zmierzoną wartość głębi, $ \hat{d}_p $ wartość estymowaną, z kolei $ T $ to ilość pikseli, dla których istnieje głębia zmierzona i estymowana.
 
 \begin{equation} \label{eq:2}
     AbsRel = \frac{1}{T} \sum_{p} \frac{|d_p - \hat{d}_p|}{d_p} * 100\%
@@ -19,7 +19,7 @@ Pierwszym etapem było zidentyfikowanie kluczowych kryteriów, które będą dec
     max(\frac{\hat{d}_p}{d_p}, \frac{d_p}{\hat{d}_p}) = \delta < th
 \end{equation}
 
-W celu wyznaczenia wartości miar dokładności wykorzystana została poniższa funkcja, przyjmująca jako argumenty zmierzoną i wyestymowaną przez poszczególne algorytmy mapę głębi. Funkcja ta zwraca na wyjściu słownik z wynikami.
+W celu wyznaczenia wartości miar dokładności wykorzystana została poniższa funkcja, przyjmująca jako argument zmierzoną i wyestymowaną przez poszczególne algorytmy mapę głębi. Funkcja ta zwraca na wyjściu słownik z wynikami.
 
 \begin{lstlisting}[style=EEStyle,language=python,numbers=none,frame=none]
 def compute_errors(gt, pred):
@@ -44,7 +44,7 @@ Wykorzystana w niej funkcja \textit{get\_error\_mask} odpowiada za dobranie mask
 
 \textbf{Szybkość działania} - czas potrzebny przez algorytm na wygenerowanie mapy głębi dla pojedynczego obrazu. Szybkość jest istotnym czynnikiem zwłaszcza w aplikacjach czasu rzeczywistego.
 
-\textbf{Zdolność generalizacji} - zdolność algorytmu do skutecznego przewidywania głębokości scen na nowych, nieznanych wcześniej danych testowych. Jest to istotne kryterium, które mierzy jak dobrze algorytm radzi sobie z różnymi scenariuszami i warunkami, nie tylko tymi na których był uczony.
+\textbf{Zdolność generalizacji} - zdolność algorytmu do skutecznego przewidywania głębokości scen na nowych, nieznanych wcześniej danych testowych. Jest to istotne kryterium, które mierzy, jak dobrze algorytm radzi sobie z różnymi scenariuszami i warunkami, nie tylko tymi, na których był uczony.
 
 \textbf{Wymagania sprzętowe} - rzeczywiste zużycie zasobów komputerowych (procesor i pamięć RAM oraz GPU RAM) podczas predykcji mapy głębi zmierzone narzędziami do monitoringu platformy Google Colab.
 

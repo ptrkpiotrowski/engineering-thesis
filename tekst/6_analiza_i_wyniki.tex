@@ -1,6 +1,6 @@
 \chapter{Analiza i wyniki}\label{chap:analiza_i_wyniki}
 
-W tym rozdziale przedstawiono szczegółową analizę oraz wyniki badań przeprowzadzonych w ramach przyjętej metodologii i kryteriów opisanych w rozdziale poprzednim. Przedstawione wyniki stanowią podstawę do sformułowania wniosków na temat charakterystyk badanych algorytmów oraz ich potencjalnych zastosowań w praktyce w dalszej części pracy. Dodatkowo, wnioski te mogą posłużyć jako wskazówki dla przyszłych badań nad optymalizacją i rozwijaniem algorytmów percepcji głębi, które będą w stanie sprostać coraz bardziej wymagającym zadaniom stawianym przez nowoczesne aplikacje wizyjne. W celu poprawienia przejrzystości analizy, na wykresach algorytmy testowane na zbiorze który brał udział w procesie uczenia zostały specjalnie oznaczone.
+W tym rozdziale przedstawiono szczegółową analizę oraz wyniki badań przeprowzadzonych w ramach przyjętej metodologii i kryteriów opisanych w rozdziale poprzednim. Przedstawione wyniki stanowią podstawę do sformułowania wniosków na temat charakterystyk badanych algorytmów oraz ich potencjalnych zastosowań w praktyce w dalszej części pracy. Dodatkowo wnioski te mogą posłużyć jako wskazówki dla przyszłych badań nad optymalizacją i rozwijaniem algorytmów percepcji głębi, które będą w stanie sprostać coraz bardziej wymagającym zadaniom stawianym przez nowoczesne aplikacje wizyjne. W celu poprawienia przejrzystości analizy, na wykresach algorytmy testowane na zbiorze, który brał udział w procesie uczenia, zostały specjalnie oznaczone.
 
 \section{Dokładność estymacji}
 \subsection{Dokładność progowa}
@@ -50,7 +50,7 @@ Dokładność progowa to miara używana do oceny wydajności estymacji głęboko
 \end{figure}
 
 \subsection{Średni procentowy błąd bezwzględny}
-Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie średniego bezwzględnego błedu estymacji \ref{eq:2}. Jest to metryka oznaczająca średnią procentową bezwzlęgną różnicę między wartościami, które są dopasowane przez algorytm, a wartościami danych rzeczywistych. Metryka ta uznawana jest za najbardziej uniwersalną, z tego powodu najczęściej występuje w publikacjach naukowych dotyczących omawianych algorytmów. W tym podrozdziale znajdują się wykresy sporządzone na podstawie wyników uruchomień algorytmów na założonych zestawach danych. Z uruchomienia na zestawie syntetycznych danych Virtual KITTI 2 został wyłączony algorytm AdelaiDepth, ze względu na bardzo niekorzystny wynik\footnote{Algorytm AdelaiDepth na wirtualnym zbiorze Virtual KITTI 2 uzyskał wynik powyżej 1000\% AbsRel}. Metoda ta została nauczona na zestawie danych przedstawiających sceny wyłącznie wewnętrzne i realistyczne, stąd aby zachować przejrzystość wizualizacji zdecydowano się na taki zabieg.
+Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie średniego bezwzględnego błedu estymacji \ref{eq:2}. Jest to metryka oznaczająca średnią procentową bezwzlęgną różnicę między wartościami, które są dopasowane przez algorytm, a wartościami danych rzeczywistych. Metryka ta uznawana jest za najbardziej uniwersalną, z tego powodu najczęściej występuje w publikacjach naukowych dotyczących omawianych algorytmów. W tym podrozdziale znajdują się wykresy sporządzone na podstawie wyników uruchomień algorytmów na założonych zestawach danych. Z uruchomienia na zestawie syntetycznych danych Virtual KITTI 2 został wyłączony algorytm AdelaiDepth, ze względu na bardzo niekorzystny wynik\footnote{Algorytm AdelaiDepth na wirtualnym zbiorze Virtual KITTI 2 uzyskał wynik powyżej 1000\% AbsRel}. Metoda ta została nauczona na zestawie danych przedstawiających sceny wyłącznie wewnętrzne i realistyczne, stąd, aby zachować przejrzystość wizualizacji zdecydowano się na taki zabieg.
 
 \begin{figure}[H]
     \centering
@@ -243,11 +243,11 @@ Algorytm AdelaiDepth oferuje instalację poprzez standardowy menadżer pakietów
 
 \subsection{SQLdepth}
 \subsubsection{Instalacja}
-W rejestrze zależności zostały przez autorów zawarte lokalne ścieżki do instalatorów pakietów. Należy samodzielnie zmodyfikować rzeczone wpisy aby poprawnie zainstalować pakiety.
+W rejestrze zależności zostały przez autorów zawarte lokalne ścieżki do instalatorów pakietów. Należy samodzielnie zmodyfikować rzeczone wpisy, aby poprawnie zainstalować pakiety.
 
 \subsection{Metric3D V2}
 \subsubsection{Preparowanie obrazu wejściowego}
-W procesie przygotowywania obrazu wejściowego do algorytmu Metric3D V2 należy zadbać o więcej kwestii niż w przypadku pozostałych algorytmów. Przede wszystkim należy przygotować i przeskalować dane dotyczące obiektywu którym wykonano fotografię. Szczególnie ważne są odległość ogniskowa i centralny punkt fotografii. Sam obraz należy przeskalować ale również nadać odpowiednie obramowanie zgodnie z instrukcjami w repozytorium projektu.
+W procesie przygotowywania obrazu wejściowego do algorytmu Metric3D V2 należy zadbać o więcej kwestii niż w przypadku pozostałych algorytmów. Przede wszystkim należy przygotować i przeskalować dane dotyczące obiektywu, którym wykonano fotografię. Szczególnie ważne są odległość ogniskowa i centralny punkt fotografii. Sam obraz należy przeskalować, ale również nadać odpowiednie obramowanie zgodnie z instrukcjami w repozytorium projektu.
 
 \subsection{MetaPrompt-SD oraz GCNDepth}
 \subsubsection{Instalacja}
