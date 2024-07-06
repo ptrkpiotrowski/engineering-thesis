@@ -23,7 +23,7 @@ Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przed
 Głównym założeniem autorów algorytmu MetaPrompt-SD \cite{wan2023} było wykorzystanie modeli dyfuzyjnych w zadaniach dotyczących komputerowej percepcji wizyjnej. Wynikowy model służy do estymacji głębi, segmentacji semantycznej i estymacji pozycji. Przykładowe estymacje przedstawia rys. \ref{fig:metaprompt-sd}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{10.jpg}
+    \includegraphics[width=0.8\textwidth]{10.jpg}
     \caption{Przykładowe wyniki działania modułu estymacji głębi MetaPrompt-SD. Źródło: \cite{wan2023}}
     \label{fig:metaprompt-sd}
 \end{figure}
@@ -59,23 +59,23 @@ Głównymi elementami architektury (rys. \ref{fig:evp-schema}) rozwiązania są 
 \end{table}
 
 \subsection{ZoeDepth}
-Opracowane rozwiązanie ZoeDepth \cite{bhat2023} skupia się na zachowaniu wydajności przy jednoczesnym użyciu metrycznej skali w wyrażaniu wynikowych predykcji głębi. Proponowany model wykorzystuje 12 różnych zbiorów danych treningowych zawierających głębię relatywną i dwóch zestawów zawierających głębię metryczną, co pozwala osiągnąć założony cel.
+Opracowane rozwiązanie ZoeDepth \cite{bhat2023} skupia się na zachowaniu wydajności przy jednoczesnym użyciu metrycznej skali w wyrażaniu wynikowych predykcji głębi. Proponowany model wykorzystuje 12 różnych zbiorów danych treningowych zawierających głębię względną i dwóch zestawów zawierających głębię metryczną, co pozwala osiągnąć założony cel.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{15.jpg}
     \caption{Schemat architektury algorytmu ZoeDepth. Źródło: \cite{bhat2023}}
     \label{fig:zoe-schema}
 \end{figure}
-Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) bazuje na rozwiązaniu o nazwie MiDaS \cite{ranftl2020}. Obraz wejściowy jest w pierwszej kolejności przetworzony przez ten właśnie algorytm. Wynik - głębia relatywna - jest dostarczany do modułu metrycznego, którego wynik stanowi z kolei wartość głębi metrycznej dla każdego pojedynczego piksela. Oba te wyniki kierowane są do sieci splotowej i w ten sposób uzyskiwany jest wynik ostateczny - głębia metryczna. Istnieje pięć gotowych przetrenowanych modeli, nazwanych według szablonu ZoeD-[zestaw pierwszy]-[zestaw drugi], gdzie zestawem pierwszym jest zestaw treningowy obrazów z głębią relatywną, a zestaw drugi zawiera obrazy z głębią metryczną. Litera "X" w miejscu zestawu pierwszego oznacza, że w celu uczenia modelu wykorzystany został jedynie zestaw drugi. Tabela \ref{fig:zoe-results} zawiera porównanie wyników na zestawie NYU-Depth v2.
+Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) jest oparta na rozwiązaniu o nazwie MiDaS \cite{ranftl2020}. Obraz wejściowy jest w pierwszej kolejności przetworzony przez ten właśnie algorytm. Wynik - głębia relatywna - jest dostarczany do modułu metrycznego, którego wynik stanowi z kolei wartość głębi metrycznej dla każdego pojedynczego piksela. Oba te wyniki kierowane są do sieci splotowej i w ten sposób uzyskiwany jest wynik ostateczny - głębia metryczna. Istnieje pięć gotowych przetrenowanych modeli, nazwanych według szablonu ZoeD-[zestaw pierwszy]-[zestaw drugi], gdzie zestawem pierwszym jest zestaw treningowy obrazów z głębią relatywną, a zestaw drugi zawiera obrazy z głębią metryczną. Litera "X" w miejscu zestawu pierwszego oznacza, że w celu uczenia modelu wykorzystany został jedynie zestaw drugi. Tabela \ref{fig:zoe-results} zawiera porównanie wyników na zestawie NYU-Depth v2.
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze NYU-Depth v2. Źródło: \cite{bhat2023}}
-    \includegraphics[width=0.60\textwidth]{16.jpg}
+    \includegraphics[width=0.75\textwidth]{16.jpg}
     \label{fig:zoe-results}
 \end{table}
 
 \subsection{UniDepth}
-Model o nazwie UniDepth \cite{piccinelli2024} został zaproponowany przez jego autorów naprzeciw ich tezie o niskim stopniu generalizacji konkurencyjnych modeli. W swojej publikacji twierdzą, że ówcześnie najlepsze pod względem osiąganych wyników modele do predykcji głębi weryfikowane są na zbiorach podobnych do uczących oraz często na tyle niewielkich, że wyniki osiągane na pojedynczych obrazach odbiegających od domeny zbiorów uczących są mniej zadowalające.
+Model o nazwie UniDepth \cite{piccinelli2024} został zaproponowany przez jego autorów w celu potwierdzenia ich tezy o niskim stopniu generalizacji konkurencyjnych modeli. W swojej publikacji twierdzą, że ówcześnie najlepsze pod względem osiąganych wyników modele do predykcji głębi weryfikowane są na zbiorach podobnych do uczących oraz często na tyle niewielkich, że wyniki osiągane na pojedynczych obrazach odbiegających od domeny zbiorów uczących są mniej zadowalające.
 Architektura sieci tego modelu (rys. \ref{fig:unidepth-schema}) składa się z trzech głównych modułów - kodera, kamery i głębi. Koder przetwarza obraz wejściowy do postaci cech, które następnie przesyłane są do kolejnych dwóch modułów. Może być zarówno oparty o sieć splotową jak i o transformator wizyjny ViT co ma pozwolić na elastyczne dopasowanie do potrzeb użytkownika. Moduł kamery odpowiada za generowanie reprezentacji, która jest następnie wykorzystywana do warunkowania cech głębi. Moduł głębi przyjmuje cechy z kodera i warunkuje je na podstawie informacji z modułu kamery, wykorzystując przy tym warstwę uwagi krzyżowej. Połączenie wyniku modułu kamery i modułu głębi to wynik działania całego algorytmu.
 \begin{figure}[H]
     \centering
@@ -99,7 +99,7 @@ Interesującą strategię rozwiązania przyjęli autorzy modelu Depth Anything V
     \caption{Depth Anything V2 w porównaniu z wersją pierwszą i modelem Marigold \cite{ke2024repurposing}. Źródło: \cite{yang2024depth}}
     \label{fig:depth-anything}
 \end{figure}
-W architekturze tego rozwiązania (rys. \ref{fig:depth-anything-schema}) zastosowano koder wyodrębniający cechy obrazu wejściowego przygotowany na podstawie DINOv2 \cite{oquab2024} oraz dekoder DPT do regresji głębi. W pierwszej kolejności model "nauczyciela" uczony jest na zestawie danych oznaczonych. Następnie model ten wykorzystywany jest w celu oznaczenia zbioru danych nieoznaczonych, który razem z zestawem danych oznaczonych weźmie udział w procesie uczenia modelu "ucznia".
+W architekturze tego rozwiązania (rys. \ref{fig:depth-anything-schema}) zastosowano koder wyodrębniający cechy obrazu wejściowego przygotowany na podstawie DINOv2 \cite{oquab2024} oraz dekoder DPT do regresji głębi. W pierwszej kolejności model „nauczyciela” uczony jest na zestawie danych oznaczonych. Następnie model ten wykorzystywany jest w celu oznaczenia zbioru danych nieoznaczonych, który razem z zestawem danych oznaczonych weźmie udział w procesie uczenia modelu „ucznia”.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{18.jpg}
@@ -121,8 +121,8 @@ Osiągane wyniki w porównaniach przeprowadzonych na zbiorach danych testowych (
 \end{table}
 
 \subsection{Metric3D V2}
-Metoda Metric3D V2 \cite{hu2024} adresuje dwa kluczowe problemy: estymację metrycznej głębokości i normalnych powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
-Głębokość metryczna pozwala na precyzyjne odwzorowanie rzeczywistego świata, podczas gdy normalne powierzchni zapewniają szczegółową geometrię lokalną. Ostateczny wynik powstaje dzięki dostosowaniu wyniku estymacji za pomocą danych dotyczących matrycy aparatu rejestrującego. 
+Metoda Metric3D V2 \cite{hu2024} odpowiada na dwa kluczowe problemy: estymację metrycznej głębokości i normalnych do powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
+Głębia metryczna pozwala na precyzyjne odwzorowanie rzeczywistego świata, podczas gdy normalne do powierzchni zapewniają szczegółową geometrię lokalną. Ostateczny wynik powstaje dzięki dostosowaniu wyniku estymacji za pomocą danych dotyczących matrycy aparatu rejestrującego. 
 
 Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zbiorów, które łącznie zawierają ponad 16 milionów obrazów. Zbiory te pochodzą z różnych typów scen, zarówno wewnętrznych jak i zewnętrznych, oraz obejmują różne modele kamer. Do testowania natomiast użyto zestawów danych 7 zestawów częściowo pokrywających się z zestawami uczącymi.
 
@@ -158,7 +158,7 @@ W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych -
 \end{table}
 
 \subsection{GCNDepth}
-Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% ilość trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębokości oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
+Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% liczbę trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębokości oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{29.jpg}
@@ -225,83 +225,49 @@ Podczas treningu model wykorzystuje pary stereo jako główne źródło nadzoru.
 
 
 \subsection{Podsumowanie}
-Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektury, charakterystykę zestawów uczących i charakterystykę wyników. Poniższa tabela zawiera krótkie podsumowanie.
+Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektury, charakterystykę zestawów uczących oraz zestawów do oceny. Poniższa tabela zawiera krótkie podsumowanie oraz deklarowane przez autorów wyniki średniego bezwzględnego błędu procentowego.
 \begin{table}[H]
     \centering
     \caption{Podsumowanie przedstawionych modeli percepcji głębi.}
     \vspace{0.1cm}
     \resizebox{\textwidth}{!}{%
-        \begin{tabular}{ |l|p{2cm}|p{2cm}|p{5cm}|p{5cm}|r| }
+        \begin{tabular}{ |l|p{2cm}|p{2cm}|p{5cm}|p{5cm}|p{2cm}| }
         \hline
-        Nazwa & Architektura & Sposób uczenia & Zestawy uczące & Zestawy do oceny \\
+        Nazwa & Architektura & Sposób uczenia & Zestawy uczące & Zestawy do oceny & AbsRel\\
         \hline \hline
-        AdelaiDepth \cite{dosovitskiy2020} &
-        rekurencyjna sieć neuronowa &
+        Metric3D V2 \cite{hu2024} &
+        W zależności od konfiguracji splotowa sieć neuronowa lub transformator. &
         nadzorowane &
-        \begin{itemize} 
+        \begin{itemize}
+            \item DDAD,
+            \item Lyft,
+            \item Driving Stereo (DS),
+            \item DIML,
+            \item Arogoverse2,
+            \item Cityscapes,
+            \item DSEC,
+            \item Mapillary PSD,
+            \item Pandaset,
+            \item UASOL,
+            \item Virtual KITTI,
+            \item Waymo,
+            \item Matterport3d,
             \item Taskonomy,
-            \item 3D Ken Burns, 
-            \item DIML, 
-            \item Holopix50K, 
-            \item HRWSI. 
-        \end{itemize} &
-        \begin{itemize} 
-            \item NYU depth V2,
+            \item Replica,
+            \item ScanNet,
+            \item HM3d,
+            \item Hypersim.
+        \end{itemize} & 
+        \begin{itemize}
+            \item NYU,
             \item KITTI,
             \item ScanNet,
-            \item DIODE,
+            \item NuScenes (NS),
             \item ETH3D,
-            \item Sintel,
-            \item OASIS,
-            \item YouTube3D,
-            \item RedWeb,
-            \item iBims-1. 
-        \end{itemize}\\
-        \hline
-        MetaPrompt-SD \cite{wan2023} &
-        splotowa sieć neuronowa &
-        nadzorowane &
-        \begin{itemize} 
-            \item NYU depth V2,
-            \item KITTI.
-        \end{itemize} & 
-        Zestawy tożsame z uczącymi.\\
-        \hline
-        EVP \cite{lavreniuk2023} &
-        splotowa sieć neuronowa &
-        nadzorowane &
-        \begin{itemize} 
-            \item NYU depth V2,
-            \item KITTI.
-        \end{itemize} & 
-        Zestawy tożsame z uczącymi.\\
-        \hline
-        ZoeDepth \cite{bhat2023} &
-        splotowa sieć neuronowa &
-        nadzorowane i częściowo nadzorowane &
-        \begin{itemize} 
-            \item NYU depth V2,
-            \item KITTI,
-            \item HRWSI,
-            \item BlendedMVS,
-            \item ReDWeb,
-            \item DIML-Indoor,
-            \item 3D Movies,
-            \item MegaDepth,
-            \item WSVD,
-            \item TartanAir,
-            \item ApolloScape,
-            \item IRS.
-        \end{itemize} & 
-        \begin{itemize} 
-            \item SUN RGB-D,
-            \item iBims,
             \item DIODE,
-            \item HyperSim,
-            \item DDAD,
-            \item DIML,
-            \item Virtual KITTI 2.
-        \end{itemize}\\
+            \item iBims-1.
+        \end{itemize} &
+        3,9\% (na zbiorze KITTI)\\
         \hline
         UniDepth \cite{piccinelli2024} &
         W zależności od konfiguracji splotowa sieć neuronowa lub transformator. &
@@ -328,18 +294,8 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item DDAD,
             \item NYU-Depth V2,
             \item KITTI.
-        \end{itemize}\\
-        \hline
-        \end{tabular}%
-    }
-    \label{tabela_podsumowanie_algorytmy}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \vspace{0.1cm}
-    \resizebox{\textwidth}{!}{%
-        \begin{tabular}{ |l|p{2cm}|p{3cm}|p{5cm}|p{5cm}|r| }
+        \end{itemize} &
+        4,2\% (na zbiorze KITTI)\\
         \hline
         Depth Anything V2 \cite{yang2024depth} &
         transormator &
@@ -383,40 +339,128 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
                 \item Virtual KITTI 2,
                 \item DIODE Outdoor.
             \end{itemize}
-        \end{itemize}\\
+        \end{itemize} &
+        4,6\% (na zbiorze KITTI)\\
         \hline
-        Metric3D V2 \cite{hu2024} &
-        W zależności od konfiguracji splotowa sieć neuronowa lub transformator. &
+        \end{tabular}%
+    }
+    \label{tabela_podsumowanie_algorytmy}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \vspace{0.1cm}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{ |l|p{2cm}|p{3cm}|p{5cm}|p{5cm}|p{2cm}| }
+        \hline
+        MetaPrompt-SD \cite{wan2023} &
+        splotowa sieć neuronowa &
         nadzorowane &
+        \begin{itemize} 
+            \item NYU depth V2,
+            \item KITTI.
+        \end{itemize} & 
+        Zestawy tożsame z uczącymi. &
+        4,7\% (na zbiorze KITTI)\\
+        \hline
+        SQLdepth \cite{wang2023sqldepth} &
+        splotowa sieć neuronowa &
+        nienadzorowane &
         \begin{itemize}
-            \item DDAD,
-            \item Lyft,
-            \item Driving Stereo (DS),
-            \item DIML,
-            \item Arogoverse2,
-            \item Cityscapes,
-            \item DSEC,
-            \item Mapillary PSD,
-            \item Pandaset,
-            \item UASOL,
-            \item Virtual KITTI,
-            \item Waymo,
-            \item Matterport3d,
-            \item Taskonomy,
-            \item Replica,
-            \item ScanNet,
-            \item HM3d,
-            \item Hypersim.
+            \item KITTI
         \end{itemize} & 
         \begin{itemize}
-            \item NYU,
+            \item KITTI,
+            \item Cityscapes,
+            \item Make3D.
+        \end{itemize} &
+        5,2\% (na zbiorze KITTI)\\
+        \hline
+        EVP \cite{lavreniuk2023} &
+        splotowa sieć neuronowa &
+        nadzorowane &
+        \begin{itemize} 
+            \item NYU depth V2,
+            \item KITTI.
+        \end{itemize} & 
+        Zestawy tożsame z uczącymi. &
+        6,1\% (na zbiorze NYUv2)\\
+        \hline
+        ZoeDepth \cite{bhat2023} &
+        splotowa sieć neuronowa &
+        nadzorowane i częściowo nadzorowane &
+        \begin{itemize} 
+            \item NYU depth V2,
+            \item KITTI,
+            \item HRWSI,
+            \item BlendedMVS,
+            \item ReDWeb,
+            \item DIML-Indoor,
+            \item 3D Movies,
+            \item MegaDepth,
+            \item WSVD,
+            \item TartanAir,
+            \item ApolloScape,
+            \item IRS.
+        \end{itemize} & 
+        \begin{itemize} 
+            \item SUN RGB-D,
+            \item iBims,
+            \item DIODE,
+            \item HyperSim,
+            \item DDAD,
+            \item DIML,
+            \item Virtual KITTI 2.
+        \end{itemize} &
+        7,5\% (na zbiorze NYUv2)\\
+        \hline
+        AdelaiDepth \cite{dosovitskiy2020} &
+        rekurencyjna sieć neuronowa &
+        nadzorowane &
+        \begin{itemize} 
+            \item Taskonomy,
+            \item 3D Ken Burns, 
+            \item DIML, 
+            \item Holopix50K, 
+            \item HRWSI. 
+        \end{itemize} &
+        \begin{itemize} 
+            \item NYU depth V2,
             \item KITTI,
             \item ScanNet,
-            \item NuScenes (NS),
-            \item ETH3D,
             \item DIODE,
-            \item iBims-1.
-        \end{itemize}\\
+            \item ETH3D,
+            \item Sintel,
+            \item OASIS,
+            \item YouTube3D,
+            \item RedWeb,
+            \item iBims-1. 
+        \end{itemize} &
+        9,0\% (na zbiorze NYUv2)\\
+        \hline
+        GCNDepth \cite{masoumian2021gcndepth} &
+        grafowa i rekurencyjna sieć neuronowa &
+        nienadzorowane &
+        \begin{itemize}
+            \item KITTI
+        \end{itemize} & 
+        \begin{itemize}
+            \item KITTI,
+            \item Make3D.
+        \end{itemize} &
+        10,4\% (na zbiorze KITTI)\\
+        \hline
+        IndoorDepth \cite{fan2023deeper} &
+        splotowa sieć neuronowa &
+        nienadzorowane &
+        \begin{itemize}
+            \item NYUv2
+        \end{itemize} & 
+        \begin{itemize}
+            \item NYUv2,
+            \item ScanNet.
+        \end{itemize} & 
+        12,6\% (na zbiorze NYUv2)\\
         \hline
         DistDepth \cite{wu2022practical} &
         splotowa sieć neuronowa i transformator &
@@ -429,18 +473,8 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item VA,
             \item NYUv2,
             \item Hypersim.
-        \end{itemize}\\
-        \hline
-        GCNDepth \cite{masoumian2021gcndepth} &
-        grafowa i rekurencyjna sieć neuronowa &
-        nienadzorowane &
-        \begin{itemize}
-            \item KITTI
-        \end{itemize} & 
-        \begin{itemize}
-            \item KITTI,
-            \item Make3D.
-        \end{itemize}\\
+        \end{itemize} &
+        13,0\% (na zbiorze NYUv2)\\
         \hline
         M4Depth \cite{fonder2023technique} &
         splotowa sieć neuronowa &
@@ -452,30 +486,8 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
             \item Mid-Air,
             \item KITTI,
             \item TartanAir.
-        \end{itemize}\\
-        \hline
-        IndoorDepth \cite{fan2023deeper} &
-        splotowa sieć neuronowa &
-        nienadzorowane &
-        \begin{itemize}
-            \item NYUv2
-        \end{itemize} & 
-        \begin{itemize}
-            \item NYUv2,
-            \item ScanNet.
-        \end{itemize}\\
-        \hline
-        SQLdepth \cite{wang2023sqldepth} &
-        splotowa sieć neuronowa &
-        nienadzorowane &
-        \begin{itemize}
-            \item KITTI
-        \end{itemize} & 
-        \begin{itemize}
-            \item KITTI,
-            \item Cityscapes,
-            \item Make3D.
-        \end{itemize}\\
+        \end{itemize} &
+        25,6\% (na zbiorze TartanAir)\\
         \hline
         \end{tabular}%
     }
@@ -484,7 +496,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
 
 \section{Zbiory danych}
 \subsection{KITTI (Karlsruhe Institute of Technology and Toyota Technological Institute)}
-Wiodącym zestawem danych używanym do trenowania i oceny algorytmów percepcji głębi jest opracowany przez niemiecki Instytut Technologii Karlsruhe'a oraz amerykański Instytut Technologii Toyota zbiór KITTI\footnote{Nazwa KITTI jest skrótem nazw instytutów, przez które zbiór został opracowany.} \cite{geiger2012}. Zawiera on 93 tysiące obrazów RGBD zarejestrowanych przy pomocy autorskiej platformy jezdnej Annieway (rys. \ref{fig:kitti-annieway-example}) składającej się z lasera firmy Velodyne \cite{Velodyne}, kamer kolorowych i monochromatycznych oraz systemu GPS zamontowanych na samochodzie osobowym. Obrazy należące do tego zbioru podzielone zostały na pięć kategorii: drogi, miasta, osiedla, kampus i osoby. Prezentują one zatem sceny zewnętrzne.
+Wiodącym zestawem danych używanym do trenowania i oceny algorytmów percepcji głębi jest opracowany przez niemiecki Instytut Technologii Karlsruhe oraz amerykański Instytut Technologii Toyota zbiór KITTI\footnote{Nazwa KITTI jest skrótem nazw instytutów, przez które zbiór został opracowany.} \cite{geiger2012}. Zawiera on 93 tysiące obrazów RGBD zarejestrowanych przy pomocy autorskiej platformy jezdnej Annieway (rys. \ref{fig:kitti-annieway-example}) składającej się z lasera firmy Velodyne \cite{Velodyne}, kamer kolorowych i monochromatycznych oraz systemu GPS zamontowanych na samochodzie osobowym. Obrazy należące do tego zbioru podzielone zostały na pięć kategorii: drogi, miasta, osiedla, kampus i osoby. Prezentują one zatem sceny zewnętrzne.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{23.jpg}
@@ -494,7 +506,7 @@ Wiodącym zestawem danych używanym do trenowania i oceny algorytmów percepcji 
 \end{figure}
 
 \subsection{NYUv2 (NYU-Depth V2)}
-Drugim najczęściej wykorzystywanym zestawem obrazów jest NYUv2 przedstawiony w 2012 r. w \cite{couprie2013}. Zestaw ten składa się z 407024 obrazów RGB z odpowiadającymi im mapami głębi przygotowanymi przy użyciu urządzenia Microsoft Kinect. Autorzy skategoryzowali obrazy w zbiorze na następujące kategorie: piwnice, łazienki, sypialnie, księgarnia, kawiarnia, salony, jadalnie, sklepy meblowe, biura, kuchnie, biblioteki, bawialnie i inne. Obrazy przygotowane przez autorów NYUv2 przedstawiają wyłącznie sceny wewnątrz budynków. Niniejszy zestaw jest również wykorzystywany w dziedzinie segmentacji obrazu ze względu na przygotowane oznaczenie obrazów. Przykładową scenę z mapą głębi i segmentacją umieszczono na rys. \ref{fig:nyuv2-example}.
+Drugim najczęściej wykorzystywanym zestawem obrazów jest NYUv2 przedstawiony w 2012 r. w \cite{couprie2013}. Zestaw ten składa się z 407024 obrazów RGB z odpowiadającymi im mapami głębi przygotowanymi przy użyciu urządzenia Microsoft Kinect. Autorzy skategoryzowali obrazy w zbiorze na następujące kategorie: piwnice, łazienki, sypialnie, księgarnia, kawiarnia, salony, jadalnie, sklepy meblowe, biura, kuchnie, biblioteki, bawialnie i inne. Obrazy przygotowane przez autorów NYUv2 przedstawiają wyłącznie sceny wewnątrz budynków. Zestaw ten jest również wykorzystywany w dziedzinie segmentacji obrazu ze względu na przygotowane oznaczenie obrazów. Przykładową scenę z mapą głębi i segmentacją umieszczono na rys. \ref{fig:nyuv2-example}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{38.jpg}
@@ -503,11 +515,11 @@ Drugim najczęściej wykorzystywanym zestawem obrazów jest NYUv2 przedstawiony 
 \end{figure}
 
 \subsection{DIODE (Dense Indoor and Outdoor Depth)}
-Zbiór DIODE \cite{vasiljevic2019} jest wyjątkowy na tle konkurencji przez wzgląd na różnorodność scen. Jest bowiem pierwszym publicznie dostępnym zestawem obrazów prezentujących sceny zewnętrzne i wewnętrzne. Większa różnorodność scen pozwala na uzyskanie lepszych wyników na płaszczyźnie generalizacji modeli percepcji głębi. Na ten zbiór składa się 8574 obrazów scen wewnętrznych oraz 16884 obrazy scen zewnętrznych zarejestrowanych za pomocą tego samego urządzenia - skanera FARO Focus S350. Rysunek \ref{fig:diode-example} zawiera przykładowe sceny z zestawu. Przygotowane przez twórców zbioru porównanie z podobnymi zestawami (rys. \ref{fig:diode-comparison}) wskazuje na wysoką dokładność i zasięg zastosowanej aparatury.
+Zbiór DIODE \cite{vasiljevic2019} jest wyjątkowy na tle konkurencji przez wzgląd na różnorodność scen. Jest bowiem pierwszym publicznie dostępnym zestawem obrazów prezentujących sceny zewnętrzne i wewnętrzne. Większa różnorodność scen pozwala na uzyskanie lepszych wyników na płaszczyźnie generalizacji modeli percepcji głębi. Na ten zbiór składa się 8574 obrazy scen wewnętrznych oraz 16884 obrazy scen zewnętrznych zarejestrowanych za pomocą tego samego urządzenia - skanera FARO Focus S350. Rysunek \ref{fig:diode-example} zawiera przykładowe sceny z zestawu. Przygotowane przez twórców zbioru porównanie z podobnymi zestawami (rys. \ref{fig:diode-comparison}) wskazuje na wysoką dokładność i zasięg zastosowanej aparatury.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{39.jpg}
-    \caption{Przykładowe obrazy z głębią i normalnymi powierzchni. Źródło: \cite{vasiljevic2019}}
+    \caption{Przykładowe obrazy z głębią i normalnymi do powierzchni. Źródło: \cite{vasiljevic2019}}
     \label{fig:diode-example}
 \end{figure}
 \begin{table}[H]
@@ -527,7 +539,7 @@ Głównym założeniem zestawu SUN RGB-D \cite{song2015} jest dostarczenie danyc
 \end{figure}
 
 \subsection{Matterport3D}
-W 2017 r. firma Matterport zaprezentowała zestaw danych nazwany Matterport3D \cite{chang2017} przygotowany przy pomocy autorskiego urządzenia rejestrującego. Zestaw składa się z 10800 zdjęć panoramicznych złożonych z 194400 obrazów z odpowiadającą im mapą głębi. Zdjęcia w zbiorze przedstawiają 90 scen przedstawiających wnętrza budynków. Obrazy i modele wchodzące w skład zbioru przedstawia rysunek \ref{fig:matterport3d-example}.
+W 2017 r. firma Matterport zaprezentowała zestaw danych nazwany Matterport3D \cite{chang2017} przygotowany przy pomocy autorskiego urządzenia rejestrującego. Zestaw składa się z 10800 zdjęć panoramicznych złożonych z 194400 obrazów z odpowiadającą im mapą głębi. Zdjęcia w zbiorze zawierają 90 scen przedstawiających wnętrza budynków. Obrazy i modele wchodzące w skład zbioru przedstawia rysunek \ref{fig:matterport3d-example}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{41.jpg}
@@ -576,7 +588,7 @@ Rysunek \ref{fig:vkitti-example} prezentuje przykładową scenę z zestawu Virtu
 \end{figure}
 
 \subsection{Taskonomy}
-Zestaw Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} zawiera cztery miliony komputerowo wygenerowanych obrazów oznaczonych za pomocą danych z dwudziestu sześciu różnych dziedzin widzenia komputerowego. Poza mapami głębi zestaw zawiera również dane dotyczące normalnych powierzchni, krawędzi obiektów czy segmentacji semantycznej. Tak bogate oznaczenia powodują, że rozwiązanie to jest często wykorzystywane jako główny zestaw uczący wielu modeli z kategorii widzenia komputerowego. Podobnie jak w przypadku Virtual KITTI 2 oznaczenia są maksymalnie dokładne ze względu na brak ograniczeń sprzętowych i pozostałych uwarunkowań wynikających z fizycznej rejestracji danych. Jeden z obrazów ze zbioru Taskonomy został przedstawiony na rysunku \ref{fig:taskonomy-example}.
+Zestaw Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} zawiera cztery miliony komputerowo wygenerowanych obrazów oznaczonych za pomocą danych z dwudziestu sześciu różnych dziedzin widzenia komputerowego. Poza mapami głębi zestaw zawiera również dane dotyczące normalnych do powierzchni, krawędzi obiektów czy segmentacji semantycznej. Tak bogate oznaczenia powodują, że rozwiązanie to jest często wykorzystywane jako główny zestaw uczący wielu modeli z kategorii widzenia komputerowego. Podobnie jak w przypadku Virtual KITTI 2 oznaczenia są maksymalnie dokładne ze względu na brak ograniczeń sprzętowych i pozostałych uwarunkowań wynikających z fizycznej rejestracji danych. Jeden z obrazów ze zbioru Taskonomy został przedstawiony na rysunku \ref{fig:taskonomy-example}.
 
 \begin{figure}[H]
     \centering
@@ -586,7 +598,7 @@ Zestaw Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} zawiera czte
 \end{figure}
 
 \subsection{Podsumowanie}
-Przedstawione w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
+Opisane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
 \begin{table}[H]
     \centering
     \caption{Podsumowanie przedstawionych zbiorów danych używanych przez algorytmy percepcji głębi.}

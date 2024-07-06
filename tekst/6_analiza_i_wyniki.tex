@@ -4,7 +4,7 @@ W tym rozdziale przedstawiono szczegółową analizę oraz wyniki badań przepro
 
 \section{Dokładność estymacji}
 \subsection{Dokładność progowa}
-Dokładność progowa to miara używana do oceny wydajności estymacji głębokości przez modele sztucznej inteligencji. Mierzy ona odsetek oszacowań głębokości, które mieszczą się w określonym z góry progu względem wartości rzeczywistych. Konkretnie, oblicza procent przewidywanych głębokości, które spełniają warunek przedstawiony we wzorze \ref{eq:4}. Metryka ta jest szczególnie użyteczna do oceny, jak blisko przewidywane głębokości są do wartości zmierzonych w określonym poziomie tolerancji. Założony podczas niniejszej analizy progi to $1,25$ oraz kwadrat i sześcian tej wartości. Pozwoli to na bardziej szczegółową ocenę modeli w sytuacjach, gdzie dokładne wartości są trudne do przewidzenia, ale bliskie przybliżenia są nadal wartościowe. Każda z analizowanych metod została uruchomiona na siedmiu zbiorach danych opisanych w rozdziale \ref{chap:przedstawienie_zastosowanych_narzędzi}, wyniki uruchomień zostały zestawione z rzeczywistymi mapami głębi, a następnie wyliczone zostały dokładności progowe, które zaprezentowane zostały poprzez wykresy znajdujące się na następnych stronach.
+Dokładność progowa to miara używana do oceny wydajności estymacji głębokości przez modele sztucznej inteligencji. Mierzy ona odsetek oszacowań głębokości, które mieszczą się w określonym z góry progu względem wartości rzeczywistych. Konkretnie, oblicza procent przewidywanych głębokości, które spełniają warunek przedstawiony we wzorze \ref{eq:4}. Metryka ta jest szczególnie użyteczna do oceny, jak blisko przewidywane głębokości są do wartości zmierzonych w określonym poziomie tolerancji. Założony podczas niniejszej analizy progi to $1,25$ oraz kwadrat i sześcian tej wartości. Pozwoli to na bardziej szczegółową ocenę modeli w sytuacjach, gdzie dokładne wartości są trudne do przewidzenia, ale bliskie przybliżenia są nadal wartościowe. Każda z analizowanych metod została uruchomiona na siedmiu zbiorach danych opisanych w rozdziale \ref{chap:przedstawienie_zastosowanych_narzędzi}, wyniki uruchomień zostały zestawione z rzeczywistymi mapami głębi, a następnie wyliczone zostały dokładności progowe, które zaprezentowane zostały poprzez wykresy znajdujące się na następnych stronach (rysunki \ref{fig:delta_0} - \ref{fig:delta_6}).
 
 \begin{figure}[H]
     \centering
@@ -50,7 +50,7 @@ Dokładność progowa to miara używana do oceny wydajności estymacji głęboko
 \end{figure}
 
 \subsection{Średni procentowy błąd bezwzględny}
-Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie średniego bezwzględnego błedu estymacji \ref{eq:2}. Jest to metryka oznaczająca średnią procentową bezwzlęgną różnicę między wartościami, które są dopasowane przez algorytm, a wartościami danych rzeczywistych. Metryka ta uznawana jest za najbardziej uniwersalną, z tego powodu najczęściej występuje w publikacjach naukowych dotyczących omawianych algorytmów. W tym podrozdziale znajdują się wykresy sporządzone na podstawie wyników uruchomień algorytmów na założonych zestawach danych. Z uruchomienia na zestawie syntetycznych danych Virtual KITTI 2 został wyłączony algorytm AdelaiDepth, ze względu na bardzo niekorzystny wynik\footnote{Algorytm AdelaiDepth na wirtualnym zbiorze Virtual KITTI 2 uzyskał wynik powyżej 1000\% AbsRel}. Metoda ta została nauczona na zestawie danych przedstawiających sceny wyłącznie wewnętrzne i realistyczne, stąd, aby zachować przejrzystość wizualizacji zdecydowano się na taki zabieg.
+Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie średniego bezwzględnego błedu estymacji, opisanego równaniem \ref{eq:2}. Jest to metryka oznaczająca średnią procentową bezwzględną różnicę między wartościami, które są dopasowane przez algorytm, a wartościami danych rzeczywistych. Metryka ta uznawana jest za najbardziej uniwersalną, z tego powodu najczęściej występuje w publikacjach naukowych dotyczących omawianych algorytmów. W tym podrozdziale znajdują się wykresy sporządzone na podstawie wyników uruchomień algorytmów na założonych zestawach danych (rysunki \ref{fig:absrel_0} - \ref{fig:absrel_6}). Z uruchomienia na zestawie syntetycznych danych Virtual KITTI 2 został wyłączony algorytm AdelaiDepth, ze względu na bardzo niekorzystny wynik\footnote{Algorytm AdelaiDepth na wirtualnym zbiorze Virtual KITTI 2 uzyskał wynik powyżej 1000\% AbsRel}. Metoda ta została nauczona na zestawie danych przedstawiających sceny wyłącznie wewnętrzne i realistyczne, stąd, aby zachować przejrzystość wizualizacji zdecydowano się na taki zabieg.
 
 \begin{figure}[H]
     \centering
@@ -96,7 +96,7 @@ Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie �
 \end{figure}
 
 \subsection{Pierwiastek błędu średniokwadratowego}
-Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwiastek błędu średniokwadratowego \ref{eq:3}. Oznacza on średnią różnicę między wartością przewidywaną a rzeczywistą na obrazach z danego zbioru danych, z czego wynika rzetelne odzwierciedlenie dokładności algorytmu. Jest to natomiast metryka bardziej bezwzględna niż wartość średniego procentowego błędu bezwzględnego. Wyniki analizy przedstawiają następujące wykresy.
+Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwiastek błędu średniokwadratowego \ref{eq:3}. Oznacza on średnią różnicę między wartością przewidywaną a rzeczywistą na obrazach z danego zbioru danych, z czego wynika rzetelne odzwierciedlenie dokładności algorytmu. Jest to natomiast metryka bardziej bezwzględna niż wartość średniego procentowego błędu bezwzględnego. Wyniki analizy przedstawiają następujące wykresy (rysunki \ref{fig:rmse_0} - \ref{fig:rmse_6}).
 
 \begin{figure}[H]
     \centering
@@ -143,7 +143,7 @@ Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwi
 
 
 \section{Czas realizacji pojedynczej estymacji}
-Podczas analizy algorytmów w dziedzinie ich dokładności zostały również zebrane informacje na temat czasu wymaganego przez algorytm do wykonania estymacji głębi na pojedynczym obrazie. W czas ten wlicza się wczytanie obrazu, dokonanie predykcji i ewentualne skalowanie mapy głębi (w zależności od algorytmu). Uśrednione wyniki przedstawione zostały w postaci wykresów następujących na następnych stronach rozdziału.
+Podczas analizy algorytmów w dziedzinie ich dokładności zostały również zebrane informacje na temat czasu wymaganego przez algorytm do wykonania estymacji głębi na pojedynczym obrazie. W czas ten wlicza się wczytanie obrazu, dokonanie predykcji i ewentualne skalowanie mapy głębi (w zależności od algorytmu). Uśrednione wyniki przedstawione zostały w postaci wykresów następujących na następnych stronach rozdziału (rysunki \ref{fig:exec_time_0} - \ref{fig:exec_time_6}).
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/0}
@@ -188,7 +188,7 @@ Podczas analizy algorytmów w dziedzinie ich dokładności zostały również ze
 \end{figure}
 
 \section{Wymagania systemowe}
-W trakcie analizy algorytmów zostały zarejestrowane szczytowe wartości zużytych zasobów systemu komputerowego udostępnionego przez platformę Google Colab. W tym celu zostały wykorzystane wbudowane narzędzia analityczne platformy. Zapisane wartości uwzględniają pamięć o dostępnie swobodnym (RAM), pamięć karty graficznej (GPU RAM) oraz zajętość przestrzeni dyskowej (HDD). Najwyższa wartość w każdej z kolumn została oznaczona grubszą czcionką, druga najwyższa podkreśleniem.
+W trakcie analizy algorytmów zostały zarejestrowane szczytowe wartości zużytych zasobów systemu komputerowego udostępnionego przez platformę Google Colab. W tym celu zostały wykorzystane wbudowane narzędzia analityczne platformy. Zapisane wartości uwzględniają pamięć o dostępnie swobodnym (RAM), pamięć karty graficznej (GPU RAM) oraz zajętość przestrzeni dyskowej (HDD). Dane wykorzystania zasobów przedstawiono w postaci tabeli \ref{tabela_wymagania}. Najwyższa wartość w każdej z kolumn została oznaczona grubszą czcionką, druga najwyższa podkreśleniem.
 
 \begin{table}[H]
     \centering
