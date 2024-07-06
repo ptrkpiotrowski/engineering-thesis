@@ -23,7 +23,7 @@ Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przed
 Głównym założeniem autorów algorytmu MetaPrompt-SD \cite{wan2023} było wykorzystanie modeli dyfuzyjnych w zadaniach dotyczących komputerowej percepcji wizyjnej. Wynikowy model służy do estymacji głębi, segmentacji semantycznej i estymacji pozycji. Przykładowe estymacje przedstawia rys. \ref{fig:metaprompt-sd}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{10.jpg}
+    \includegraphics[width=0.7\textwidth]{10.jpg}
     \caption{Przykładowe wyniki działania modułu estymacji głębi MetaPrompt-SD. Źródło: \cite{wan2023}}
     \label{fig:metaprompt-sd}
 \end{figure}
@@ -34,7 +34,7 @@ Podstawą architektury (rys. \ref{fig:metaprompt-sd-schema}) jest koder VQVAE \c
     \caption{Schemat architektury algorytmu MetaPrompt-SD. Źródło: \cite{wan2023}}
     \label{fig:metaprompt-sd-schema}
 \end{figure}
-Dla percepcji głębi jako zestawy uczące wykorzystane zostały obrazy scen wewnętrznych i zewnętrznych pochodzące ze zbiorów NYU depth V2 oraz KITTI. W sumie stanowi to prawie 95 tysięcy par map głębi z odpowiadającymi im obrazami RGB pochodzącymi z urządzenia LiDAR firmy Velodyne oraz Microsoft Kinect. Tabela \ref{fig:metaprompt-sd-results} zawiera zestawienie wyników w porównaniu z podobnymi rozwiązaniami.
+Dla percepcji głębi jako zestawy uczące wykorzystane zostały obrazy scen wewnętrznych i zewnętrznych pochodzące ze zbiorów NYU depth V2 oraz KITTI. W sumie stanowi to prawie 95 tysięcy par map głębi z odpowiadającymi im obrazami RGB pochodzącymi z urządzenia LiDAR firmy Velodyne oraz Microsoft Kinect. Tabela \ref{fig:metaprompt-sd-results} zawiera zestawienie wyników dokładności progowej, pierwiastka błędu średniokwadratowego oraz średniego błędu bezwzględnego, w porównaniu z podobnymi rozwiązaniami.
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na dwóch zestawach danych. Źródło: \cite{wan2023}}
@@ -54,7 +54,7 @@ Głównymi elementami architektury (rys. \ref{fig:evp-schema}) rozwiązania są 
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze KITTI. Źródło: \cite{lavreniuk2023}}
-    \includegraphics[width=1\textwidth]{14.jpg}
+    \includegraphics[width=0.95\textwidth]{14.jpg}
     \label{fig:evp-results}
 \end{table}
 
@@ -70,7 +70,7 @@ Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) jest oparta na rozwi
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze NYU-Depth v2. Źródło: \cite{bhat2023}}
-    \includegraphics[width=0.75\textwidth]{16.jpg}
+    \includegraphics[width=0.6\textwidth]{16.jpg}
     \label{fig:zoe-results}
 \end{table}
 
@@ -203,7 +203,7 @@ Do trenowania modelu użyto zestawu danych NYUv2, składającego się z 47 tysi�
 \begin{table}[H]
     \centering
     \caption{Porównanie wyników działania metod nauczonych na zbiorze NYUv2. Testy wykonane zostały na zestawie ScanNet. Źródło: \cite{fan2023deeper}}
-    \includegraphics[width=0.9\textwidth]{34.jpg}
+    \includegraphics[width=0.95\textwidth]{34.jpg}
     \label{fig:indoordepth-results}
 \end{table}
 
