@@ -14,8 +14,8 @@ Zaprojektowany w 2020 r. model AdelaiDepth \cite{yin2020} przygotowany został g
 Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to nawracająca sieć neuronowa ResNet \cite{he2015} stanowiąca rodzaj konwolucyjnej sieci neuronowej z dekoderem. W celu nauczenia sieci wykorzystane zostało sumarycznie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych za pomocą urządzeń fizycznych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LIDAR ale też niskiej jakości nagrania. Poniższa tabela \ref{fig:adelaidepth-results} obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
 \begin{table}[H]
     \centering
-    \includegraphics[width=1\textwidth]{9.jpg}
     \caption{Porównanie osiąganych wyników przeprowadzone na ośmiu zestawach danych nieuczestniczących w procesie uczenia. Źródło: \cite{yin2020}}
+    \includegraphics[width=1\textwidth]{9.jpg}
     \label{fig:adelaidepth-results}
 \end{table}
 
@@ -37,8 +37,8 @@ Podstawą architektury (rys. \ref{fig:metaprompt-sd-schema}) jest koder VQVAE \c
 Dla percepcji głębi jako zestawy uczące wykorzystane zostały obrazy scen wewnętrznych i zewnętrznych pochodzące ze zbiorów NYU depth V2 oraz KITTI. W sumie stanowi to prawie 95 tysięcy par map głębi z odpowiadającymi im obrazami RGB pochodzącymi z urządzenia LIDAR firmy Velodyne oraz Microsoft Kinect. Tabela \ref{fig:metaprompt-sd-results} zawiera zestawienie wyników w porównaniu z podobnymi rozwiązaniami.
 \begin{table}[H]
     \centering
-    \includegraphics[width=1\textwidth]{12.jpg}
     \caption{Porównanie osiąganych wyników przeprowadzone na dwóch zestawach danych. Źródło: \cite{wan2023}}
+    \includegraphics[width=1\textwidth]{12.jpg}
     \label{fig:metaprompt-sd-results}
 \end{table}
 
@@ -53,8 +53,8 @@ Metoda o nazwie EVP \cite{lavreniuk2023} (od ang. Enhanced Visual Perception) je
 Głównymi elementami architektury (rys. \ref{fig:evp-schema}) rozwiązania są koder obrazu wejściowego, sieć wyodrębniająca cechy UNet oraz wyspecjalizowany w kierunku odpowiedniego zadania dekoder. Metoda jest bowiem w stanie wykonać predykcję głębi, jak również dokonać segmentacji semantycznej. Rozwiązanie to zostało wytrenowane przy użyciu zestawów NYU Depth v2 - konkretnie na podzbiorze 50 tysięcy obrazów oraz KITTI - na podzbiorze 26 tysięcy obrazów. Autorzy dokonali porównania rezultatów osiąganych na zbiorze testowym zestawu KITTI - przedstawia je poniższa tabela (rys. \ref{fig:evp-results}).
 \begin{table}[H]
     \centering
-    \includegraphics[width=1\textwidth]{14.jpg}
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze KITTI. Źródło: \cite{lavreniuk2023}}
+    \includegraphics[width=1\textwidth]{14.jpg}
     \label{fig:evp-results}
 \end{table}
 
@@ -69,8 +69,8 @@ Opracowane rozwiązanie ZoeDepth \cite{bhat2023} skupia się na zachowaniu wydaj
 Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) bazuje na rozwiązaniu o nazwie MiDaS \cite{ranftl2020}. Obraz wejściowy jest w pierwszej kolejności przetworzony przez ten właśnie algorytm. Wynik - głębia relatywna - jest dostarczany do modułu metrycznego, którego wynik stanowi z kolei wartość głębi metrycznej dla każdego pojedynczego piksela. Oba te wyniki kierowane są do sieci konwolucyjnej i w ten sposób uzyskiwany jest wynik ostateczny - głębia metryczna. Istnieje pięć gotowych przetrenowanych modeli, nazwanych według szablonu ZoeD-[zestaw pierwszy]-[zestaw drugi], gdzie zestawem pierwszym jest zestaw treningowy obrazów z głębią relatywną, a zestaw drugi zawiera obrazy z głębią metryczną. Litera "X" w miejscu zestawu pierwszego oznacza, że w celu uczenia modelu wykorzystany został jedynie zestaw drugi. Tabela \ref{fig:zoe-results} zawiera porównanie wyników na zestawie NYU-Depth v2.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.60\textwidth]{16.jpg}
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze NYU-Depth v2. Źródło: \cite{bhat2023}}
+    \includegraphics[width=0.60\textwidth]{16.jpg}
     \label{fig:zoe-results}
 \end{table}
 
@@ -86,8 +86,8 @@ Architektura sieci tego modelu (rys. \ref{fig:unidepth-schema}) składa się z t
 Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu rożnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią konwolucyjną, odpowiednio UniDepth-V i UniDepth-C. Tabela \ref{fig:unidepth-results} przedstawia porównanie rezultatów modelu UniDepth.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{22.jpg}
     \caption{Porównanie rezultatów UniDepth dokonane na zbiorach danych niewidzianych podczas uczenia. Źródło: \cite{piccinelli2024}}
+    \includegraphics[width=0.95\textwidth]{22.jpg}
     \label{fig:unidepth-results}
 \end{table}
 
@@ -108,15 +108,15 @@ W architekturze tego rozwiązania (rys. \ref{fig:depth-anything-schema}) zastoso
 \end{figure}
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{19.jpg}
     \caption{Zbiór zestawów danych uczących Depth Anything. Źródło: \cite{yang2024depth}}
+    \includegraphics[width=0.6\textwidth]{19.jpg}
     \label{fig:depth-anything-data}
 \end{table}
 Osiągane wyniki w porównaniach przeprowadzonych na zbiorach danych testowych (tabela \ref{fig:depth-anything-results}) w sposób zdecydowany udowadniają tezę autorów dotyczącą zasadności skalowania zestawów uczących przy pomocy danych nieoznaczonych.
 \begin{table}[H]
     \centering
-    \includegraphics[width=1\textwidth]{20.jpg}
     \caption{Porównanie rezultatów Depth Anything dokonane na podstawie zbioru NYUv2 (po lewej) i KITTI (po prawej). Źródło: \cite{yang2024depth}}
+    \includegraphics[width=1\textwidth]{20.jpg}
     \label{fig:depth-anything-results}
 \end{table}
 
@@ -136,8 +136,8 @@ Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zb
 Autorzy tej metody zastosowali w niej zarówno architekturę opartą o konwolucyjną sieć neuronową (UNet), jak i transformator (ViT i DPT jako dekoder), w zależności od konfiguracji metoda może korzystać z jednej z nich. Uproszczony schemat architektury widnieje na rys. \ref{fig:metric3d-schema}. Wyniki Metric3D na dzień opracowania bieżącego rozdziału ustanawiają nowy stan sztuki osiąganymi wynikami, które prezentuje poniższa tabela \ref{fig:metric3d-results}.
 \begin{table}[H]
     \centering
-    \includegraphics[width=1\textwidth]{26.jpg}
     \caption{Porównanie rezultatów Metric3D do innych wiodących metod. Źródło: \cite{hu2024}}
+    \includegraphics[width=1\textwidth]{26.jpg}
     \label{fig:metric3d-results}
 \end{table}
 
@@ -152,8 +152,8 @@ Autorzy pracy prezentującej metodę DistDepth \cite{wu2022practical} zwracają 
 W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych - SimSIN zawierający 500 tysięcy symulowanych komputerowo obrazów scen wewnętrznych w postaci par stereo (ponieważ uczenie odbywa się w sposób nienadzorowany, sceny nie zawierają żadnej informacji o głębi) oraz UniSIN zawierający 200 tysięcy obrazów scen przedstawiających wnętrza uniwersytetu zarejestrowanych za pomocą urządzenia ZED 2I \cite{ZED2I}. Wyniki osiągane przez model DistDepth przedstawia tabela \ref{fig:distdepth-results}.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{28.jpg}
     \caption{Porównanie wyników z innymi rozwiązaniami wykonane na zestawie NYU v2. Źródło: \cite{wu2022practical}}
+    \includegraphics[width=0.75\textwidth]{28.jpg}
     \label{fig:distdepth-results}
 \end{table}
 
@@ -168,8 +168,8 @@ Wykorzystujący architekturę grafowej konwolucyjnej sieci neuronowej \cite{GNNB
 Zbiór trenujący modelu GCNDepth stanowi 200 nagrań wideo ruchu ulicznego w świetle dziennym z publicznego zestawu KITTI. Na tym zestawie oraz na Make3D autorzy dokonali testów uzyskanego modelu. Wyniki w porównaniu do podobnych rozwiązań przedstawione zostały w postaci tabeli \ref{fig:gcn-results}.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{30.jpg}
     \caption{Wyniki GCNDepth uzyskane na zestawie KITTI w porównaniu z podobnymi rozwiązaniami. Źródło: \cite{GNNBook2022}}
+    \includegraphics[width=0.75\textwidth]{30.jpg}
     \label{fig:gcn-results}
 \end{table}
 
@@ -186,8 +186,8 @@ W zależności od zastosowanej funkcji straty - jednej z dwóch - wykorzystanej 
 Model został wytrenowany na zbiorze Mid-Air \cite{fonder2019midair}, czyli syntetycznych obrazach stanowiących wizualizacje lotu dronem zawierających między innymi informację o głębi sceny. Testy dokonano natomiast przy użyciu zbiorów Mid-Air, KITTI oraz TartanAir \cite{wang2020tartanair}. Tabela \ref{fig:m4d-comparison} zawiera porównanie z innymi modelami, należy zwrócić uwagę na czas wymagany na estymację przez poszczególne algorytmy.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{32.jpg}
     \caption{Porównanie wyników działania metody M4Depth na zbiorze KITTI. Źródło: \cite{fonder2023technique}}
+    \includegraphics[width=0.7\textwidth]{32.jpg}
     \label{fig:m4d-comparison}
 \end{table}
 
@@ -202,8 +202,8 @@ IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojekt
 Do trenowania modelu użyto zestawu danych NYUv2, składającego się z 47 tysięcy obrazów, wybranych na podstawie próbkowania co 5 klatek z surowego zestawu danych. Do testowania modelu wykorzystano oficjalny zestaw 654 obrazów z danymi o głębi z NYUv2 oraz dodatkowy zestaw ScanNet, użyty do oceny zdolności generalizacji modelu na nowych scenach wewnętrznych. Wyniki testów prezentuje tabela \ref{fig:indoordepth-results}.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{34.jpg}
     \caption{Porównanie wyników działania metod nauczonych na zbiorze NYUv2. Testy wykonane zostały na zestawie ScanNet. Źródło: \cite{fan2023deeper}}
+    \includegraphics[width=0.9\textwidth]{34.jpg}
     \label{fig:indoordepth-results}
 \end{table}
 
@@ -218,8 +218,8 @@ Model SQLdepth \cite{wang2023sqldepth} jest głęboką siecią neuronową zaproj
 Podczas treningu model wykorzystuje pary stereo jako główne źródło nadzoru. Do uczenia modelu użyto około 26 tysięcy obrazów z zestawu KITTI, natomiast do testowania wykorzystano 697 obrazów z tego samego zestawu. Model był również ewaluowany na zestawach danych Cityscapes, obejmujących liczne ruchome obiekty oraz Make3D, który został użyty do oceny zdolności generalizacji modelu na wcześniej niewidzianych obrazach. Porównanie wyników metody IndoorDepth na zbiorze KITTI umieszczono w tabeli \ref{fig:sqldepth-results}.
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{36.jpg}
     \caption{Porównanie wyników działania metody IndoorDepth na zbiorze KITTI. Źródło: \cite{wang2023sqldepth}}
+    \includegraphics[width=0.95\textwidth]{36.jpg}
     \label{fig:sqldepth-results}
 \end{table}
 
@@ -512,8 +512,8 @@ Zbiór DIODE \cite{vasiljevic2019} jest wyjątkowy na tle konkurencji przez wzgl
 \end{figure}
 \begin{table}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{24.jpg}
     \caption{Porównanie statystyk zbioru DIODE z innymi popularnymi zbiorami danych. Źródło: \cite{vasiljevic2019}}
+    \includegraphics[width=0.65\textwidth]{24.jpg}
     \label{fig:diode-comparison}
 \end{table}
 
