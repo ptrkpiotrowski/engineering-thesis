@@ -11,7 +11,7 @@ Zaprojektowany w 2020 r. model AdelaiDepth \cite{yin2020} przygotowany został g
     \caption{Przykładowy wynik działania algorytmu AdelaiDepth. Źródło: \cite{yin2020}}
     \label{fig:adelaidepth}
 \end{figure}
-Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to nawracająca sieć neuronowa ResNet \cite{he2015} stanowiąca rodzaj konwolucyjnej sieci neuronowej z dekoderem. W celu nauczenia sieci wykorzystane zostało sumarycznie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych za pomocą urządzeń fizycznych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LIDAR ale też niskiej jakości nagrania. Poniższa tabela \ref{fig:adelaidepth-results} obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
+Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to rekurencyjna sieć neuronowa ResNet \cite{he2015} stanowiąca rodzaj splotowej sieci neuronowej z dekoderem. W celu nauczenia sieci wykorzystano w sumie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych za pomocą urządzeń fizycznych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LIDAR ale też niskiej jakości nagrania. Poniższa tabela \ref{fig:adelaidepth-results} obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na ośmiu zestawach danych nieuczestniczących w procesie uczenia. Źródło: \cite{yin2020}}
@@ -66,7 +66,7 @@ Opracowane rozwiązanie ZoeDepth \cite{bhat2023} skupia się na zachowaniu wydaj
     \caption{Schemat architektury algorytmu ZoeDepth. Źródło: \cite{bhat2023}}
     \label{fig:zoe-schema}
 \end{figure}
-Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) bazuje na rozwiązaniu o nazwie MiDaS \cite{ranftl2020}. Obraz wejściowy jest w pierwszej kolejności przetworzony przez ten właśnie algorytm. Wynik - głębia relatywna - jest dostarczany do modułu metrycznego, którego wynik stanowi z kolei wartość głębi metrycznej dla każdego pojedynczego piksela. Oba te wyniki kierowane są do sieci konwolucyjnej i w ten sposób uzyskiwany jest wynik ostateczny - głębia metryczna. Istnieje pięć gotowych przetrenowanych modeli, nazwanych według szablonu ZoeD-[zestaw pierwszy]-[zestaw drugi], gdzie zestawem pierwszym jest zestaw treningowy obrazów z głębią relatywną, a zestaw drugi zawiera obrazy z głębią metryczną. Litera "X" w miejscu zestawu pierwszego oznacza, że w celu uczenia modelu wykorzystany został jedynie zestaw drugi. Tabela \ref{fig:zoe-results} zawiera porównanie wyników na zestawie NYU-Depth v2.
+Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) bazuje na rozwiązaniu o nazwie MiDaS \cite{ranftl2020}. Obraz wejściowy jest w pierwszej kolejności przetworzony przez ten właśnie algorytm. Wynik - głębia relatywna - jest dostarczany do modułu metrycznego, którego wynik stanowi z kolei wartość głębi metrycznej dla każdego pojedynczego piksela. Oba te wyniki kierowane są do sieci splotowej i w ten sposób uzyskiwany jest wynik ostateczny - głębia metryczna. Istnieje pięć gotowych przetrenowanych modeli, nazwanych według szablonu ZoeD-[zestaw pierwszy]-[zestaw drugi], gdzie zestawem pierwszym jest zestaw treningowy obrazów z głębią relatywną, a zestaw drugi zawiera obrazy z głębią metryczną. Litera "X" w miejscu zestawu pierwszego oznacza, że w celu uczenia modelu wykorzystany został jedynie zestaw drugi. Tabela \ref{fig:zoe-results} zawiera porównanie wyników na zestawie NYU-Depth v2.
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na zbiorze NYU-Depth v2. Źródło: \cite{bhat2023}}
@@ -76,14 +76,14 @@ Architektura algorytmu ZoeDepth (rys. \ref{fig:zoe-schema}) bazuje na rozwiązan
 
 \subsection{UniDepth}
 Model o nazwie UniDepth \cite{piccinelli2024} został zaproponowany przez jego autorów naprzeciw ich tezie o niskim stopniu generalizacji konkurencyjnych modeli. W swojej publikacji twierdzą, że ówcześnie najlepsze pod względem osiąganych wyników modele do predykcji głębi weryfikowane są na zbiorach podobnych do uczących oraz często na tyle niewielkich, że wyniki osiągane na pojedynczych obrazach odbiegających od domeny zbiorów uczących są mniej zadowalające.
-Architektura sieci tego modelu (rys. \ref{fig:unidepth-schema}) składa się z trzech głównych modułów - kodera, kamery i głębi. Koder przetwarza obraz wejściowy do postaci cech, które następnie przesyłane są do kolejnych dwóch modułów. Może być zarówno oparty o sieć konwolucyjną jak i o transformator wizyjny ViT co ma pozwolić na elastyczne dopasowanie do potrzeb użytkownika. Moduł kamery odpowiada za generowanie reprezentacji, która jest następnie wykorzystywana do warunkowania cech głębi. Moduł głębi przyjmuje cechy z kodera i warunkuje je na podstawie informacji z modułu kamery, wykorzystując przy tym warstwę uwagi krzyżowej. Połączenie wyniku modułu kamery i modułu głębi to wynik działania całego algorytmu.
+Architektura sieci tego modelu (rys. \ref{fig:unidepth-schema}) składa się z trzech głównych modułów - kodera, kamery i głębi. Koder przetwarza obraz wejściowy do postaci cech, które następnie przesyłane są do kolejnych dwóch modułów. Może być zarówno oparty o sieć splotową jak i o transformator wizyjny ViT co ma pozwolić na elastyczne dopasowanie do potrzeb użytkownika. Moduł kamery odpowiada za generowanie reprezentacji, która jest następnie wykorzystywana do warunkowania cech głębi. Moduł głębi przyjmuje cechy z kodera i warunkuje je na podstawie informacji z modułu kamery, wykorzystując przy tym warstwę uwagi krzyżowej. Połączenie wyniku modułu kamery i modułu głębi to wynik działania całego algorytmu.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{21.jpg}
     \caption{Schemat architektury algorytmu UniDepth. Źródło: \cite{piccinelli2024}}
     \label{fig:unidepth-schema}
 \end{figure}
-Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu rożnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią konwolucyjną, odpowiednio UniDepth-V i UniDepth-C. Tabela \ref{fig:unidepth-results} przedstawia porównanie rezultatów modelu UniDepth.
+Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu rożnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią splotową, odpowiednio UniDepth-V i UniDepth-C. Tabela \ref{fig:unidepth-results} przedstawia porównanie rezultatów modelu UniDepth.
 \begin{table}[H]
     \centering
     \caption{Porównanie rezultatów UniDepth dokonane na zbiorach danych niewidzianych podczas uczenia. Źródło: \cite{piccinelli2024}}
@@ -133,7 +133,7 @@ Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zb
     \label{fig:metric3d-schema}
 \end{figure}
 
-Autorzy tej metody zastosowali w niej zarówno architekturę opartą o konwolucyjną sieć neuronową (UNet), jak i transformator (ViT i DPT jako dekoder), w zależności od konfiguracji metoda może korzystać z jednej z nich. Uproszczony schemat architektury widnieje na rys. \ref{fig:metric3d-schema}. Wyniki Metric3D na dzień opracowania bieżącego rozdziału ustanawiają nowy stan sztuki osiąganymi wynikami, które prezentuje poniższa tabela \ref{fig:metric3d-results}.
+Autorzy tej metody zastosowali w niej zarówno architekturę opartą o splotową sieć neuronową (UNet), jak i transformator (ViT i DPT jako dekoder), w zależności od konfiguracji metoda może korzystać z jednej z nich. Uproszczony schemat architektury widnieje na rys. \ref{fig:metric3d-schema}. Wyniki Metric3D na dzień opracowania bieżącego rozdziału ustanawiają nowy stan sztuki osiąganymi wynikami, które prezentuje poniższa tabela \ref{fig:metric3d-results}.
 \begin{table}[H]
     \centering
     \caption{Porównanie rezultatów Metric3D do innych wiodących metod. Źródło: \cite{hu2024}}
@@ -142,7 +142,7 @@ Autorzy tej metody zastosowali w niej zarówno architekturę opartą o konwolucy
 \end{table}
 
 \subsection{DistDepth}
-Autorzy pracy prezentującej metodę DistDepth \cite{wu2022practical} zwracają uwagę na to, że dostępne obecnie metody skupiające się na obrazach przedstawiających ruch uliczny, nie znajdują dobrego zastosowania w predykcji głebi na obrazach przedstawiających skomplikowane sceny wewnętrzne, szczególnie takie, które na planie posiadają wiele gęsto ulokowanych przedmiotów. Proponują oni rozwiązanie składające się z dwóch części - estymatora struktur ze względnymi wartościami głębokości opartego o transformator wizyjny, którego wynik wraz z obrazem wejściowym wysyłany jest na wejście estymatora głębi opartego o konwolucyjną sieć neuronową trenowanego w sposób nienadzorowany. W ten sposób uzyskany model w czasie rzeczywistym wnioskuje głębię pojedynczego obrazu z wysoką generalizacją pośród scen wewnętrznych. Schemat działania algorytmy DistDepth zaprezentowano na rys. \ref{fig:distdepth-teaser}.
+Autorzy pracy prezentującej metodę DistDepth \cite{wu2022practical} zwracają uwagę na to, że dostępne obecnie metody skupiające się na obrazach przedstawiających ruch uliczny, nie znajdują dobrego zastosowania w predykcji głebi na obrazach przedstawiających skomplikowane sceny wewnętrzne, szczególnie takie, które na planie posiadają wiele gęsto ulokowanych przedmiotów. Proponują oni rozwiązanie składające się z dwóch części - estymatora struktur ze względnymi wartościami głębokości opartego o transformator wizyjny, którego wynik wraz z obrazem wejściowym wysyłany jest na wejście estymatora głębi opartego o splotową sieć neuronową trenowanego w sposób nienadzorowany. W ten sposób uzyskany model w czasie rzeczywistym wnioskuje głębię pojedynczego obrazu z wysoką generalizacją pośród scen wewnętrznych. Schemat działania algorytmy DistDepth zaprezentowano na rys. \ref{fig:distdepth-teaser}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{27.jpg}
@@ -158,7 +158,7 @@ W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych -
 \end{table}
 
 \subsection{GCNDepth}
-Wykorzystujący architekturę grafowej konwolucyjnej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% ilość trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębokości oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
+Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% ilość trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębokości oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{29.jpg}
@@ -175,7 +175,7 @@ Zbiór trenujący modelu GCNDepth stanowi 200 nagrań wideo ruchu ulicznego w ś
 
 
 \subsection{M4Depth}
-Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają, jak istotne jest oszacowanie niepewności obok estymacji głębokości w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem. Architektura rozwiązania to piramidowa konwolucyjna sieć neuronowa na wzór PWC-Net \cite{sun2018pwcnet}. Rysunek \ref{fig:m4d-schema} zawiera schemat działania modelu M4Depth.
+Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają, jak istotne jest oszacowanie niepewności obok estymacji głębokości w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem. Architektura rozwiązania to piramidowa splotowa sieć neuronowa na wzór PWC-Net \cite{sun2018pwcnet}. Rysunek \ref{fig:m4d-schema} zawiera schemat działania modelu M4Depth.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{31.jpg}
@@ -192,7 +192,7 @@ Model został wytrenowany na zbiorze Mid-Air \cite{fonder2019midair}, czyli synt
 \end{table}
 
 \subsection{IndoorDepth}
-IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojektowany do estymacji głębokości w scenach wewnętrznych. Podobnie jak GCNDepth, IndoorDepth wykorzystuje uczenie samonadzorowane, co eliminuje potrzebę etykietowanych danych głębokościowych, wykorzystując sekwencje obrazów jako sygnał nadzoru. Architektura modelu (rys. \ref{fig:indoordepth-architecture}) to konwolucyjna sieć neuronowa z enkoderem i dekoderem, używanymi do estymacji pozycji kamery i głębokości oraz ulepszonej funkcji SSIM (od ang. structural similarity), która lepiej radzi sobie z regionami o niskiej teksturze.
+IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojektowany do estymacji głębokości w scenach wewnętrznych. Podobnie jak GCNDepth, IndoorDepth wykorzystuje uczenie samonadzorowane, co eliminuje potrzebę etykietowanych danych głębokościowych, wykorzystując sekwencje obrazów jako sygnał nadzoru. Architektura modelu (rys. \ref{fig:indoordepth-architecture}) to splotowa sieć neuronowa z enkoderem i dekoderem, używanymi do estymacji pozycji kamery i głębokości oraz ulepszonej funkcji SSIM (od ang. structural similarity), która lepiej radzi sobie z regionami o niskiej teksturze.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{33.jpg}
@@ -208,7 +208,7 @@ Do trenowania modelu użyto zestawu danych NYUv2, składającego się z 47 tysi�
 \end{table}
 
 \subsection{SQLdepth}
-Model SQLdepth \cite{wang2023sqldepth} jest głęboką siecią neuronową zaprojektowaną do estymacji głębokości obrazu w sposób samonadzorowany. Model SQLdepth operuje na scenach zewnętrznych, wykorzystując zestaw danych KITTI zawierający sekwencje stereo obrazów. Architektura modelu (rys. \ref{fig:sqldepth-architecture}) opiera się na konwolucyjnej sieci neuronowej z enkoderem-dekoderem, wspieranej warstwą Self Query Layer (SQL), która poprawia dokładność przewidywania głębokości.
+Model SQLdepth \cite{wang2023sqldepth} jest głęboką siecią neuronową zaprojektowaną do estymacji głębokości obrazu w sposób samonadzorowany. Model SQLdepth operuje na scenach zewnętrznych, wykorzystując zestaw danych KITTI zawierający sekwencje stereo obrazów. Architektura modelu (rys. \ref{fig:sqldepth-architecture}) opiera się na splotowej sieci neuronowej z enkoderem-dekoderem, wspieranej warstwą Self Query Layer (SQL), która poprawia dokładność przewidywania głębokości.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{35.jpg}
@@ -236,7 +236,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         Nazwa & Architektura & Sposób uczenia & Zestawy uczące & Zestawy do oceny \\
         \hline \hline
         AdelaiDepth \cite{dosovitskiy2020} &
-        nawracająca sieć neuronowa &
+        rekurencyjna sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
             \item Taskonomy,
@@ -259,7 +259,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         MetaPrompt-SD \cite{wan2023} &
-        konwolucyjna sieć neuronowa &
+        splotowa sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
             \item NYU depth V2,
@@ -268,7 +268,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         Zestawy tożsame z uczącymi.\\
         \hline
         EVP \cite{lavreniuk2023} &
-        konwolucyjna sieć neuronowa &
+        splotowa sieć neuronowa &
         nadzorowane &
         \begin{itemize} 
             \item NYU depth V2,
@@ -277,7 +277,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         Zestawy tożsame z uczącymi.\\
         \hline
         ZoeDepth \cite{bhat2023} &
-        konwolucyjna sieć neuronowa &
+        splotowa sieć neuronowa &
         nadzorowane i częściowo nadzorowane &
         \begin{itemize} 
             \item NYU depth V2,
@@ -304,7 +304,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         UniDepth \cite{piccinelli2024} &
-        W zależności od konfiguracji konwolucyjna sieć neuronowa lub transformator. &
+        W zależności od konfiguracji splotowa sieć neuronowa lub transformator. &
         nadzorowane &
         \begin{itemize}
         \item Argoverse2,
@@ -386,7 +386,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         Metric3D V2 \cite{hu2024} &
-        W zależności od konfiguracji konwolucyjna sieć neuronowa lub transformator. &
+        W zależności od konfiguracji splotowa sieć neuronowa lub transformator. &
         nadzorowane &
         \begin{itemize}
             \item DDAD,
@@ -419,7 +419,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         DistDepth \cite{wu2022practical} &
-        konwolucyjna sieć neuronowa i transformator &
+        splotowa sieć neuronowa i transformator &
         nienadzorowane &
         \begin{itemize}
             \item SimSIN,
@@ -432,7 +432,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         GCNDepth \cite{masoumian2021gcndepth} &
-        grafowa i nawracająca sieć neuronowa &
+        grafowa i rekurencyjna sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
             \item KITTI
@@ -443,7 +443,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         M4Depth \cite{fonder2023technique} &
-        konwolucyjna sieć neuronowa &
+        splotowa sieć neuronowa &
         nadzorowane &
         \begin{itemize}
             \item Mid-Air
@@ -455,7 +455,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         IndoorDepth \cite{fan2023deeper} &
-        konwolucyjna sieć neuronowa &
+        splotowa sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
             \item NYUv2
@@ -466,7 +466,7 @@ Przedstawione algorytmy można skategoryzować ze względu na rodzaj architektur
         \end{itemize}\\
         \hline
         SQLdepth \cite{wang2023sqldepth} &
-        konwolucyjna sieć neuronowa &
+        splotowa sieć neuronowa &
         nienadzorowane &
         \begin{itemize}
             \item KITTI

@@ -1,7 +1,7 @@
 \chapter{Wprowadzenie do algorytmów percepcji głębi}\label{chap:2_wprowadzenie_do_algorytmów_percepcji_głębi}
 
 \section{Paradygmaty uczenia}
-Podstawową metodą uczenia algorytmów percepcji głębi jest uczenie nadzorowane. W tejże metodzie do nauki estymacji mapy głębi wykorzystywana jest struktura scen z obrazów określanych jako Ground truth\footnote{Dane rzeczywiste uzyskane za pomocą technologii rejestrowania obrazów 3D.}. Pozyskanie tych obrazów często bywa kosztowne i problematyczne, skąd wyniknęła potrzeba uczenia algorytmów przy użyciu zmniejszonej ilości danych rzeczywistych tudzież ich całkowitym braku\footnote{Wówczas mówimy o rekonstrukcji mapy głębi.}. W ramach usystematyzowania wiedzy następujący podrozdział skupi się zatem na zebraniu i sklasyfikowaniu paradygmatów uczenia algorytmów percepcji głębi.
+Podstawową metodą uczenia algorytmów percepcji głębi jest uczenie nadzorowane. W tejże metodzie do nauki estymacji mapy głębi wykorzystywana jest struktura scen z obrazów stanowiących rzeczywiste dane odniesienia\footnote{Dane rzeczywiste uzyskane za pomocą technologii rejestrowania obrazów 3D.}. Pozyskanie tych obrazów często bywa kosztowne i problematyczne, skąd wyniknęła potrzeba uczenia algorytmów przy użyciu zmniejszonej ilości danych rzeczywistych tudzież ich całkowitym braku\footnote{Wówczas mówimy o rekonstrukcji mapy głębi.}. W ramach usystematyzowania wiedzy następujący podrozdział skupi się zatem na zebraniu i sklasyfikowaniu paradygmatów uczenia algorytmów percepcji głębi.
 
 \subsection{Uczenie nadzorowane}
 Ta najczęściej obecnie stosowana metoda uczenia sieci neuronowych zakłada posiadanie odpowiednio przygotowanych danych wejściowych oraz odpowiadających im danych wyjściowych. Wówczas celem nauki jest zminimalizowanie wartości odpowiednio sporządzonej funkcji straty, której argumentami są wartości zmierzone i estymowane. Wybór wspomnianej funkcji zależy od charakterystyki rozwiązywanego problemu. W przypadku percepcji głębi najczęściej stosowaną funkcją straty jest błąd średniokwadratowy (MSE od ang. mean square error):
@@ -45,29 +45,29 @@ Poniższy schemat umieszczony na rys. \ref{fig:podsumowanie-uczenia} przedstawia
 
 \section{Modele sieci neuronowych w algorytmach percepcji głębi}
 Ważnym etapem implementacji algorytmu percepcji głębi jest konstrukcja architektury sieci neuronowej modelu. Ma ona szczególny wpływ na wydajność i skuteczność wynikowego algorytmu. Ten podrozdział zawiera opis dwóch przeważnie wykorzystywanych w dziedzinie percepcji głębi modeli sieci neuronowych.
-\subsection{Konwolucyjne sieci neuronowe}
-Zaproponowane przez Kunihiko Fukushimę w 1980 r. \cite{fukushima1980} konwolucyjne sieci neuronowe są niewątpliwym kamieniem milowym w komputerowym przetwarzaniu obrazów. Charakteryzuje je zdolność upraszczania obrazu do postaci znacznie łatwiejszej do przetworzenia przez komputer, bez poświęcenia jakości wnioskowania. Podstawowym elementem takich sieci jest warstwa splotowa, w której dochodzi do mnożenia matryc stanowiących dane wejściowe i jądro. Wynikiem mnożenia jest mapa wyodrębnionych cech wejściowego obrazu. Poprawnie przedstawia to poniższy rysunek \ref{fig:warstwa-konwolucyjna} oraz \ref{fig:warstwa-konwolucyjna-arch}. W przypadku takiego modelu nauczanie sieci polega między innymi na ustanowieniu odpowiednich wag jądra.
+\subsection{Splotowe sieci neuronowe}
+Zaproponowane przez Kunihiko Fukushimę w 1980 r. \cite{fukushima1980} splotowe sieci neuronowe są niewątpliwym kamieniem milowym w komputerowym przetwarzaniu obrazów. Charakteryzuje je zdolność upraszczania obrazu do postaci znacznie łatwiejszej do przetworzenia przez komputer, bez poświęcenia jakości wnioskowania. Podstawowym elementem takich sieci jest warstwa splotowa, w której dochodzi do mnożenia macierzy stanowiących dane wejściowe i jądro. Wynikiem mnożenia jest mapa wyodrębnionych cech wejściowego obrazu. Poprawnie przedstawia to poniższy rysunek \ref{fig:warstwa-splotowa} oraz \ref{fig:warstwa-splotowa-arch}. W przypadku takiego modelu nauczanie sieci polega między innymi na ustanowieniu odpowiednich wag jądra.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{5.jpg}
-    \caption{Przykład działania warstwy konwolucyjnej z jądrem o rozmiarze 3x3. Źródło: \cite{dumoulin2018}}
-    \label{fig:warstwa-konwolucyjna}
+    \caption{Przykład działania warstwy splotowej z jądrem o rozmiarze 3x3. Źródło: \cite{dumoulin2018}}
+    \label{fig:warstwa-splotowa}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{6.jpg}
-    \caption{Przykład architektury sieci konwolucyjnej użytej w celu rozpoznania głębi obrazu. Źródło: \cite{dong2022}}
-    \label{fig:warstwa-konwolucyjna-arch}
+    \caption{Przykład architektury sieci splotowej użytej w celu rozpoznania głębi obrazu. Źródło: \cite{dong2022}}
+    \label{fig:warstwa-splotowa-arch}
 \end{figure}
 
 \subsection{Transformatory}
 Zaprezentowane w 2017 r. \cite{vaswani2017} transformatory wykorzystywane były pierwotnie w przetwarzaniu języka naturalnego. Dzięki asynchronicznej charakterystyce przetwarzania sekwencji wejściowej okazały się znacznie szybsze niż dotychczas znane rozwiązania\footnote{Do ówczesnej chwili częściej używane były sieci rekurencyjne.}.
 
-W kontekście wizyjnych algorytmów wykorzystywane są transformatory wizyjne zaproponowane w 2020 r. przez zespół Google Research w \cite{dosovitskiy2020}. Jego schemat poglądowy przedstawia poniższy rysunek \ref{fig:schemat-vit}.
+W kontekście wizyjnych algorytmów wykorzystywane są transformatory wizyjne zaproponowane w 2020 r. przez zespół Google Research w \cite{dosovitskiy2020}. Ich schemat poglądowy przedstawia poniższy rysunek \ref{fig:schemat-vit}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{7.jpg}
     \caption{Schemat modelu transformatora wizyjnego. Źródło: \cite{dosovitskiy2020}}
     \label{fig:schemat-vit}
 \end{figure}
-Wizyjny model transformatora nie generalizuje danych tak dobrze jak robi to sieć konwolucyjna, dlatego przy niewielkiej liczbie obrazów uczących nie jest najlepszym wyborem. Jednak przy wykorzystaniu znacznego rozmiaru zestawu obrazów uczących osiągana dokładność najczęściej przewyższa sieci konwolucyjne.
+Wizyjny model transformatora nie generalizuje danych tak dobrze jak robi to sieć splotowa, dlatego przy niewielkiej liczbie obrazów uczących nie jest najlepszym wyborem. Jednak przy wykorzystaniu znacznego rozmiaru zestawu obrazów uczących osiągana dokładność najczęściej przewyższa sieci splotowe.
