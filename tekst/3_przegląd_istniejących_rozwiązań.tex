@@ -11,7 +11,7 @@ Zaprojektowany w 2020 r. model AdelaiDepth \cite{yin2020} przygotowany został g
     \caption{Przykładowy wynik działania algorytmu AdelaiDepth. Źródło: \cite{yin2020}}
     \label{fig:adelaidepth}
 \end{figure}
-Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to rekurencyjna sieć neuronowa ResNet \cite{he2015} stanowiąca rodzaj splotowej sieci neuronowej z dekoderem. W celu nauczenia sieci wykorzystano w sumie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych za pomocą urządzeń fizycznych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LIDAR ale też niskiej jakości nagrania. Poniższa tabela \ref{fig:adelaidepth-results} obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
+Architektura modelu predykcji głębi została zainspirowana rozwiązaniem przedstawionym w \cite{xian2020}. Jest to rekurencyjna sieć neuronowa ResNet \cite{he2015} stanowiąca rodzaj splotowej sieci neuronowej z dekoderem. W celu nauczenia sieci wykorzystano w sumie 354 tysiące obrazów RGBD pochodzących z różnych dostępnych zestawów danych, zarejestrowanych za pomocą urządzeń fizycznych jak i wytworzonych syntetycznie z obrazów RGB za pomocą oprogramowania. Całkowity zestaw danych treningowych zawiera w sobie zatem  wysokiej jakości obrazy z systemu LiDAR ale też niskiej jakości nagrania. Poniższa tabela \ref{fig:adelaidepth-results} obrazuje wyniki osiągane przez ten algorytm na tle wybranych przez autorów podobnych rozwiązań.
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na ośmiu zestawach danych nieuczestniczących w procesie uczenia. Źródło: \cite{yin2020}}
@@ -34,7 +34,7 @@ Podstawą architektury (rys. \ref{fig:metaprompt-sd-schema}) jest koder VQVAE \c
     \caption{Schemat architektury algorytmu MetaPrompt-SD. Źródło: \cite{wan2023}}
     \label{fig:metaprompt-sd-schema}
 \end{figure}
-Dla percepcji głębi jako zestawy uczące wykorzystane zostały obrazy scen wewnętrznych i zewnętrznych pochodzące ze zbiorów NYU depth V2 oraz KITTI. W sumie stanowi to prawie 95 tysięcy par map głębi z odpowiadającymi im obrazami RGB pochodzącymi z urządzenia LIDAR firmy Velodyne oraz Microsoft Kinect. Tabela \ref{fig:metaprompt-sd-results} zawiera zestawienie wyników w porównaniu z podobnymi rozwiązaniami.
+Dla percepcji głębi jako zestawy uczące wykorzystane zostały obrazy scen wewnętrznych i zewnętrznych pochodzące ze zbiorów NYU depth V2 oraz KITTI. W sumie stanowi to prawie 95 tysięcy par map głębi z odpowiadającymi im obrazami RGB pochodzącymi z urządzenia LiDAR firmy Velodyne oraz Microsoft Kinect. Tabela \ref{fig:metaprompt-sd-results} zawiera zestawienie wyników w porównaniu z podobnymi rozwiązaniami.
 \begin{table}[H]
     \centering
     \caption{Porównanie osiąganych wyników przeprowadzone na dwóch zestawach danych. Źródło: \cite{wan2023}}
@@ -548,7 +548,7 @@ W 2017 r. firma Matterport zaprezentowała zestaw danych nazwany Matterport3D \c
 \end{figure} 
 
 \subsection{DDAD (Dense Depth for Autonomous Driving)}
-Zestaw DDAD \cite{guizilini2020} został stworzony przez Toyota Research Institute. Zawiera 17050 obrazów treningowych i 4150 obrazów do oceny modelu, w tym zróżnicowane próbki scen miejskich i autostradowych z całego świata nagrane przez flotę samochodów autonomicznych wyposażonych w kamery i lasery LIDAR Luminar-H2. Wykorzystywany jest głównie do ewaluacji i rozwijania metod estymacji głębi w prowadzeniu pojazdów. Zestaw DDAD został wykorzystany do przetrenowania modelu PackNet tego samego autorstwa, nie osiąga on jednak wyników porównywalnych do wybranych w niniejszej pracy modeli.
+Zestaw DDAD \cite{guizilini2020} został stworzony przez Toyota Research Institute. Zawiera 17050 obrazów treningowych i 4150 obrazów do oceny modelu, w tym zróżnicowane próbki scen miejskich i autostradowych z całego świata nagrane przez flotę samochodów autonomicznych wyposażonych w kamery i lasery LiDAR Luminar-H2. Wykorzystywany jest głównie do ewaluacji i rozwijania metod estymacji głębi w prowadzeniu pojazdów. Zestaw DDAD został wykorzystany do przetrenowania modelu PackNet tego samego autorstwa, nie osiąga on jednak wyników porównywalnych do wybranych w niniejszej pracy modeli.
 Rysunek \ref{fig:ddad-example} to przykładowa scena z tego zestawu.
 \begin{figure}[H]
     \centering
@@ -558,7 +558,7 @@ Rysunek \ref{fig:ddad-example} to przykładowa scena z tego zestawu.
 \end{figure} 
 
 \subsection{SYNS-Patches}
-Zestaw SYNS-Patches \cite{spencer2022deconstructing} jest rozszerzeniem zestawu zaprezentowanego w 2016 r. w \cite{adams2016syns}. W stosunku do oryginału, który zawierał 92 sceny w 9 różnych kategoriach został urozmaicone o odmiennie scharakteryzowane sceny, w tym między innymi lasy, tereny przemysłowe oraz wnętrza budynków. Zbiór SYNS-Patches dostarcza bardzo wysokiej jakości skany LIDAR również scen zewnętrznych, które według twórców w podobnych rozwiązaniach są znacznie rzadziej etykietowane\footnote{Zestaw SYNS-Patches posiada aż 78,30\% pokrycie obrazu mapą głębi, podczas gdy zestaw KITTI posiada jedynie 15,28\% pokrycie.}. Na finalny zbiór składa się 1175 obrazów panoramicznych i zarejestrowanych w technologii HDR za pomocą urządzenia Spheron SpheroCam HDR oraz skanera LIDAR Leica ScanStation P20. Istotną kwestią w kontekście tego zestawu jest fakt, że mapy głębi nie zostały publicznie udostępnione ze względu na jego przeznaczenie wyłącznie do oceny działania modeli. Autorzy chcą w ten sposób uniknąć dopasowania do przedstawionych w zbiorze scen w procesie uczenia. Przykłady obrazów z zestawu SYNS-Patches ujęte zostały na rysunku \ref{fig:syns-example}.
+Zestaw SYNS-Patches \cite{spencer2022deconstructing} jest rozszerzeniem zestawu zaprezentowanego w 2016 r. w \cite{adams2016syns}. W stosunku do oryginału, który zawierał 92 sceny w 9 różnych kategoriach został urozmaicone o odmiennie scharakteryzowane sceny, w tym między innymi lasy, tereny przemysłowe oraz wnętrza budynków. Zbiór SYNS-Patches dostarcza bardzo wysokiej jakości skany LiDAR również scen zewnętrznych, które według twórców w podobnych rozwiązaniach są znacznie rzadziej etykietowane\footnote{Zestaw SYNS-Patches posiada aż 78,30\% pokrycie obrazu mapą głębi, podczas gdy zestaw KITTI posiada jedynie 15,28\% pokrycie.}. Na finalny zbiór składa się 1175 obrazów panoramicznych i zarejestrowanych w technologii HDR za pomocą urządzenia Spheron SpheroCam HDR oraz skanera LiDAR Leica ScanStation P20. Istotną kwestią w kontekście tego zestawu jest fakt, że mapy głębi nie zostały publicznie udostępnione ze względu na jego przeznaczenie wyłącznie do oceny działania modeli. Autorzy chcą w ten sposób uniknąć dopasowania do przedstawionych w zbiorze scen w procesie uczenia. Przykłady obrazów z zestawu SYNS-Patches ujęte zostały na rysunku \ref{fig:syns-example}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{44.jpg}
@@ -589,13 +589,15 @@ Rysunek \ref{fig:vkitti-example} prezentuje przykładową scenę z zestawu Virtu
 
 \subsection{Taskonomy}
 Zestaw Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} zawiera cztery miliony komputerowo wygenerowanych obrazów oznaczonych za pomocą danych z dwudziestu sześciu różnych dziedzin widzenia komputerowego. Poza mapami głębi zestaw zawiera również dane dotyczące normalnych do powierzchni, krawędzi obiektów czy segmentacji semantycznej. Tak bogate oznaczenia powodują, że rozwiązanie to jest często wykorzystywane jako główny zestaw uczący wielu modeli z kategorii widzenia komputerowego. Podobnie jak w przypadku Virtual KITTI 2 oznaczenia są maksymalnie dokładne ze względu na brak ograniczeń sprzętowych i pozostałych uwarunkowań wynikających z fizycznej rejestracji danych. Jeden z obrazów ze zbioru Taskonomy został przedstawiony na rysunku \ref{fig:taskonomy-example}.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{48.jpg}
     \caption{Przykładowy obraz z zestawu Taskonomy wraz z oznaczeniami z różnych kategorii. Źródło: \cite{zamir2018taskonomydisentanglingtasktransfer}}
     \label{fig:taskonomy-example}
 \end{figure}
+
+\subsection{Autorski zbiór danych}
+W ramach niniejszej pracy został przygotowany autorski zbiór danych. Pozwolił on sprawdzenie modeli predykcji głębi na dziewiętnastu fotografiach, które nie mogły uczestniczyć w procesie ich uczenia. Wykonane fotografie zawierają odpowiadające im mapy głębi zarejestrowane za pomocą skanera LiDAR urządzenia iPhone 15 Pro \cite{chase2022apple}. Szczegółowe informacje na temat tego zestawu znajdą się w dalszej części niniejszej pracy.
 
 \subsection{Podsumowanie}
 Opisane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
@@ -660,6 +662,12 @@ Kinect. \\
         sceny wewnętrzne & 
         4 000 000 &
         syntetyczne obrazy wygenerowane komputerowo
+        \\
+        \hline
+        Autorski zbiór danych &
+        sceny zewnętrzne & 
+        19 &
+        iPhone 15 Pro
         \\
         \hline
         \end{tabular}%
