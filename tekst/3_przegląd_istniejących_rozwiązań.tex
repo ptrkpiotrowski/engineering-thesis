@@ -591,13 +591,19 @@ Rysunek \ref{fig:vkitti-example} prezentuje przykładową scenę z zestawu Virtu
 Zestaw Taskonomy \cite{zamir2018taskonomydisentanglingtasktransfer} zawiera cztery miliony komputerowo wygenerowanych obrazów oznaczonych za pomocą danych z dwudziestu sześciu różnych dziedzin widzenia komputerowego. Poza mapami głębi zestaw zawiera również dane dotyczące normalnych do powierzchni, krawędzi obiektów czy segmentacji semantycznej. Tak bogate oznaczenia powodują, że rozwiązanie to jest często wykorzystywane jako główny zestaw uczący wielu modeli z kategorii widzenia komputerowego. Podobnie jak w przypadku Virtual KITTI 2 oznaczenia są maksymalnie dokładne ze względu na brak ograniczeń sprzętowych i pozostałych uwarunkowań wynikających z fizycznej rejestracji danych. Jeden z obrazów ze zbioru Taskonomy został przedstawiony na rysunku \ref{fig:taskonomy-example}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{48.jpg}
+    \includegraphics[width=0.8\textwidth]{48.jpg}
     \caption{Przykładowy obraz z zestawu Taskonomy wraz z oznaczeniami z różnych kategorii. Źródło: \cite{zamir2018taskonomydisentanglingtasktransfer}}
     \label{fig:taskonomy-example}
 \end{figure}
 
 \subsection{Autorski zbiór danych}
-W ramach niniejszej pracy został przygotowany autorski zbiór danych. Pozwolił on sprawdzenie modeli predykcji głębi na dziewiętnastu fotografiach, które nie mogły uczestniczyć w procesie ich uczenia. Wykonane fotografie zawierają odpowiadające im mapy głębi zarejestrowane za pomocą skanera LiDAR urządzenia iPhone 15 Pro \cite{chase2022apple}. Szczegółowe informacje na temat tego zestawu znajdą się w dalszej części niniejszej pracy.
+W ramach niniejszej pracy został również przygotowany autorski zbiór danych. Pozwolił on na sprawdzenie modeli predykcji głębi na dziewiętnastu fotografiach, które nie mogły uczestniczyć w procesie ich uczenia. Wykonane zdjęcia zawierają odpowiadające im mapy głębi zarejestrowane za pomocą skanera LiDAR urządzenia iPhone 15 Pro \cite{chase2022apple}. Szczegółowe informacje na temat procesu powstania tego zestawu znajdą się w dalszej części niniejszej pracy. Jedna z fotografii pochodząca z autorskiego zbioru wraz z mapą głębi znajduje się na rys. \ref{fig:stray-example}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{dataset/plt_2351129738.jpg}
+    \caption{Przykładowy obraz z austorskiego zestawu. Źródło: własne}
+    \label{fig:stray-example}
+\end{figure}
 
 \subsection{Podsumowanie}
 Opisane w niniejszym rozdziale zestawy danych przyczyniły się w znacznej mierze do rozwoju metod predykcji głębi. Rozbieżność ich cech z kolei przyczynia się pozytywnie do generalizacji modeli. Poniższa tabela stanowi wykaz przedstawionych zestawów z podziałem na najważniejsze kategorie.
