@@ -121,7 +121,7 @@ Osiągane wyniki w porównaniach przeprowadzonych na zbiorach danych testowych (
 \end{table}
 
 \subsection{Metric3D V2}
-Metoda Metric3D V2 \cite{hu2024} odpowiada na dwa kluczowe problemy: estymację metrycznej głębokości i normalnych do powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
+Metoda Metric3D V2 \cite{hu2024} odpowiada na dwa kluczowe problemy: estymację metrycznej głębi i normalnych do powierzchni z pojedynczego obrazu. Jest ona zaprojektowana z uwzględnieniem wysokiej generalizacji, w związku z czym bez dodatkowego dostrajania można ją wykorzystać w celu predykcji na obrazach prezentujących zróżnicowane sceny.
 Głębia metryczna pozwala na precyzyjne odwzorowanie rzeczywistego świata, podczas gdy normalne do powierzchni zapewniają szczegółową geometrię lokalną. Ostateczny wynik powstaje dzięki dostosowaniu wyniku estymacji za pomocą danych dotyczących matrycy aparatu rejestrującego. 
 
 Do trenowania modelu użyto dużego zestawu danych obejmującego 18 różnych zbiorów, które łącznie zawierają ponad 16 milionów obrazów. Zbiory te pochodzą z różnych typów scen, zarówno wewnętrznych jak i zewnętrznych, oraz obejmują różne modele kamer. Do testowania natomiast użyto zestawów danych 7 zestawów częściowo pokrywających się z zestawami uczącymi.
@@ -142,7 +142,7 @@ Autorzy tej metody zastosowali w niej zarówno architekturę opartą o splotową
 \end{table}
 
 \subsection{DistDepth}
-Autorzy pracy prezentującej metodę DistDepth \cite{wu2022practical} zwracają uwagę na to, że dostępne obecnie metody skupiające się na obrazach przedstawiających ruch uliczny, nie znajdują dobrego zastosowania w predykcji głebi na obrazach przedstawiających skomplikowane sceny wewnętrzne, szczególnie takie, które na planie posiadają wiele gęsto ulokowanych przedmiotów. Proponują oni rozwiązanie składające się z dwóch części - estymatora struktur ze względnymi wartościami głębokości opartego o transformator wizyjny, którego wynik wraz z obrazem wejściowym wysyłany jest na wejście estymatora głębi opartego o splotową sieć neuronową trenowanego w sposób nienadzorowany. W ten sposób uzyskany model w czasie rzeczywistym wnioskuje głębię pojedynczego obrazu z wysoką generalizacją pośród scen wewnętrznych. Schemat działania algorytmy DistDepth zaprezentowano na rys. \ref{fig:distdepth-teaser}.
+Autorzy pracy prezentującej metodę DistDepth \cite{wu2022practical} zwracają uwagę na to, że dostępne obecnie metody skupiające się na obrazach przedstawiających ruch uliczny, nie znajdują dobrego zastosowania w predykcji głebi na obrazach przedstawiających skomplikowane sceny wewnętrzne, szczególnie takie, które na planie posiadają wiele gęsto ulokowanych przedmiotów. Proponują oni rozwiązanie składające się z dwóch części - estymatora struktur ze względnymi wartościami głębi opartego o transformator wizyjny, którego wynik wraz z obrazem wejściowym wysyłany jest na wejście estymatora głębi opartego o splotową sieć neuronową trenowanego w sposób nienadzorowany. W ten sposób uzyskany model w czasie rzeczywistym wnioskuje głębię pojedynczego obrazu z wysoką generalizacją pośród scen wewnętrznych. Schemat działania algorytmy DistDepth zaprezentowano na rys. \ref{fig:distdepth-teaser}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{27.jpg}
@@ -158,7 +158,7 @@ W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych -
 \end{table}
 
 \subsection{GCNDepth}
-Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% liczbę trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębokości oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
+Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% liczbę trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębi oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{29.jpg}
@@ -175,7 +175,7 @@ Zbiór trenujący modelu GCNDepth stanowi 200 nagrań wideo ruchu ulicznego w ś
 
 
 \subsection{M4Depth}
-Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają, jak istotne jest oszacowanie niepewności obok estymacji głębokości w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem. Architektura rozwiązania to piramidowa splotowa sieć neuronowa na wzór PWC-Net \cite{sun2018pwcnet}. Rysunek \ref{fig:m4d-schema} zawiera schemat działania modelu M4Depth.
+Metoda M4Depth \cite{fonder2023technique} została zaprojektowana z myślą o bezzałogowych statkach powietrznych. Jej autorzy podkreślają, jak istotne jest oszacowanie niepewności obok estymacji głębi w tym konkretnym zastosowaniu. Ponadto w tak niewielkich statkach powietrznych waga stanowi kwestię kluczową, przez co jeden obiektyw zamiast dwóch jest zdecydowanie lepszym wyborem. Metoda ta ma być według autorów ponad 2 razy szybsza przy zachowaniu podobnej dokładności, co również nie pozostaje obojętne w kontekście lotów dronem. Architektura rozwiązania to piramidowa splotowa sieć neuronowa na wzór PWC-Net \cite{sun2018pwcnet}. Rysunek \ref{fig:m4d-schema} zawiera schemat działania modelu M4Depth.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{31.jpg}
@@ -192,7 +192,7 @@ Model został wytrenowany na zbiorze Mid-Air \cite{fonder2019midair}, czyli synt
 \end{table}
 
 \subsection{IndoorDepth}
-IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojektowany do estymacji głębokości w scenach wewnętrznych. Podobnie jak GCNDepth, IndoorDepth wykorzystuje uczenie samonadzorowane, co eliminuje potrzebę etykietowanych danych głębokościowych, wykorzystując sekwencje obrazów jako sygnał nadzoru. Architektura modelu (rys. \ref{fig:indoordepth-architecture}) to splotowa sieć neuronowa z enkoderem i dekoderem, używanymi do estymacji pozycji kamery i głębokości oraz ulepszonej funkcji SSIM (od ang. structural similarity), która lepiej radzi sobie z regionami o niskiej teksturze.
+IndoorDepth \cite{fan2023deeper} to model głębokiej sieci neuronowej zaprojektowany do estymacji głębi w scenach wewnętrznych. Podobnie jak GCNDepth, IndoorDepth wykorzystuje uczenie samonadzorowane, co eliminuje potrzebę etykietowanych danych głębi, wykorzystując sekwencje obrazów jako sygnał nadzoru. Architektura modelu (rys. \ref{fig:indoordepth-architecture}) to splotowa sieć neuronowa z enkoderem i dekoderem, używanymi do estymacji pozycji kamery i głębi oraz ulepszonej funkcji SSIM (od ang. structural similarity), która lepiej radzi sobie z regionami o niskiej teksturze.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{33.jpg}
@@ -208,7 +208,7 @@ Do trenowania modelu użyto zestawu danych NYUv2, składającego się z 47 tysi�
 \end{table}
 
 \subsection{SQLdepth}
-Model SQLdepth \cite{wang2023sqldepth} jest głęboką siecią neuronową zaprojektowaną do estymacji głębokości obrazu w sposób samonadzorowany. Model SQLdepth operuje na scenach zewnętrznych, wykorzystując zestaw danych KITTI zawierający sekwencje stereo obrazów. Architektura modelu (rys. \ref{fig:sqldepth-architecture}) opiera się na splotowej sieci neuronowej z enkoderem-dekoderem, wspieranej warstwą Self Query Layer (SQL), która poprawia dokładność przewidywania głębokości.
+Model SQLdepth \cite{wang2023sqldepth} jest głęboką siecią neuronową zaprojektowaną do estymacji głębi obrazu w sposób samonadzorowany. Model SQLdepth operuje na scenach zewnętrznych, wykorzystując zestaw danych KITTI zawierający sekwencje stereo obrazów. Architektura modelu (rys. \ref{fig:sqldepth-architecture}) opiera się na splotowej sieci neuronowej z enkoderem-dekoderem, wspieranej warstwą Self Query Layer (SQL), która poprawia dokładność przewidywania głębi.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{35.jpg}
