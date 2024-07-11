@@ -10,21 +10,21 @@ W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zost
 
 \begin{table}[H]
     \centering
-    \caption{Podsumowanie wyników uzyskanych przez algorytmy.}
+    \caption{Średnie wartości wyników uzyskanych przez algorytmy.}
     \vspace{0.1cm}
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{|l|c|c|c|c|c|c|}
         \hline
         \textbf{Metryka} & \textbf{Metric3D} & \textbf{DepthAnythingV2} & \textbf{MetaPrompt-SD} & \textbf{SQLdepth} & \textbf{AdelaiDepth} & \textbf{GCNDepth} \\
         \hline
-        $\delta < 1.25$ & \textcolor{OliveGreen}{0.830} & 0.611 & 0.436 & 0.300 & 0.281 & \textcolor{BrickRed}{0.276} \\
-        $\delta < 1.25^2$ & \textcolor{OliveGreen}{0.921} & 0.846 & 0.636 & \textcolor{BrickRed}{0.300} & 0.462 & 0.377 \\
-        $\delta < 1.25^3$ & \textcolor{OliveGreen}{0.936} & 0.934 & 0.762 & 0.532 & 0.581 & \textcolor{BrickRed}{0.498} \\
+        $\delta < 1.25$ & \textcolor{OliveGreen}{0,830} & 0,611 & 0,436 & 0,300 & 0,281 & \textcolor{BrickRed}{0,276} \\
+        $\delta < 1,25^2$ & \textcolor{OliveGreen}{0,921} & 0,846 & 0,636 & \textcolor{BrickRed}{0,300} & 0,462 & 0,377 \\
+        $\delta < 1,25^3$ & \textcolor{OliveGreen}{0,936} & 0,934 & 0,762 & 0,532 & 0,581 & \textcolor{BrickRed}{0,498} \\
         \hline
-        AbsRel & \textcolor{OliveGreen}{11.99} & 28.96 & 64.67 & 123.82 & 244.46 & \textcolor{BrickRed}{136.50} \\
-        RMSE & 5.250 & \textcolor{OliveGreen}{3.667} & 4.163 & 6.424 & \textcolor{BrickRed}{48.031} & 7.223 \\
+        AbsRel & \textcolor{OliveGreen}{11,99} & 28,96 & 64,67 & 123,82 & \textcolor{BrickRed}{244,46} & 136,50 \\
+        RMSE & 5,250 & \textcolor{OliveGreen}{3,667} & 4,163 & 6,424 & \textcolor{BrickRed}{48,031} & 7,223 \\
         \hline
-        czas (s) & \textcolor{BrickRed}{3.834} & 1.321 & 0.843 & 0.801 & 0.643 & \textcolor{OliveGreen}{0.332} \\
+        czas (s) & \textcolor{BrickRed}{3,834} & 1,321 & 0,843 & 0,801 & 0,643 & \textcolor{OliveGreen}{0,332} \\
         \hline
         \end{tabular}%
     }
