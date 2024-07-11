@@ -6,69 +6,30 @@ W ramach analizy porównano sześć algorytmów wybranych pod kątem wyników os
 W bieżącym rozdziale zawarte jest podsumowanie dokonanej analizy porównawczej oraz wnioski z niej płynące. Przedstawione zostaną kluczowe spostrzeżenia, wskazujące na mocne i słabe strony poszczególnych algorytmów, oraz rekomendacje dotyczące ich zastosowań w praktyce.
 
 \section{Podsumowanie wyników}
-W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zostało przygotowane zestawienie średnich wartości każdej z metryk algorytmów uzyskanych na wszystkich zestawach danych. Takie zestawienie pozwala na przejrzyste porównanie efektywności algorytmów i wyciągnięcie jednoznacznych wniosków dotyczących ich wydajności i dokładności w założonym środowisku testowym.
+W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zostało przygotowane zestawienie średnich wartości uzyskanych na wszystkich zestawach danych. Takie zestawienie pozwala na przejrzyste porównanie efektywności algorytmów i wyciągnięcie jednoznacznych wniosków dotyczących ich wydajności i dokładności w założonym środowisku testowym. Kolorem zielonym oznaczone zostały najlepsze wyniki, kolorem czerwonym najgorsze.
 
-\begin{itemize}
-    \item $\delta < 1.25$
-    \begin{enumerate}
-        \item \textbf{Metric3D}: 0.830
-        \item \textbf{DepthAnythingV2}: 0.611
-        \item \textbf{MetaPrompt-SD}: 0.436
-        \item \textbf{SQLdepth}: 0.300
-        \item \textbf{AdelaiDepth}: 0.281
-        \item \textbf{GCNDepth}: 0.276
-    \end{enumerate}
-
-    \item $\delta < 1.25^2$
-    \begin{enumerate}
-        \item \textbf{Metric3D}: 0.921
-        \item \textbf{DepthAnythingV2}: 0.846
-        \item \textbf{MetaPrompt-SD}: 0.636
-        \item \textbf{AdelaiDepth}: 0.462
-        \item \textbf{GCNDepth}: 0.377
-        \item \textbf{SQLdepth}: 0.300
-    \end{enumerate}
-
-    \item $\delta < 1.25^3$
-    \begin{enumerate}
-        \item \textbf{Metric3D}: 0.936
-        \item \textbf{DepthAnythingV2}: 0.934
-        \item \textbf{MetaPrompt-SD}: 0.762
-        \item \textbf{AdelaiDepth}: 0.581
-        \item \textbf{SQLdepth}: 0.532
-        \item \textbf{GCNDepth}: 0.498
-    \end{enumerate}
-
-    \item AbsRel (\%)
-    \begin{enumerate}
-        \item \textbf{Metric3D}: 11.99
-        \item \textbf{DepthAnythingV2}: 28.96
-        \item \textbf{MetaPrompt-SD}: 64.67
-        \item \textbf{SQLdepth}: 123.82
-        \item \textbf{GCNDepth}: 136.50
-        \item \textbf{AdelaiDepth}: 244.46
-    \end{enumerate}
-
-    \item RMSE
-    \begin{enumerate}
-        \item \textbf{DepthAnythingV2}: 3.667
-        \item \textbf{MetaPrompt-SD}: 4.163
-        \item \textbf{Metric3D}: 5.250
-        \item \textbf{SQLdepth}: 6.424
-        \item \textbf{GCNDepth}: 7.223
-        \item \textbf{AdelaiDepth}: 48.031
-    \end{enumerate}
-
-    \item czas wykonania predykcji (s)
-    \begin{enumerate}
-        \item \textbf{GCNDepth}: 0.332
-        \item \textbf{AdelaiDepth}: 0.643
-        \item \textbf{SQLdepth}: 0.801
-        \item \textbf{MetaPrompt-SD}: 0.843
-        \item \textbf{DepthAnythingV2}: 1.321
-        \item \textbf{Metric3D}: 3.834
-    \end{enumerate}
-\end{itemize}
+\begin{table}[H]
+    \centering
+    \caption{Podsumowanie wyników uzyskanych przez algorytmy.}
+    \vspace{0.1cm}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        \textbf{Metryka} & \textbf{Metric3D} & \textbf{DepthAnythingV2} & \textbf{MetaPrompt-SD} & \textbf{SQLdepth} & \textbf{AdelaiDepth} & \textbf{GCNDepth} \\
+        \hline
+        $\delta < 1.25$ & \textcolor{OliveGreen}{0.830} & 0.611 & 0.436 & 0.300 & 0.281 & \textcolor{BrickRed}{0.276} \\
+        $\delta < 1.25^2$ & \textcolor{OliveGreen}{0.921} & 0.846 & 0.636 & \textcolor{BrickRed}{0.300} & 0.462 & 0.377 \\
+        $\delta < 1.25^3$ & \textcolor{OliveGreen}{0.936} & 0.934 & 0.762 & 0.532 & 0.581 & \textcolor{BrickRed}{0.498} \\
+        \hline
+        AbsRel & \textcolor{OliveGreen}{11.99} & 28.96 & 64.67 & 123.82 & 244.46 & \textcolor{BrickRed}{136.50} \\
+        RMSE & 5.250 & \textcolor{OliveGreen}{3.667} & 4.163 & 6.424 & \textcolor{BrickRed}{48.031} & 7.223 \\
+        \hline
+        czas (s) & \textcolor{BrickRed}{3.834} & 1.321 & 0.843 & 0.801 & 0.643 & \textcolor{OliveGreen}{0.332} \\
+        \hline
+        \end{tabular}%
+    }
+\label{table:metrics}
+\end{table}
 
 \section{Interpretacja wyników}
 \subsection{Dokładność estymacji}
