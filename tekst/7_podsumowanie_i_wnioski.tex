@@ -33,15 +33,57 @@ W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zost
 
 \section{Interpretacja wyników}
 \subsection{Dokładność estymacji}
-W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm \textbf{Metric3D} osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak spowodowane wysokim wynikiem uzyskanym na syntetycznym zbiorze Taskonomy (21.322), spowodowanym dużą ilością scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia, podczas gdy zestaw Taskonomy zawiera głębię do obiektu za przeszkleniem. Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
+W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm \textbf{Metric3D} osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak skutkiem wysokiego wyniku uzyskanego na syntetycznym zbiorze Taskonomy (21.322), spowodowanym dużą ilością scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia, podczas gdy zestaw Taskonomy zawiera głębię do obiektu za przeszkleniem (rys. \ref{fig:metric3d-taskonomy}). Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{49.jpg}
+    \caption{Wizualizacja estymacji algorytmu Metric3D na obrazie z zestawu Taskonomy.}
+    \label{fig:metric3d-taskonomy}
+\end{figure}
 
-Następne miejsce pod kątem dokładności zajął algorytm \textbf{Depth Anything V2} uczony metodą częściowo nadzorowaną na największej ilości obrazów spośród wszystkich analizowanych algorytmów. Należy jednak wziąć pod uwagę fakt, że model ten do funkcjonowania nie wymaga żadnych dodatkowych informacji poza obrazem wejściowym w przeciwieństwie do Metric3D. Rozwiązanie Depth Anything V2 wykazuje wysoką efektywność zarówno na scenach zewnętrznych jak i wewnętrznych, jest to jednak niewątpliwie zasługa odrębnych wag modelu do obu rodzajów scen. Metoda Depth Anything V2 osiągnęła najniższą wartość RMSE spośród wszystkich analizowanych modeli.
+Następne miejsce pod kątem dokładności zajął algorytm \textbf{Depth Anything V2} uczony metodą częściowo nadzorowaną na największej ilości obrazów spośród wszystkich analizowanych algorytmów. Należy jednak wziąć pod uwagę fakt, że model ten do funkcjonowania nie wymaga żadnych dodatkowych informacji poza obrazem wejściowym w przeciwieństwie do Metric3D. Rozwiązanie Depth Anything V2 wykazuje wysoką efektywność zarówno na scenach zewnętrznych jak i wewnętrznych (rys. \ref{fig:depthanything-stray}), jest to jednak niewątpliwie zasługa odrębnych wag modelu do obu rodzajów scen. Metoda Depth Anything V2 osiągnęła najniższą wartość RMSE spośród wszystkich analizowanych modeli.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{50.jpg}
+    \caption{Wizualizacja estymacji algorytmu Depth Anything V2 na obrazie z zestawu autorskiego.}
+    \label{fig:depthanything-stray}
+\end{figure}
 
-Trzecią najdokładniejszą metodą jest \textbf{MetaPrompt-SD}. Odbiega ona jednak w sposób zauważalny od najdokładniejszej metody - wykazuje ponad pięciokrotnie gorszy średni wynik AbsRel. Najgorszy rezultat przyniósł test przeprowadzony na obu podzbiorach DIODE. Może to być spowodowane wysokim stopniem skomplikowania scen w tym zbiorze. Model funkcjonuje równie efektywnie niezależnie od zlokalizowania scen. Metoda MetaPrompt-SD została nauczona jedynie na dwóch zbiorach - NYUv2 oraz KITTI. Pomimo to osiągnęła najlepszy wynik AbsRel na syntetycznym zbiorze scen wewnętrznych Taskonomy.
+Trzecią najdokładniejszą metodą jest \textbf{MetaPrompt-SD}. Odbiega ona jednak w sposób zauważalny od najdokładniejszej metody - wykazuje ponad pięciokrotnie gorszy średni wynik AbsRel. Najgorszy rezultat przyniósł test przeprowadzony na obu podzbiorach DIODE (rys. \ref{fig:metaprompt-diode}). Może to być spowodowane wysokim stopniem skomplikowania scen w tym zbiorze. Model funkcjonuje równie efektywnie niezależnie od zlokalizowania scen. Metoda MetaPrompt-SD została nauczona jedynie na dwóch zbiorach - NYUv2 oraz KITTI. Pomimo to osiągnęła najlepszy wynik AbsRel na syntetycznym zbiorze scen wewnętrznych Taskonomy (rys. \ref{fig:metaprompt-taskonomy}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{51.jpg}
+    \caption{Wizualizacja estymacji algorytmu MetaPrompt-SD na obrazie z zestawu DIODE.}
+    \label{fig:metaprompt-diode}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{52.jpg}
+    \caption{Wizualizacja estymacji algorytmu MetaPrompt-SD na obrazie z zestawu Taskonomy.}
+    \label{fig:metaprompt-taskonomy}
+\end{figure}
 
-Algorytmy \textbf{SQLdepth} oraz \textbf{GCNDepth} wykazują bardzo niskie zdolności generalizacji. Pomimo różnic w architekturze, obie metody nauczone na jednym zestawie - KITTI - jedynie na nim oraz jego wirtualnym odpowiedniku (Virtual KITTI 2) osiągnęły średni bezwzględny błąd procentowy poniżej 20\%. Z tego względu należy je rozpatrywać jedynie w kontekście charakterystyki scen przedstawionych we wsponianych zestawach, czyli głównie scen prezentujących miejski ruch uliczny.
+Algorytmy \textbf{GCNDepth} (rys. \ref{fig:GCNDepth-KITTI}) oraz \textbf{SQLdepth} (rys. \ref{fig:SQLdepth-KITTI}) wykazują bardzo niskie zdolności generalizacji. Pomimo różnic w architekturze, obie metody nauczone na jednym zestawie - KITTI - jedynie na nim oraz jego wirtualnym odpowiedniku (Virtual KITTI 2) osiągnęły średni bezwzględny błąd procentowy poniżej 20\%. Z tego względu należy je rozpatrywać jedynie w kontekście charakterystyki scen przedstawionych we wsponianych zestawach, czyli głównie scen prezentujących miejski ruch uliczny.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{54.jpg}
+    \caption{Wizualizacja estymacji algorytmu GCNDepth na obrazie z zestawu KITTI.}
+    \label{fig:GCNDepth-KITTI}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{55.jpg}
+    \caption{Wizualizacja estymacji algorytmu SQLdepth na obrazie z zestawu KITTI.}
+    \label{fig:SQLdepth-KITTI}
+\end{figure}
 
-Najgorszy wynik w założonym środowisku testowym uzyskał algorytm \textbf{AdelaiDepth}. Pomimo że został nauczony na zbiorze Taskonomy uzyskał na nim najgorszy wynik AbsRel spośród analizowanych algorytmów. Może to świadczyć o niewielkim udziale tego zbioru w procesie uczenia. Model AdelaiDepth osiąga akceptowalne rezultaty jedynie na scenach wewnętrznych.
+Najgorszy wynik w założonym środowisku testowym uzyskał algorytm \textbf{AdelaiDepth}. Pomimo że został nauczony na zbiorze Taskonomy uzyskał na nim najgorszy wynik AbsRel spośród analizowanych algorytmów. Może to świadczyć o niewielkim udziale tego zbioru w procesie uczenia. Model AdelaiDepth osiąga akceptowalne rezultaty jedynie na scenach wewnętrznych (rys. \ref{fig:adelaidepth-stray}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{53.jpg}
+    \caption{Wizualizacja estymacji algorytmu AdelaiDepth na obrazie z zestawu autorskiego.}
+    \label{fig:adelaidepth-stray}
+\end{figure}
 
 \subsection{Wydajność czasowa}
 Analiza wydajności czasowej stanowi kluczową kwestię dla wyrokowania potencjalnych praktycznych zastosowań, szczególnie z punktu widzenia systemów wymagających przetwarzania w czasie rzeczywistym lub zbliżonym. Zarejestrowane podczas analizy czasy wykonania predykcji na pojedynczym obrazie wskazują wyraźnie trend polegający na wydłużonym czasie dla wyższej dokładności. Metoda osiągająca najwyższą dokładność - \textbf{Metric3D} - jest obarczona wysokim czasem predykcji - średnio 3,83 sekundy - co znacząco ogranicza jej zastosowanie w systemach, w których czas jest aspektem krytycznym. Z drugiej strony metoda osiągająca najniższy średni czas - \textbf{GCNdepth} - wykazuje niską zdolność generalizacji, jak i dokładność. Często najlepszym rozwiązaniem przy rozpatrywaniu algorytmów w kategorii wydajności czasowej okaże się z całą pewnością kompromis pomiędzy dokładnością a osiąganym czasem, taki oferują metody \textbf{Depth Anything V2} oraz \textbf{MetaPrompt-SD}.
