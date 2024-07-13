@@ -4,7 +4,7 @@ W tym rozdziale przedstawiono szczegółową analizę oraz wyniki badań przepro
 
 \section{Dokładność estymacji}
 \subsection{Dokładność progowa}
-Dokładność progowa to miara używana do oceny wydajności estymacji przez modele sztucznej inteligencji. Mierzy ona odsetek oszacowań głębi, które mieszczą się w określonym z góry progu względem wartości rzeczywistych. Konkretnie, oblicza procent przewidywanych głębi, które spełniają warunek przedstawiony we wzorze \ref{eq:4}. Metryka ta jest szczególnie użyteczna do oceny, jak blisko przewidywane wartości są do wartości zmierzonych w określonym poziomie tolerancji. Założony podczas niniejszej analizy progi to $1,25$ oraz kwadrat i sześcian tej wartości. Pozwoli to na bardziej szczegółową ocenę modeli w sytuacjach, gdzie dokładne wartości są trudne do przewidzenia, ale bliskie przybliżenia są nadal wartościowe. Każda z analizowanych metod została uruchomiona na siedmiu zbiorach danych opisanych w rozdziale \ref{chap:przedstawienie_zastosowanych_narzędzi}, wyniki uruchomień zostały zestawione z rzeczywistymi mapami głębi, a następnie wyliczone zostały dokładności progowe, które zaprezentowane zostały poprzez wykresy znajdujące się na następnych stronach (rysunki \ref{fig:delta_0} - \ref{fig:delta_6}).
+Dokładność progowa to miara używana do oceny wydajności estymacji przez modele sztucznej inteligencji. Mierzy ona odsetek oszacowań głębi, które mieszczą się w określonym z góry progu względem wartości rzeczywistych. Konkretnie, oblicza procent przewidywanych głębi, które spełniają warunek przedstawiony we wzorze \ref{eq:4}. Metryka ta jest szczególnie użyteczna do oceny, jak blisko przewidywane wartości są do wartości zmierzonych w określonym poziomie tolerancji. Założony podczas niniejszej analizy progi to $1,25$ oraz kwadrat i sześcian tej wartości. Pozwoli to na bardziej szczegółową ocenę modeli w sytuacjach, gdzie dokładne wartości są trudne do przewidzenia, ale bliskie przybliżenia są nadal wartościowe. Każda z analizowanych metod została uruchomiona na siedmiu zbiorach danych opisanych w rozdziale \ref{chap:przedstawienie_zastosowanych_narzędzi}, wyniki uruchomień zostały zestawione z rzeczywistymi mapami głębi, a następnie wyliczone zostały dokładności progowe, które zaprezentowane zostały poprzez wykresy znajdujące się na następnych stronach (rysunki \ref{fig:delta_0} - \ref{fig:delta_7}).
 
 \begin{figure}[H]
     \centering
@@ -27,30 +27,36 @@ Dokładność progowa to miara używana do oceny wydajności estymacji przez mod
 \begin{figure}[H]
     \centering
     \includegraphics{plots/delta/3}
-    \caption{Wyniki dokładności progowej na zbiorze autorskim.}
+    \caption{Wyniki dokładności progowej na zbiorze autorskim na części ze scenami zewnętrznymi.}
     \label{fig:delta_3}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/delta/4}
-    \caption{Wyniki dokładności progowej na zbiorze KITTI.}
+    \caption{Wyniki dokładności progowej na zbiorze autorskim na części ze scenami wewnętrznymi.}
     \label{fig:delta_4}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/delta/5}
-    \caption{Wyniki dokładności progowej na zbiorze Virtual KITTI 2.}
+    \caption{Wyniki dokładności progowej na zbiorze KITTI.}
     \label{fig:delta_5}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/delta/6}
-    \caption{Wyniki dokładności progowej na zbiorze Taskonomy.}
+    \caption{Wyniki dokładności progowej na zbiorze Virtual KITTI 2.}
     \label{fig:delta_6}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{plots/delta/7}
+    \caption{Wyniki dokładności progowej na zbiorze Taskonomy.}
+    \label{fig:delta_7}
 \end{figure}
 
 \subsection{Średni procentowy błąd bezwzględny}
-Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie średniego bezwzględnego błedu estymacji, opisanego równaniem \ref{eq:2}. Jest to metryka oznaczająca średnią procentową bezwzględną różnicę między wartościami, które są dopasowane przez algorytm, a wartościami danych rzeczywistych. Metryka ta uznawana jest za najbardziej uniwersalną, z tego powodu najczęściej występuje w publikacjach naukowych dotyczących omawianych algorytmów. W tym podrozdziale znajdują się wykresy sporządzone na podstawie wyników uruchomień algorytmów na założonych zestawach danych (rysunki \ref{fig:absrel_0} - \ref{fig:absrel_6}). Z uruchomienia na zestawie syntetycznych danych Virtual KITTI 2 został wyłączony algorytm AdelaiDepth, ze względu na bardzo niekorzystny wynik\footnote{Algorytm AdelaiDepth na wirtualnym zbiorze Virtual KITTI 2 uzyskał wynik powyżej 1000\% AbsRel}. Metoda ta została nauczona na zestawie danych przedstawiających sceny wyłącznie wewnętrzne i realistyczne, stąd, aby zachować przejrzystość wizualizacji zdecydowano się na taki zabieg.
+Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie średniego bezwzględnego błedu estymacji, opisanego równaniem \ref{eq:2}. Jest to metryka oznaczająca średnią procentową bezwzględną różnicę między wartościami, które są dopasowane przez algorytm, a wartościami danych rzeczywistych. Metryka ta uznawana jest za najbardziej uniwersalną, z tego powodu najczęściej występuje w publikacjach naukowych dotyczących omawianych algorytmów. W tym podrozdziale znajdują się wykresy sporządzone na podstawie wyników uruchomień algorytmów na założonych zestawach danych (rysunki \ref{fig:absrel_0} - \ref{fig:absrel_7}). Z uruchomienia na zestawie syntetycznych danych Virtual KITTI 2 został wyłączony algorytm AdelaiDepth, ze względu na bardzo niekorzystny wynik\footnote{Algorytm AdelaiDepth na wirtualnym zbiorze Virtual KITTI 2 uzyskał wynik powyżej 1000\% AbsRel}. Metoda ta została nauczona na zestawie danych przedstawiających sceny wyłącznie wewnętrzne i realistyczne, stąd, aby zachować przejrzystość wizualizacji zdecydowano się na taki zabieg.
 
 \begin{figure}[H]
     \centering
@@ -73,30 +79,36 @@ Sekcja ta zawiera wyniki osiągnięte przez analizowane algorytmy w dziedzinie �
 \begin{figure}[H]
     \centering
     \includegraphics{plots/absrel/3}
-    \caption{Średni bezwzględny błąd procentowy na zbiorze autorskim.}
+    \caption{Średni bezwzględny błąd procentowy na zbiorze autorskim na części ze scenami zewnętrznymi.}
     \label{fig:absrel_3}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/absrel/4}
-    \caption{Średni bezwzględny błąd procentowy na zbiorze KITTI.}
+    \caption{Średni bezwzględny błąd procentowy na zbiorze autorskim na części ze scenami wewnętrznymi.}
     \label{fig:absrel_4}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/absrel/5}
-    \caption{Średni bezwzględny błąd procentowy na zbiorze Virtual KITTI 2.}
+    \caption{Średni bezwzględny błąd procentowy na zbiorze KITTI.}
     \label{fig:absrel_5}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/absrel/6}
-    \caption{Średni bezwzględny błąd procentowy na zbiorze Taskonomy.}
+    \caption{Średni bezwzględny błąd procentowy na zbiorze Virtual KITTI 2.}
     \label{fig:absrel_6}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{plots/absrel/7}
+    \caption{Średni bezwzględny błąd procentowy na zbiorze Taskonomy.}
+    \label{fig:absrel_7}
 \end{figure}
 
 \subsection{Pierwiastek błędu średniokwadratowego}
-Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwiastek błędu średniokwadratowego \ref{eq:3}. Oznacza on średnią różnicę między wartością przewidywaną a rzeczywistą na obrazach z danego zbioru danych, z czego wynika rzetelne odzwierciedlenie dokładności algorytmu. Jest to natomiast metryka bardziej bezwzględna niż wartość średniego procentowego błędu bezwzględnego. Wyniki analizy przedstawiają następujące wykresy (rysunki \ref{fig:rmse_0} - \ref{fig:rmse_6}).
+Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwiastek błędu średniokwadratowego \ref{eq:3}. Oznacza on średnią różnicę między wartością przewidywaną a rzeczywistą na obrazach z danego zbioru danych, z czego wynika rzetelne odzwierciedlenie dokładności algorytmu. Jest to natomiast metryka bardziej bezwzględna niż wartość średniego procentowego błędu bezwzględnego. Wyniki analizy przedstawiają następujące wykresy (rysunki \ref{fig:rmse_0} - \ref{fig:rmse_7}).
 
 \begin{figure}[H]
     \centering
@@ -119,31 +131,37 @@ Ostatnim analizowanym współczynnikiem oceny dokładności prognozy jest pierwi
 \begin{figure}[H]
     \centering
     \includegraphics{plots/rmse/3}
-    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze autorskim.}
+    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze autorskim na części ze scenami zewnętrznymi.}
     \label{fig:rmse_3}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/rmse/4}
-    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze KITTI.}
+    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze autorskim na części ze scenami wewnętrznymi.}
     \label{fig:rmse_4}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/rmse/5}
-    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze Virtual KITTI 2.}
+    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze KITTI.}
     \label{fig:rmse_5}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/rmse/6}
-    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze Taskonomy.}
+    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze Virtual KITTI 2.}
     \label{fig:rmse_6}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{plots/rmse/7}
+    \caption{Pierwiastek błędu średniokwadratowego uzyskany na zbiorze Taskonomy.}
+    \label{fig:rmse_7}
 \end{figure}
 
 
 \section{Czas realizacji pojedynczej estymacji}
-Podczas analizy algorytmów w dziedzinie ich dokładności zostały również zebrane informacje na temat czasu wymaganego przez algorytm do wykonania estymacji głębi na pojedynczym obrazie. W czas ten wlicza się wczytanie obrazu, dokonanie predykcji i ewentualne skalowanie mapy głębi (w zależności od algorytmu). Uśrednione wyniki przedstawione zostały w postaci wykresów następujących na następnych stronach rozdziału (rysunki \ref{fig:exec_time_0} - \ref{fig:exec_time_6}).
+Podczas analizy algorytmów w dziedzinie ich dokładności zostały również zebrane informacje na temat czasu wymaganego przez algorytm do wykonania estymacji głębi na pojedynczym obrazie. W czas ten wlicza się wczytanie obrazu, dokonanie predykcji i ewentualne skalowanie mapy głębi (w zależności od algorytmu). Uśrednione wyniki przedstawione zostały w postaci wykresów następujących na następnych stronach rozdziału (rysunki \ref{fig:exec_time_0} - \ref{fig:exec_time_7}).
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/0}
@@ -165,26 +183,32 @@ Podczas analizy algorytmów w dziedzinie ich dokładności zostały również ze
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/3}
-    \caption{Średni czas wykonania estymacji na zbiorze autorskim.}
+    \caption{Średni czas wykonania estymacji na zbiorze autorskim na części ze scenami zewnętrznymi.}
     \label{fig:exec_time_3}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/4}
-    \caption{Średni czas wykonania estymacji na zbiorze KITTI.}
+    \caption{Średni czas wykonania estymacji na zbiorze autorskim na części ze scenami wewnętrznymi.}
     \label{fig:exec_time_4}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/5}
-    \caption{Średni czas wykonania estymacji na zbiorze Virtual KITTI 2.}
+    \caption{Średni czas wykonania estymacji na zbiorze KITTI.}
     \label{fig:exec_time_5}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{plots/exec_time/6}
-    \caption{Średni czas wykonania estymacji na zbiorze Taskonomy.}
+    \caption{Średni czas wykonania estymacji na zbiorze Virtual KITTI 2.}
     \label{fig:exec_time_6}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{plots/exec_time/7}
+    \caption{Średni czas wykonania estymacji na zbiorze Taskonomy.}
+    \label{fig:exec_time_7}
 \end{figure}
 
 \section{Wymagania systemowe}
