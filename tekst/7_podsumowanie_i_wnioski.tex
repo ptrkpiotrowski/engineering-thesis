@@ -1,5 +1,5 @@
 \chapter{Podsumowanie i wnioski}\label{chap:podsumowanie_i_wnioski}
-Celem niniejszej pracy było przeprowadzenie analizy porówawczej zróżnicowanej grupy dostępnych neuronowych wizyjnych algorytmów percepcji głębi. W szczególności skupiono się na obiektywnej ocenie ich dokładności, wydajności czasowej, ogólnej efektywności w różnych zastosowaniach oraz wymagań systemowych.
+Celem niniejszej pracy było przeprowadzenie analizy porównawczej zróżnicowanej grupy dostępnych neuronowych wizyjnych algorytmów percepcji głębi. W szczególności skupiono się na obiektywnej ocenie ich dokładności, wydajności czasowej, ogólnej efektywności w różnych zastosowaniach oraz wymagań systemowych.
 
 W ramach analizy porównano sześć algorytmów wybranych pod kątem wyników osiąganych w publicznie dostępnych zestawieniach, architektury oraz metody ich uczenia. W celu wykonania rzetelnej analizy wykorzystany został szereg metryk, takich jak pierwiastek ze średniego błądu kwadratowego czy średni bezwzględny błąd procentowy. Publiczne repozytorium zawierające skrypty wykorzystane w celu wykonania analizy na platformie Google Colab znajduje się pod adresem:
 \url{https://github.com/ptrkpiotrowski/engineering-thesis} (katalog \textit{notebooks})
@@ -12,8 +12,7 @@ W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zost
 \begin{table}[H]
     \centering
     \caption{Średnie wartości wyników uzyskanych przez algorytmy.}
-    \vspace{0.1cm}
-    \resizebox{\textwidth}{!}{%
+    \resizebox{.9\textwidth}{!}{%
         \begin{tabular}{|l|c|c|c|c|c|c|}
         \hline
         \textbf{Metryka} & \textbf{Metric3D} & \textbf{DepthAnythingV2} & \textbf{MetaPrompt-SD} & \textbf{SQLdepth} & \textbf{AdelaiDepth} & \textbf{GCNDepth} \\
@@ -34,11 +33,13 @@ W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zost
 
 \section{Interpretacja wyników}
 \subsection{Dokładność estymacji}
-W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm \textbf{Metric3D} osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak skutkiem wysokiego wyniku uzyskanego na syntetycznym zbiorze Taskonomy (21,322), spowodowanym dużą liczbą scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia, podczas gdy zestaw Taskonomy zawiera głębię do obiektu za przeszkleniem (rys. \ref{fig:metric3d-taskonomy}). Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. Pomijając etap wykorzystujący rzeczoną informację, algorytm ten estymuje poprawnie głębię relatywną, jest ona jednak przesunięta względem wartości rzeczywistych. Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
+W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm \textbf{Metric3D} osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak skutkiem wysokiego wyniku uzyskanego na syntetycznym zbiorze Taskonomy (21,322), spowodowanym dużą liczbą scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia, podczas gdy zestaw Taskonomy zawiera głębię do obiektu za przeszkleniem (rys. \ref{fig:metric3d-taskonomy}).
+
+Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. W przypadku braku rzeczonej informacji, algorytm ten jako wartość długości przyjmuje 1000µm, co powoduje pewne odchylenia w stosunku do wartości rzeczywistych, zależne od różnicy między długością ogniskowej aparatu rejestrującego a wartością domyślną (na rys. \ref{fig:metric3d-taskonomy} na środkowym obrazie wynik działania przy podanej prawidłowej wartości długości ogniskowej, po prawej stronie wynik przy wartości domyślnej). Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{49.jpg}
-    \caption{Wizualizacja estymacji algorytmu Metric3D na obrazie z zestawu Taskonomy.}
+    \caption{Wizualizacja estymacji algorytmu Metric3D na obrazie z zestawu Taskonomy. Wynik algorytmu z podaną poprawną wartością długości ogniskowej (435,33µm) znajduje się po środku. Po prawej stronie wynik przy wartości domyślnej (1000µm)}
     \label{fig:metric3d-taskonomy}
 \end{figure}
 
@@ -64,7 +65,7 @@ Trzecią najdokładniejszą metodą jest \textbf{MetaPrompt-SD}. Odbiega ona jed
     \label{fig:metaprompt-taskonomy}
 \end{figure}
 
-Algorytmy \textbf{GCNDepth} (rys. \ref{fig:GCNDepth-KITTI}) oraz \textbf{SQLdepth} (rys. \ref{fig:SQLdepth-KITTI}) wykazują bardzo niskie zdolności generalizacji. Pomimo różnic w architekturze, obie metody nauczone na jednym zestawie - KITTI - jedynie na nim oraz jego wirtualnym odpowiedniku (Virtual KITTI 2) osiągnęły średni bezwzględny błąd procentowy poniżej 20\%. Z tego względu należy je rozpatrywać jedynie w kontekście charakterystyki scen przedstawionych we wsponianych zestawach, czyli głównie scen prezentujących miejski ruch uliczny.
+Algorytmy \textbf{GCNDepth} (rys. \ref{fig:GCNDepth-KITTI}) oraz \textbf{SQLdepth} (rys. \ref{fig:SQLdepth-KITTI}) wykazują bardzo niskie zdolności generalizacji. Pomimo różnic w architekturze, obie metody nauczone na jednym zestawie - KITTI - jedynie na nim oraz jego wirtualnym odpowiedniku (Virtual KITTI 2) osiągnęły średni bezwzględny błąd procentowy poniżej 20\%. Z tego względu należy je rozpatrywać jedynie w kontekście charakterystyki scen przedstawionych we wspomnianych zestawach, czyli głównie scen prezentujących miejski ruch uliczny.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{54.jpg}
@@ -101,6 +102,6 @@ Wybór odpowiedniego algorytmu percepcji głębi zależy od specyficznych wymaga
 
 Ze względu na niski czas wykonania predykcji i dobrą zdolność predykcji głębi relatywnej algorytmy \textbf{AdelaiDepth}, \textbf{GCNDepth} oraz \textbf{SQLdepth} będą odpowiednie do zastosowania w rozszerzonej rzeczywistości (AR) i wirtualnej rzeczywistości (VR). W tych dziedzinach wymagana jest szybka, niekoniecznie najwyższej dokładności predykcja głębi. Dodatkowo przez wzgląd na umiarkowane wymagania obliczeniowe \textbf{AdelaiDepth} może znaleźć zastosowanie w urządzeniach moblinych oraz komputerach jednopłytkowych. Inną dziedziną odpowiednią dla zestawu cech wymienionych algorytmów jest robotyka oraz monitoring i systemy bezpieczeństwa, w których dokładność często nie jest wymagana a niskie wymagania sprzętowe oraz czas działają na zdecydowaną korzyść.
 
-W aplikacjach których działanie opiera się na dokładności predykcji a czas i dostępność zasobów komputerowych nie jest aspektem krytycznym \textbf{Metric3D} jest rozwiązaniem bezkonkurencyjnym. Przykładowymi takich dziedzin są modelowanie trójwymiarowe miast i inżynieria lądowa. Dzięki wysokiej precyzji jest dobrym potencjalnym narzędziem do badań naukowych, przemysłu filmowego i gier komputerowych, gdzie realizm i dokładność mają bardzo ważne znaczenie. Istotny pozostaje jednak fakt, iż algorytm ten wymaga posiadania szczegółowych informacji na temat obiektywu aparatu rejestrującego obraz wejściowy.
+W aplikacjach, których działanie opiera się na dokładności predykcji a czas i dostępność zasobów komputerowych nie jest aspektem krytycznym \textbf{Metric3D} jest rozwiązaniem bezkonkurencyjnym. Przykładami takich dziedzin są: modelowanie trójwymiarowe miast i inżynieria lądowa. Dzięki wysokiej precyzji jest on dobrym potencjalnym narzędziem do badań naukowych, przemysłu filmowego i gier komputerowych, gdzie realizm i dokładność mają bardzo ważne znaczenie. Istotny pozostaje jednak fakt, iż algorytm ten wymaga posiadania szczegółowych informacji na temat obiektywu aparatu rejestrującego obraz wejściowy.
 
 Modele \textbf{Depth Anything V2} i \textbf{MetaPrompt-SD} oferują wysoką precyzję estymacji przy umiarkowanym czasie ich realizacji, dzięki czemu potencjalnym ich zastosowaniem są wspomaganie autonomicznych pojazdów i systemy nawigacji, gdzie kluczową kwestią jest dokładność predykcji w korelacji z czasem jej wykonania. Ze względu na znacznie wyższą zdolność generalizacji oraz niższe wykorzystanie zasobów systemowych metoda \textbf{Depth Anything V2} ma większą szansę na znalezienie zastosowania.
