@@ -83,7 +83,7 @@ Architektura sieci tego modelu (rys. \ref{fig:unidepth-schema}) składa się z t
     \caption{Schemat architektury algorytmu UniDepth. Źródło: \cite{piccinelli2024}}
     \label{fig:unidepth-schema}
 \end{figure}
-Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu rożnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią splotową, odpowiednio UniDepth-V i UniDepth-C. Tabela \ref{fig:unidepth-results} przedstawia porównanie rezultatów modelu UniDepth.
+Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających się łącznie na 3 miliony obrazów, co umożliwiło nauczenie modelu różnorodnych scen z różnych punktów widzenia i różnymi warunkami oświetleniowymi. Do weryfikacji rezultatów wykorzystano natomiast 10 zestawów danych niepokrywających się z zestawami uczącymi. W porównaniu rezultatów wykorzystano modele zawierające koder z transformatorem i z siecią splotową, odpowiednio UniDepth-V i UniDepth-C. Tabela \ref{fig:unidepth-results} przedstawia porównanie rezultatów modelu UniDepth.
 \begin{table}[H]
     \centering
     \caption{Porównanie rezultatów UniDepth dokonane na zbiorach danych niewidzianych podczas uczenia. Źródło: \cite{piccinelli2024}}
@@ -92,7 +92,7 @@ Do nauczenia modelu UniDepth wykorzystano 9 zestawów uczących składających s
 \end{table}
 
 \subsection{Depth Anything V2}
-Interesującą strategię rozwiązania przyjęli autorzy modelu Depth Anything V2 \cite{yang2024depth}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (595 tysiące obrazów), ale również z danych nieoznaczonych (62 miliony obrazów). Wykorzystane zbiory danych przedstawione są w tabeli \ref{fig:depth-anything-data}. Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. W stosunku do pierweszej wersji modelu \cite{yang2024depthv1} poprawiono wydajność, poprawność estymacji na odbiciach i obiektach przezroczystych oraz zastosowano uczenie na bardziej skomplikowanych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej. Poniżej znajduje się rysunek \ref{fig:depth-anything} z porównaniem z wersją pierwszą oraz konkurencyjnym modelem.
+Interesującą strategię rozwiązania przyjęli autorzy modelu Depth Anything V2 \cite{yang2024depth}. Położyli oni bowiem nacisk na niezwykle duży zestaw danych uczących składający się nie tylko z danych oznaczonych (595 tysiące obrazów), ale również z danych nieoznaczonych (62 miliony obrazów). Wykorzystane zbiory danych przedstawione są w tabeli \ref{fig:depth-anything-data}. Jest to w związku z tym model uczony metodą częściowo nadzorowaną. W ten sposób otrzymano model charakteryzujący się bardzo dużą zdolnością generalizacji na nowych scenach. W stosunku do pierwszej wersji modelu \cite{yang2024depthv1} poprawiono wydajność, poprawność estymacji na odbiciach i obiektach przezroczystych oraz zastosowano uczenie na bardziej skomplikowanych scenach. Jako priorytet twórcy ustanowili estymację głębi relatywnej, dopiero po dostrojeniu modelu z użyciem zestawu KITTI lub NYUv2 model ten zyskuje zdolność predykcji głębi metrycznej. Poniżej znajduje się rysunek \ref{fig:depth-anything} z porównaniem z wersją pierwszą oraz konkurencyjnym modelem.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{17.jpg}
@@ -158,7 +158,7 @@ W celu nauczenia algorytmu DistDepth wykorzystano dwa autorskie zestawy danych -
 \end{table}
 
 \subsection{GCNDepth}
-Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% liczbę trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczegónie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębi oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
+Wykorzystujący architekturę grafowej splotowej sieci neuronowej \cite{GNNBook2022} model GCNDepth \cite{masoumian2021gcndepth} oferuje według twórców 89\% skuteczność na publicznie dostępnych zbiorach KITTI i Make3D, redukując jednocześnie o 40\% liczbę trenowanych parametrów sieci w porównaniu z innymi obecnymi algorytmami. Model ten koncentruje się na scenach plenerowych, szczególnie na ruchu ulicznym ze względu na charakterystykę obrazów trenujących. Precyzując, architektura (rys. \ref{fig:gcn-schema}) składa się z dwóch głównych komponentów: sieci DepthNet odpowiedzialnej za przewidywanie map głębi oraz sieci PoseNet odpowiedzialnej za przewidywanie pozy aparatu między kolejnymi klatkami wideo ze względu na nienadzorowane uczenie algorytmu. Poniższy rysunek \ref{fig:gcn-schema} zawiera schemat opisanej architektury.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{29.jpg}
@@ -601,7 +601,7 @@ W ramach niniejszej pracy został również przygotowany autorski zbiór danych.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{dataset/plt_2351129738.jpg}
-    \caption{Przykładowy obraz z austorskiego zestawu. Źródło: własne}
+    \caption{Przykładowy obraz z autorskiego zestawu. Źródło: własne}
     \label{fig:stray-example}
 \end{figure}
 
@@ -655,7 +655,7 @@ Kinect. \\
         Cityscapes \cite{cordts2016cityscapes} &
         sceny zewnętrzne & 
         25 000 &
-        autorska konsktrukcja kamer stereo na pojeździe
+        autorska konstrukcja kamer stereo na pojeździe
         \\
         \hline
         Virtual KITTI 2 \cite{cabon2020virtualkitti2} &
