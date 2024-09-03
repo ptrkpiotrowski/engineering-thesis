@@ -17,7 +17,7 @@ W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zost
         \hline
         \textbf{Metryka} & \textbf{Metric3D} & \textbf{DepthAnythingV2} & \textbf{MetaPrompt-SD} & \textbf{SQLdepth} & \textbf{AdelaiDepth} & \textbf{GCNDepth} \\
         \hline
-        $\delta < 1.25$ & \textcolor{OliveGreen}{0,883} & 0,584 & 0,389 & 0,266 & 0,306 & \textcolor{BrickRed}{0,245} \\
+        $\delta < 1,25$ & \textcolor{OliveGreen}{0,883} & 0,584 & 0,389 & 0,266 & 0,306 & \textcolor{BrickRed}{0,245} \\
         $\delta < 1,25^2$ & \textcolor{OliveGreen}{0,968} & 0,857 & 0,586 & 0,376 & 0,506 & \textcolor{BrickRed}{0,348} \\
         $\delta < 1,25^3$ & \textcolor{OliveGreen}{0,983} & 0,939 & 0,740 & 0,511 & 0,627 & \textcolor{BrickRed}{0,480} \\
         \hline
@@ -33,7 +33,7 @@ W celu usystematyzowania i podsumowania wyników uzyskanych przez algorytmy zost
 
 \section{Interpretacja wyników}
 \subsection{Dokładność estymacji}
-W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm \textbf{Metric3D} osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak skutkiem wysokiego wyniku uzyskanego na syntetycznym zbiorze Taskonomy (21.322), spowodowanym dużą liczbą scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia, podczas gdy zestaw Taskonomy zawiera głębię do obiektu za przeszkleniem (rys. \ref{fig:metric3d-taskonomy}). Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. Pomijając etap wykorzystujący rzeczoną informację, algorytm ten estymuje poprawnie głębię relatywną, jest ona jednak przesunięta względem wartości rzeczywistych. Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
+W aspekcie dokładności estymacji zdecydowanym liderem jest algorytm \textbf{Metric3D} osiągający najlepszy wynik w większości metrykach dokładności predykcji. Jedynie średnia wartości pierwiastków błędu średniokwadratowego (RMSE) tego algorytmu jest nieoczekiwanie wyższa w porównaniu do pozostałych wiodących algorytmów, jest to jednak skutkiem wysokiego wyniku uzyskanego na syntetycznym zbiorze Taskonomy (21,322), spowodowanym dużą liczbą scen zawierających przeszklenia. Algorytm Metric3D bowiem w wielu przypadkach estymuje odległość do przeszklenia, podczas gdy zestaw Taskonomy zawiera głębię do obiektu za przeszkleniem (rys. \ref{fig:metric3d-taskonomy}). Model Metric3D jest ponadprzeciętnie dokładny w dużej mierze dzięki implementacji wykorzystania informacji dotyczącej długości ogniskowej kamery. Pomijając etap wykorzystujący rzeczoną informację, algorytm ten estymuje poprawnie głębię relatywną, jest ona jednak przesunięta względem wartości rzeczywistych. Funkcjonuje poprawnie na scenach zewnętrznych oraz wewnętrznych co świadczy o bardzo wysokiej generalizacji i uniwersalności tego modelu.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{49.jpg}
