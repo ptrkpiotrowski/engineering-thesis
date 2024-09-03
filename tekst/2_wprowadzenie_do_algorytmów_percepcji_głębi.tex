@@ -1,7 +1,7 @@
 \chapter{Wprowadzenie do algorytmów percepcji głębi}\label{chap:2_wprowadzenie_do_algorytmów_percepcji_głębi}
 
 \section{Paradygmaty uczenia}
-Podstawową metodą uczenia algorytmów percepcji głębi jest uczenie nadzorowane. W tejże metodzie do nauki estymacji mapy głębi wykorzystywana jest struktura scen z obrazów stanowiących rzeczywiste dane odniesienia\footnote{Dane rzeczywiste uzyskane za pomocą technologii rejestrowania obrazów 3D.}. Pozyskanie tych obrazów często bywa kosztowne i problematyczne, skąd wyniknęła potrzeba uczenia algorytmów przy użyciu zmniejszonej ilości danych rzeczywistych tudzież ich całkowitym braku\footnote{Wówczas mówimy o rekonstrukcji mapy głębi.}. W ramach usystematyzowania wiedzy następujący podrozdział skupi się zatem na zebraniu i sklasyfikowaniu paradygmatów uczenia algorytmów percepcji głębi.
+Podstawową metodą uczenia algorytmów percepcji głębi jest uczenie nadzorowane. W tejże metodzie do nauki estymacji mapy głębi wykorzystywana jest struktura scen z obrazów stanowiących rzeczywiste dane odniesienia\footnote{Dane rzeczywiste uzyskane za pomocą technologii rejestrowania obrazów 3D.}. Pozyskanie tych obrazów często bywa kosztowne i problematyczne, skąd wyniknęła potrzeba uczenia algorytmów przy użyciu zmniejszonej liczby danych rzeczywistych tudzież ich całkowitym braku\footnote{Wówczas mówimy o rekonstrukcji mapy głębi.}. W ramach usystematyzowania wiedzy następujący podrozdział skupi się zatem na zebraniu i sklasyfikowaniu paradygmatów uczenia algorytmów percepcji głębi.
 
 \subsection{Uczenie nadzorowane}
 Ta najczęściej obecnie stosowana metoda uczenia sieci neuronowych zakłada posiadanie odpowiednio przygotowanych danych wejściowych oraz odpowiadających im danych wyjściowych. Wówczas celem nauki jest zminimalizowanie wartości odpowiednio sporządzonej funkcji straty, której argumentami są wartości zmierzone i estymowane. Wybór wspomnianej funkcji zależy od charakterystyki rozwiązywanego problemu. W przypadku percepcji głębi najczęściej stosowaną funkcją straty jest błąd średniokwadratowy (MSE od ang. mean square error):
@@ -29,7 +29,7 @@ Z powodu potrzeby uniknięcia kosztownego procesu przygotowania danych na potrze
 \subsection{Uczenie częściowo nadzorowane}
 Sposobem łączącym dwa poprzednio przedstawione jest uczenie częściowo nadzorowane. Metoda ta wykorzystuje w procesie uczenia zarówno dane etykietowane jak i nieoznaczone. Głównymi zaletami stosowania tego sposobu są
 \begin{itemize}
-\item poprawa wydajności algorytmu - ze względu na wykorzystanie większej ilości danych,
+\item poprawa wydajności algorytmu - ze względu na wykorzystanie większej liczby danych,
 \item zmniejszenie kosztów pozyskania danych etykietowanych przy jednoczesnym zachowaniu zadowalających rezultatów,
 \item zwiększenie elastyczności modelu ze względu na brak uzależnienia od wyłącznie danych oznaczonych.
 \end{itemize}
